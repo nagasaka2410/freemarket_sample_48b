@@ -55,3 +55,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'pry-rails'
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end
