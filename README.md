@@ -4,11 +4,11 @@
 |nickname|string|null:falls, unique: true|
 |email|string|null: false, unique: true|
 |password|string|null:falls|
-|profile|string| ------ |
+|profile|text| ------ |
 |icon|text| ----- |
 
 ### Associatiton
-- has_one :user_details
+- has_one :user_detail
 - has_one :user_addresses
 - has_many :card
 - has_many :products_commets
@@ -23,11 +23,12 @@
 |user_id|references|null:falls,foreign_key: true|
 |last_name|string|null:falls|
 |first_name|string|null:falls|
+|first_name_kana|string|null:falls|
 |last_name_kana|string|null:falls|
-|birth_year|string|null:falls|
-|birth_month|string|null:falls|
-|birth_day|string|null:falls|
-|telephone|string|null:falls|
+|birth_year|integer|null:falls|
+|birth_month|integer|null:falls|
+|birth_day|integer|null:falls|
+|telephone|integer|null:falls|
 
 ### Associatiton
 - belongs_to :user
@@ -38,10 +39,10 @@
 |Column|Type|option|
 |------|----|------|
 |user_id|references|null:falls,foreign_key: true|
-|prefecture_id|references	|null:falls,foreign_key: true|
-|postal_code|string|null:falls|
+|prefecture_id|references|null:falls,foreign_key: true|
+|postal_code|integer|null:falls|
 |city|string|null:falls|
-|block_number|string|null:falls|
+|block_number|integer|null:falls|
 |building|string|--------|
 
 ### Associatiton
@@ -53,7 +54,7 @@
 |Column|Type|option|
 |------|----|------|
 |user_id|references|null:falls,foreign_key: true|
-|account_holder|integer|null:falls|
+|account_holder|string|null:falls|
 |valid_month|integer|null:falls|
 |valid_day|integer|null:falls|
 |security_code|integer|null:falls|
@@ -71,13 +72,13 @@
 |seller_id|references|null:falls,foreign_key: true|
 |buyer_id|references|null:falls|
 |status|string|null:falls|
-|price|string|null:falls|
+|price|integer|null:falls|
 |category_id|references|null:falls,foreign_key: true|
 |condition|string|null:falls|
 |brands_id|references|null:falls,foreign_key: true|
-|product_size_id|string|null:falls|
+|product_size|string|--------|
 |shipping_method|string|null:falls|
-|shipping_burden|string|null:falls|
+|shipping_burden|integer|null:falls|
 |prefecture_id|references|null:falls,foreign_key: true|
 |user_id|references|null:falls|
 
@@ -119,7 +120,7 @@
 ## imagesテーブル
 |Column|Type|option|
 |------|----|------|
-|url|string|null:falls|
+|name|string|null:falls|
 |products_id|references|null:falls,foreign_key: true|
 
 ### Associatiton
