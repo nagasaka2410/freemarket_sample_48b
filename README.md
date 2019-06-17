@@ -75,12 +75,12 @@
 |price|integer|null:false|
 |category|references|null:false,foreign_key: true|
 |condition|string|null:false|
-|brands|references|null:false,foreign_key: true|
+|brand|references|null:false,foreign_key: true|
 |product_size|string|--------|
 |shipping_method|string|null:false|
 |shipping_burden|integer|null:false|
 |prefecture|references|null:false,foreign_key: true|
-|user_id|references|null:false|
+|user|references|null:false|
 
 ###Associatiton
 - has_many :products_commets
@@ -95,7 +95,7 @@
 ## likesテーブル
 |Column|Type|option|
 |------|----|------|
-|products|references|null:false,foreign_key: true|
+|product|references|null:false,foreign_key: true|
 |user|references|null:false,foreign_key: true|
 
 ### Associatiton
@@ -109,7 +109,7 @@
 |------|----|------|
 |comment|text|--------|
 |user|references|null:false,foreign_key: true|
-|products|references|null:false,foreign_key: true|
+|product|references|null:false,foreign_key: true|
 
 ### Associatiton
 - belongs_to :user
@@ -121,7 +121,7 @@
 |Column|Type|option|
 |------|----|------|
 |name|string|null: false|
-|products|references|null:false,foreign_key: true|
+|product|references|null:false,foreign_key: true|
 
 ### Associatiton
 - belongs_to :product
