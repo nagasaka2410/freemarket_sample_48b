@@ -12,7 +12,7 @@
 - has_one :user_address
 - has_many :cards
 - has_many :products_commets
-- has_many :products,through: :products_commets
+- has_many :products
 - has_many :likes
 
 
@@ -83,10 +83,9 @@
 |user|references|null:false|
 
 ###Associatiton
-- has_many :products_commets
+- has_many :products_commets,dependent: :destroy
 - has_many :likes
 - has_many :images
-- has_many :users through: :products_commets
 - belongs_to :user
 - belongs_to :category
 - belongs_to :brand
