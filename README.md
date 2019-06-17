@@ -1,16 +1,16 @@
-## userテーブル
+## usersテーブル
 |Column|Type|option|
 |------|----|------|
-|nickname|string|null:falls, unique: true|
+|nickname|string|null:false, unique: true|
 |email|string|null: false, unique: true|
-|password|string|null:falls|
+|password|string|null:false|
 |profile|text| ------ |
-|icon|text| ----- |
+|icon|string| ----- |
 
 ### Associatiton
 - has_one :user_detail
-- has_one :user_addresses
-- has_many :card
+- has_one :user_address
+- has_many :cards
 - has_many :products_commets
 - has_many :products,through: :products_commets
 - has_many :likes
@@ -20,15 +20,15 @@
 ## User_detailsテーブル
 |Column|Type|option|
 |------|----|------|
-|user_id|references|null:falls,foreign_key: true|
-|last_name|string|null:falls|
-|first_name|string|null:falls|
-|first_name_kana|string|null:falls|
-|last_name_kana|string|null:falls|
-|birth_year|integer|null:falls|
-|birth_month|integer|null:falls|
-|birth_day|integer|null:falls|
-|telephone|integer|null:falls|
+|user|references|null:false,foreign_key: true|
+|last_name|string|null:false|
+|first_name|string|null:false|
+|first_name_kana|string|null:false|
+|last_name_kana|string|null:false|
+|birth_year|integer|null:false|
+|birth_month|integer|null:false|
+|birth_day|integer|null:false|
+|telephone|integer|null:false|
 
 ### Associatiton
 - belongs_to :user
@@ -38,11 +38,11 @@
 ## user_addressesテーブル
 |Column|Type|option|
 |------|----|------|
-|user_id|references|null:falls,foreign_key: true|
-|prefecture_id|references|null:falls,foreign_key: true|
-|postal_code|integer|null:falls|
-|city|string|null:falls|
-|block_number|integer|null:falls|
+|user|references|null:false,foreign_key: true|
+|prefecture|references|null:false,foreign_key: true|
+|postal_code|integer|null:false|
+|city|string|null:false|
+|block_number|integer|null:false|
 |building|string|--------|
 
 ### Associatiton
@@ -50,14 +50,14 @@
 
 
 
-## creditcardテーブル
+## creditcardsテーブル
 |Column|Type|option|
 |------|----|------|
-|user_id|references|null:falls,foreign_key: true|
-|account_holder|string|null:falls|
-|valid_month|integer|null:falls|
-|valid_day|integer|null:falls|
-|security_code|integer|null:falls|
+|user|references|null:false,foreign_key: true|
+|account_holder|string|null:false|
+|valid_month|integer|null:false|
+|valid_day|integer|null:false|
+|security_code|integer|null:false|
 
 ### Associatiton
 - belongs_to :user
@@ -67,20 +67,20 @@
 ## productsテーブル
 |Column|Type|option|
 |------|----|------|
-|name|string|null:falls|
-|desicription|text|null:falls|
-|seller_id|references|null:falls,foreign_key: true|
-|buyer_id|references|null:falls|
-|status|string|null:falls|
-|price|integer|null:falls|
-|category_id|references|null:falls,foreign_key: true|
-|condition|string|null:falls|
-|brands_id|references|null:falls,foreign_key: true|
+|name|string|null:false|
+|desicription|text|null:false|
+|seller_id|references|null:false,foreign_key: true|
+|buyer_id|references|null:false|
+|status|string|null:false|
+|price|integer|null:false|
+|category|references|null:false,foreign_key: true|
+|condition|string|null:false|
+|brands|references|null:false,foreign_key: true|
 |product_size|string|--------|
-|shipping_method|string|null:falls|
-|shipping_burden|integer|null:falls|
-|prefecture_id|references|null:falls,foreign_key: true|
-|user_id|references|null:falls|
+|shipping_method|string|null:false|
+|shipping_burden|integer|null:false|
+|prefecture|references|null:false,foreign_key: true|
+|user_id|references|null:false|
 
 ###Associatiton
 - has_many :products_commets
@@ -95,8 +95,8 @@
 ## likesテーブル
 |Column|Type|option|
 |------|----|------|
-|products_id|references|null:falls,foreign_key: true|
-|user_id|references|null:falls,foreign_key: true|
+|products|references|null:false,foreign_key: true|
+|user|references|null:false,foreign_key: true|
 
 ### Associatiton
 - belongs_to :user
@@ -108,8 +108,8 @@
 |Column|Type|option|
 |------|----|------|
 |comment|text|--------|
-|user_id|references|null:falls,foreign_key: true|
-|products_id|references|null:falls,foreign_key: true|
+|user|references|null:false,foreign_key: true|
+|products|references|null:false,foreign_key: true|
 
 ### Associatiton
 - belongs_to :user
@@ -120,8 +120,8 @@
 ## imagesテーブル
 |Column|Type|option|
 |------|----|------|
-|name|string|null:falls|
-|products_id|references|null:falls,foreign_key: true|
+|name|string|null: false|
+|products|references|null:false,foreign_key: true|
 
 ### Associatiton
 - belongs_to :product
@@ -132,8 +132,8 @@
 ## categoriesテーブル
 |Column|Type|option|
 |------|----|------|
-|name|string|null:falls|
-|ancestory|string|null:falls|
+|name|string|null:false|
+|ancestory|string|null:false|
 
 ### Associatiton
 - has_many :products
@@ -144,7 +144,7 @@
 ## brandsテーブル
 |Column|Type|option|
 |------|----|------|
-|name|string|null:falls|
+|name|string|null:false|
 
 ## Associatiton
 - has_many :products
