@@ -1,0 +1,47 @@
+
+
+%main.container.clearfix{
+  .contents{
+    .userpage{
+      background-image: image-url('user-bg.jpg');
+      font-size: 14px;
+      height: 200px;
+      position: relative;
+      text-align: center;
+      &__icon {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translate(0, -50%);
+        .avatar{
+          border-radius: 50%;
+          height: 60px;
+          width: 60px;
+        }
+      }
+      &__name{
+        margin: 8px 0 0 0;
+        font-size: 14px;
+      }
+      &__result{
+        margin: 8px 0 0 0;
+        div {
+          display: inline-block;
+        }
+        span {
+          margin: 0 0 0 8px;
+        }
+        &__sell {
+          margin: 0 0 0 12px;
+        }
+      }
+    }
+    .user{
+      border: 0;
+      background: #eee;
+      font-size: 0;
+      
+    }
+  }
+}

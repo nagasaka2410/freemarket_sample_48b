@@ -1,29 +1,178 @@
+/= render partial: 'shared/header'
 
-.pagePath　
-.m-main-box
-  .m-conts
-    .userpage-user-icon
-      = link_to '#' do 
-        %figure
-        %img
-        %h2.bold 48期
-      .userpage-number
-    .userpage-tab-main-news-todo
-      %ul.user-tabs
-        %li.info
+.pagepath-crumbs
+  %ul.pagepath
+    %li.pagepath
+    = link_to '#' do
+%main.container.clearfix
+  .contents
+    %section.userpage
+      .userpage__icon
+        = link_to '#' do 
+          %figure
+            = image_tag 'member_photo_noimage_thumb.png', class: 'avatar'
+          %h2.user__name.bold
+            = current_user.nickname
+          .user__result
+            .user__result--evolute
+              評価
+              %span.bold 0
+            .user__result--sell
+              出品数
+              %span.bold 0
+    %section.user-todo
+      %ul.user__tabs
+        %li.user__tabs--notification
+          = link_to '' do
+            お知らせ
+        %li.user__tabs--todo.active
+          = link_to '' do
+            やることリスト
+      .todo-content
+        %ul.mypage-info-list.active{id: "mypage-tab-todo"}
+          %li.mypage-info-card
+            =link_to '', class: "mypage-info-card__link" do
+              %figure
+                =image_tag "https://static.mercdn.net/images/mercari_profile.png", size: "48x48", alt: "mercari_profile"
+              .card-body
+                .card-body__text 《通知内容!!!!!!!!!!》
+                %time
+                  %i.far.fa-clock
+                  %span 何分何時間前
+              %i.icon-arrow-right
+        %li.mypage-info-card
+            =link_to '', class: "mypage-info-card__link" do
+              %figure
+                =image_tag "https://static.mercdn.net/images/mercari_profile.png", size: "48x48", alt: "mercari_profile"
+              .card-body
+                .card-body__text 《通知内容!!!!!!!!!!》
+                %time
+                  %i.far.fa-clock
+                  %span 何分何時間前
+              %i.icon-arrow-right
+        %li.mypage-info-card
+            =link_to '', class: "mypage-info-card__link" do
+              %figure
+                =image_tag "https://static.mercdn.net/images/mercari_profile.png", size: "48x48", alt: "mercari_profile"
+              .card-body
+                .card-body__text 《通知内容!!!!!!!!!!》
+                %time
+                  %i.far.fa-clock
+                  %span 何分何時間前
+              %i.icon-arrow-right
+    %section.user-trade-items
+      %h2.user-trade-head 購入した商品
+      %ul.userpage-tabs
+        %li.active
+          %h3
+            = link_to '' do　取引中
         %li
           %h3
-            //= link_to 'やることリスト' do 
-      .tab-conts
-        #mypage-tab-notification.mypage-item-list-tab-pane-active
-        %li
-        %li
-    .modal
-    .userpage-tab-trade
-  .m-side
+            = link_to '' do 過去の取引
+      .trade-content
+        %ul.mypage-item-list{id:"transction-now"}
+         %li.mypage-item-not-found.bold 取引中の商品がありません
+       /%ul.mypage-item-list-active{id:"transction-now"}
+         /%li.mypage-info-card--not-found 過去に取引した商品がありません
+  .said-nav
     .userpage-nav
-      .userpage-nav-list
-      .userpage-nav-head  メルペイ
-      .userpage-navlist 
-      .userpage-nav-head  設定
-      .userpage-nav-list
+      %ul.userpage-nav-list
+        %li
+          =link_to root_path, class: "nav-list__item active" do
+            マイページ
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            お知らせ
+            %i.fas.fa-chevron-right.arrow-hover.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            やることリスト
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            いいね！一覧
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            出品する
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            出品した商品 - 出品中
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            出品した商品 - 取引中
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            出品した商品 - 売却済み
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            購入した商品 - 取引中
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            購入した商品 - 過去の取引
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            ニュース一覧
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            評価一覧
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            ガイド
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            お問い合わせ
+            %i.fas.fa-chevron-right.arrow-hover
+      %h3.userpage-nav-head メルペイ
+      %ul.userpage-nav-list
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            売上・振込申請
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            ポイント
+            %i.fas.fa-chevron-right.arrow-hover
+      %h3.userpage-nav-head 設定
+      %ul.userpage-nav-list
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            プロフィール
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            発送元・お届け先住所変更
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            支払い方法
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            メール/パスワード
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            本人情報
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            電話番号の確認
+            %i.fas.fa-chevron-right.arrow-hover
+        %li
+          =link_to root_path, class: "nav-list__item" do
+            ログアウト
+            %i.fas.fa-chevron-right.arrow-hover
+
+/= render partial: 'layouts/banner'
+/= render partial: 'layouts/footer'
