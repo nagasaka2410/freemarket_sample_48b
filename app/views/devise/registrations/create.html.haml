@@ -1,0 +1,16 @@
+.single-container
+  = render "header"
+
+  %main.single-main
+    %section.registration-container
+      %h2.registration-head 会員登録完了
+      .new_user
+        .registration__basic
+          .field
+          %p.text-center
+            ありがとうございます。
+            %br.text-center
+              会員登録が完了しました。
+          %input{type: "button",class: "btn-start", value: "メルカリをはじめる"}
+
+  = render "footer"
