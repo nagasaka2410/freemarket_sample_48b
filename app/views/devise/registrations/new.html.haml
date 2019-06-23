@@ -91,14 +91,14 @@
           .field
             %p.terms-text
               「次へ進む」のボタンを押すことにより、
-              %a(href="#") 利用規約
+              = link_to "利用規約", "#" 
               に同意したものとみなします
 
         .registration__basic
           %input{type: "button",class: "btn-next", value: "次へ進む"}
           .text-right
             %p
-              %a(href="#") 本人情報の登録について
+              = link_to "本人情報の登録について", "#" 
 
 
 
