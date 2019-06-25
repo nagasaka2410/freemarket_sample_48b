@@ -10,7 +10,7 @@
 ### Associatiton
 - has_one :user_detail
 - has_one :user_address
-- has_many :cards
+- has_many :creditcards
 - has_many :products_commets
 - has_many :products
 - has_many :likes
@@ -57,9 +57,10 @@
 |------|----|------|
 |user|references|null:false,foreign_key: true|
 |account_holder|string|null:false|
+|card_number|string|null:false|
 |valid_month|integer|null:false|
-|valid_day|integer|null:false|
-|security_code|integer|null:false|
+|valid_year|integer|null:false|
+|security_code|string|null:false|
 
 ### Associatiton
 - belongs_to :user
