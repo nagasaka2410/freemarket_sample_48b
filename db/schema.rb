@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190620123613) do
+ActiveRecord::Schema.define(version: 20190625131033) do
 
   create_table "user_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",      null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20190620123613) do
     t.integer  "birth_year",      null: false
     t.integer  "birth_month",     null: false
     t.integer  "birth_day",       null: false
-    t.integer  "telephone",       null: false
+    t.string   "mobile_phone",    null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["user_id"], name: "index_user_details_on_user_id", using: :btree
