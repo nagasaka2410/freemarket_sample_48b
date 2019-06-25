@@ -28,7 +28,7 @@
 |birth_year|integer|null:false|
 |birth_month|integer|null:false|
 |birth_day|integer|null:false|
-|telephone|integer|null:false|
+|mobile_phone|string|null:false|
 
 ### Associatiton
 - belongs_to :user
@@ -44,9 +44,11 @@
 |city|string|null:false|
 |block_number|string|null:false|
 |building|string|--------|
+|telephone|string|--------|
 
 ### Associatiton
 - belongs_to :user
+- belongs_to :prefecture
 
 
 
@@ -147,3 +149,11 @@
 
 ## Associatiton
 - has_many :products
+
+## prefecturesテーブル
+|Column|Type|option|
+|------|----|------|
+|prefecture|string|null:false|
+
+## Associatiton
+- has_many :user_addresses
