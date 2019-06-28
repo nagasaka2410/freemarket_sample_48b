@@ -265,6 +265,7 @@ DEPENDENCIES
   devise
   erb2haml
   fog-aws
+  font-awesome-rails
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
