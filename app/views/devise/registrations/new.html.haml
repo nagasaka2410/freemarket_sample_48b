@@ -1,0 +1,227 @@
+.single-container
+  = render "header"
+
+  %main.single-main
+    %section.registration-container
+      %h2.registration-head 会員情報入力
+
+      
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .registration__basic
+
+          .field
+            = f.label :ニックネーム
+            %span.require 必須
+            %br/
+            %input.input-default(type="text")/
+
+          .field
+            = f.label :メールアドレス
+            %span.require 必須
+            %br/
+            = f.email_field :email, class: "input-default", autocomplete: "email", placeholder: 'PC・携帯どちらでも可'
+          .field
+            = f.label :パスワード
+            - if @minimum_password_length
+              -# %em
+                (#{@minimum_password_length} characters minimum)
+            %span.require 必須
+            %br/
+            = f.password_field :password, class: "input-default", autocomplete: "new-password", placeholder: '6文字以上'
+        
+          .field
+            = f.label :"パスワード (確認) "
+            %span.require 必須
+            %br/
+            = f.password_field :password_confirmation, class: "input-default", autocomplete: "new-password", placeholder: '6文字以上'
+        
+          .field
+            %h3.text 本人確認
+            %p.l-single-text
+              安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+
+          .field
+            = f.label :'姓 (全角)' 
+            %span.require 必須
+            %br/
+            %input.input-default(type="text")/
+
+          .field
+            = f.label :'名 (全角)' 
+            %span.require 必須
+            %br/
+            %input.input-default(type="text")/
+
+          .field
+            = f.label :'姓カナ (全角)' 
+            %span.require 必須
+            %br/
+            %input.input-default(type="text")/
+
+          .field
+            = f.label :'名カナ (全角)' 
+            %span.require 必須
+            %br/
+            %input.input-default(type="text")/
+
+                    
+          .field
+            = f.label :生年月日 
+            %span.require 必須
+            %br/
+            .birthday-wrap
+              .select
+                %select{id: "year",class: "select-default"}
+                  %option{value: "0"}--
+              %span 年
+              .select
+                %select{id: "month",class: "select-default"}
+                  %option{value: "0"}--
+              %span 月
+              .select
+                %select{id: "day",class: "select-default"}
+                  %option{value: "0"}--
+              %span 日
+            %p.birthday-text
+              ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+        
+        .registration__basic
+          .field
+          .field
+            %p.terms-text
+              「次へ進む」のボタンを押すことにより、
+              = link_to "利用規約", "#" 
+              に同意したものとみなします
+
+        .registration__basic
+          %input{type: "button",class: "btn-next", value: "次へ進む"}
+          .text-right
+            %p
+              = link_to "本人情報の登録について", "#" 
+
+
+
+        .registration__sms
+
+          .field
+            = f.label :携帯電話の番号 
+            %br/
+            %input.input-default(type="integer")/
+            %p
+              本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+        
+          %input{type: "button",class: "btn-sms", value: "SMSを送信する"}
+          %p
+            ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+          .text-right
+            %p
+              %a(href="#") 電話番号の確認が必要な理由
+
+        .registration__adress
+          .field
+            = f.label :お名前 
+            %span.require 必須
+            %br/
+            %input.input-default(type="text")/
+            %br/
+            %input.input-default(type="text")/
+
+          .field
+            = f.label :お名前カナ 
+            %span.require 必須
+            %br/
+            %input.input-default(type="text")/
+            %br/
+            %input.input-default(type="text")/
+
+          .field
+            = f.label :郵便番号 
+            %span.require 必須
+            %br/
+            %input.input-default(type="text")/
+
+          .field
+            = f.label :都道府県 
+            %span.require 必須
+            %br/
+            %input.input-default(type="text")/
+
+          .field
+            = f.label :市区町村 
+            %span.require 必須
+            %br/
+            %input.input-default(type="text")/
+
+          .field
+            = f.label :番地 
+            %span.require 必須
+            %br/
+            %input.input-default(type="text")/
+
+          .field
+            = f.label :建物名 
+            %span.optional 任意
+            %br/
+            %input.input-default(type="text")/
+
+          .field
+            = f.label :電話 
+            %span.optional 任意
+            %br/
+            %input.input-default(type="text")/
+          
+          %input{type: "button",class: "btn-adress", value: "次へ進む"}
+
+        .registration__payment
+
+          .field
+            = f.label :カード番号
+            %span.require 必須
+            %br/
+            %input.input-default(type="integer")/
+            %ul.card-list
+              %li
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1881812696",size: "49x20")
+              %li
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?1881812696",size: "34x20")
+              %li
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?1881812696",size: "30x20")
+              %li
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?1881812696",size: "32x20")
+              %li
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?1881812696",size: "21x20")
+              %li
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?1881812696",size: "32x20")
+              %li
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?1881812696",size: "32x20")
+
+          .field
+            = f.label :有効期限
+            %span.require 必須
+            %br/
+            .birthday-wrap
+              .select
+                %select{id: "month2",class: "select-default"}
+                  %option{value: "0"}--
+              %span 月
+              .select
+                %select{id: "year2",class: "select-default"}
+                  %option{value: "0"}--
+              %span 年
+
+
+          .field
+            = f.label :セキュリティコード
+            %span.require 必須
+            %br/
+            %input.input-default(type="integer")/
+            .text-right__card
+              %span.card-question ?
+              カード裏の番号とは？
+
+          .actions
+            = f.submit class: "btn-end", value: "次へ進む"
+        = render "devise/shared/links"
+
+  = render "footer"
