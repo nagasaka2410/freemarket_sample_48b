@@ -1,0 +1,104 @@
+/= render partial: 'shared/header'
+
+
+= render 'shared/breadcrumbs'
+
+.mypage
+  %main.mypage__body.clearfix
+    .mypage__body__main
+      %section.mypage-user-icon
+        = link_to "#" do
+          %figure
+            = image_tag "icon.png", alt: "ユーザーアイコン", alt: "ユーザーアイコン", height: "60", width: "60"
+          %h2.bold
+            真矢
+          .mypage-number
+            %p
+              評価
+              %span.bold 0
+            %p.right
+              出品数
+              %span.bold 0
+      %section.mypage-todo
+        %ul.mypage-tabs.up
+          %li.notification.is-active
+            %h3 お知らせ
+          %li.todo
+            %h3 やることリスト
+        %ul.tab-content
+          %ul.notification-list.tab
+            %li
+              = link_to "#", class: "notification-list__link" do
+                %figure
+                  = image_tag "mercari_name.png"
+                .notification-list__body
+                  .notification-list__body__text【7日間限定】10人に1人最大P6,000もらえるキャンペーン開始
+                  %time
+                    %i.far.fa-clock
+                    %span 22 時間前
+                = fa_icon "angle-right"
+            %li
+              = link_to "#", class: "notification-list__link" do
+                %figure
+                  = image_tag "mercari_name.png"
+                .notification-list__body
+                  .notification-list__body__text 事務局から個別メッセージ「ログイン通知」
+                  %time
+                    %i.far.fa-clock
+                    %span 1 日前
+                = fa_icon "angle-right"
+            %li
+              = link_to "#", class: "notification-list__link" do
+                %figure
+                  = image_tag "mercari_name.png"
+                .notification-list__body
+                  .notification-list__body__text 事務局から個別メッセージ「【重要】新サービス開始に伴う利用規約改訂のお知らせ」
+                  %time
+                    %i.far.fa-clock
+                    %span 16 日前
+                = fa_icon "angle-right"
+            %li
+              = link_to "#", class: "notification-list__link" do
+                %figure
+                  = image_tag "mercari_name.png"
+                .notification-list__body
+                  .notification-list__body__text 【あと3日】対象カテゴリーが売れたら“必ず“ポイントがもらえるキャンペーン開催中
+                  %time
+                    %i.far.fa-clock
+                    %span 21 日前
+                = fa_icon "angle-right"
+            %li.notification-list__all
+              = link_to "#" do
+                一覧を見る
+          %ul.todo-list.tab
+            %li.hide
+              = link_to "#", class: "notification-list__link" do
+                %figure
+                  = image_tag "mercari_name.png"
+                .notification-list__body
+                  .notification-list__body__text【7日間限定】10人に1人最大P6,000もらえるキャンペーン開始
+                  %time
+                    %i.far.fa-clock
+                    %span 22 時間前
+                = fa_icon "angle-right"
+      %section.mypage-tab-trading-traded
+        %h2.mypage-tab-head 購入した商品
+        %ul.mypage-tabs.under
+          %li.trading.is-action
+            %h3　取引中
+          %li.traded
+            %h3　過去の取引
+        %ul.tab-content
+          %ul.trading-list.ta
+            %li.trading-item-not-found.bold 
+              取引中の商品がありません
+          %ul.traded-list.ta
+            %li.traded-item-not-found
+              過去に取引した商品がありません
+    = render 'shared/mypage-sidemenu'
+
+
+
+/= render partial: 'layouts/banner'
+/= render partial: 'layouts/footer'
+/= render 'shared/sellbtn'
