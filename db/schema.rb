@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190625134949) do
+ActiveRecord::Schema.define(version: 20190629081509) do
 
   create_table "creditcards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",        null: false
@@ -24,23 +24,16 @@ ActiveRecord::Schema.define(version: 20190625134949) do
     t.index ["user_id"], name: "index_creditcards_on_user_id", using: :btree
   end
 
-  create_table "prefectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "prefecture", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "user_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id",       null: false
-    t.integer  "postal_code",   null: false
-    t.string   "city",          null: false
-    t.string   "block_number",  null: false
+    t.integer  "user_id",      null: false
+    t.integer  "postal_code",  null: false
+    t.string   "city",         null: false
+    t.string   "block_number", null: false
     t.string   "building"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "telephone"
-    t.integer  "prefecture_id"
-    t.index ["prefecture_id"], name: "index_user_addresses_on_prefecture_id", using: :btree
+    t.string   "prefecture",   null: false
     t.index ["user_id"], name: "index_user_addresses_on_user_id", using: :btree
   end
 
@@ -73,7 +66,6 @@ ActiveRecord::Schema.define(version: 20190625134949) do
   end
 
   add_foreign_key "creditcards", "users"
-  add_foreign_key "user_addresses", "prefectures"
   add_foreign_key "user_addresses", "users"
   add_foreign_key "user_details", "users"
 end
