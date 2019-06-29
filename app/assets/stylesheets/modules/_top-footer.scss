@@ -1,0 +1,154 @@
+.top-footer {
+  width: 100%;
+  height: 470px;
+  background-color: black;
+  padding: 0 20px 10px 20px;
+  color: #fff;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .footer-top {
+    width: 1020px;
+    height: 378px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-top: 18px;
+    a {
+      display: inline-block;
+      word-break: normal;
+    }
+
+    .footer__official {
+      float: left;
+      width: 23%;
+      padding-right: 20px;
+      box-sizing: border-box;
+
+      &__title {
+        line-height: 1.4;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      li {
+        margin: 16px 0 0;
+        font-size: 14px;
+        padding-right: 20px;
+        opacity: 0.7;
+      }
+
+      &--icon {
+        margin-top: 14px;
+        .twitter {
+          font-size: 2em;
+          margin: 16px 18px 0 0;
+        }
+        .facebook {
+          font-size: 2em;
+          margin: 16px 18px 0 0;
+        }
+      }
+    }
+
+    .footer__guide {
+      float: left;
+      width: 23%;
+      padding-right: 40px;
+      box-sizing: border-box;
+
+      &__title {
+        line-height: 1.4;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      li {
+        margin: 16px 0 0;
+        font-size: 14px;
+        opacity: 0.7;
+      }
+    }
+
+    .footer__rules {
+      float: left;
+      width: 42%;
+      padding-right: 40px;
+      box-sizing: border-box;
+
+      &__title {
+        line-height: 1.4;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      li {
+        margin: 16px 0 0;
+        font-size: 14px;
+        opacity: 0.7;
+      }
+
+      .inner {
+        &-left {
+          float: left;
+          width: 50%;
+          padding-right: 10px;
+          box-sizing: border-box;
+        }
+  
+        &-right {
+          float: left;
+          width: 50%;
+          padding-left: 10px;
+          box-sizing: border-box;
+        }
+      }
+
+    }
+    .footer__national {
+      float: left;
+      width: 12%;
+
+      &__title {
+        line-height: 1.4;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      li {
+        margin: 16px 0 0;
+        font-size: 14px;
+        word-break: break-all;
+        padding-right: 20px;
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .footer-bottom {
+    width: 1020px;
+    margin: 30px auto 20px;
+    box-sizing: border-box;
+
+    &__logo {
+      float: left;
+      color: #fff;
+      img {
+        width: 200px;
+        color: white;
+      }
+    }
+
+    &__copy-right {
+      float: right;
+      width: 820px;
+      padding-right: 200px;
+      text-align: center;
+      box-sizing: border-box;
+      margin: 8px;
+      font-size: 15px;
+    }
+  }
+}
