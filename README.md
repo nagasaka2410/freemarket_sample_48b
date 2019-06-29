@@ -10,7 +10,7 @@
 ### Associatiton
 - has_one :user_detail
 - has_one :user_address
-- has_many :cards
+- has_many :creditcards
 - has_many :products_commets
 - has_many :products
 - has_many :likes
@@ -28,7 +28,7 @@
 |birth_year|integer|null:false|
 |birth_month|integer|null:false|
 |birth_day|integer|null:false|
-|telephone|integer|null:false|
+|mobile_phone|string|null:false|
 
 ### Associatiton
 - belongs_to :user
@@ -44,9 +44,11 @@
 |city|string|null:false|
 |block_number|string|null:false|
 |building|string|--------|
+|telephone|string|--------|
 
 ### Associatiton
 - belongs_to :user
+- belongs_to :prefecture
 
 
 
@@ -55,9 +57,10 @@
 |------|----|------|
 |user|references|null:false,foreign_key: true|
 |account_holder|string|null:false|
+|card_number|string|null:false|
 |valid_month|integer|null:false|
-|valid_day|integer|null:false|
-|security_code|integer|null:false|
+|valid_year|integer|null:false|
+|security_code|string|null:false|
 
 ### Associatiton
 - belongs_to :user
@@ -147,3 +150,11 @@
 
 ## Associatiton
 - has_many :products
+
+## prefecturesテーブル
+|Column|Type|option|
+|------|----|------|
+|prefecture|string|null:false|
+
+## Associatiton
+- has_many :user_addresses
