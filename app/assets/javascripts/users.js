@@ -1,6 +1,6 @@
 $(function() {
     $('.registration__sms').hide();
-    $('.registration__adress').hide();
+    $('.registration__address').hide();
     $('.registration__payment').hide();
   
     $('.btn-next').on('click', function(){
@@ -16,7 +16,7 @@ $(function() {
 
     $('.btn-sms').on('click', function(){
       $('.registration__sms').hide();
-      $('.registration__adress').show();
+      $('.registration__address').show();
       $('h2').text("住所入力");
       $('#address').css('color','#ea352d');
       $('#active').css('color','#888');
@@ -25,8 +25,8 @@ $(function() {
       $('body, html').animate({ scrollTop: 0 }, 0);
     });
 
-    $('.btn-adress').on('click', function(){
-      $('.registration__adress').hide();
+    $('.btn-address').on('click', function(){
+      $('.registration__address').hide();
       $('.registration__payment').show();
       $('h2').text("支払い方法");
       $('#payment').css('color','#ea352d');
@@ -40,9 +40,9 @@ $(function() {
 $(function(){
   //日付範囲決定
   function calcDays(){
-    $('#day').empty();
-    var y = $('#year').val();
-    var m = $('#month'). val();
+    $('#user_user_detail_attributes_birth_day').empty();
+    var y = $('#user_user_detail_attributes_birth_year').val();
+    var m = $('#user_user_detail_attributes_birth_month'). val();
 
     if (m == "" || y == "") { //年か月が選択されていない時は31日まで表示
       var last = 31;
@@ -52,12 +52,12 @@ $(function(){
       var last = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)[m-1];
     }
 
-    $('#day').append('<option value="">--</option>');
+    $('#user_user_detail_attributes_birth_day').append('<option value="">--</option>');
     for (var i = 1; i <= last; i++) {
       if (d == i) { //日がすでに選択されている場合はその値が選択された状態で表示
-        $('#day').append('<option value="' + i + '" selected>' + i + '</option>');
+        $('#user_user_detail_attributes_birth_day').append('<option value="' + i + '" selected>' + i + '</option>');
       } else {
-        $('#day').append('<option value="' + i + '">' + i + '</option>');
+        $('#user_user_detail_attributes_birth_day').append('<option value="' + i + '">' + i + '</option>');
       }
     }
   }
@@ -66,33 +66,34 @@ $(function(){
   $(function(){
     //1900年～2019年まで表示
     for (var i = 2019; i >= 1900; i--) {
-      $('#year').append('<option value="' + i + '">' + i + '</option>');
+      $('#user_user_detail_attributes_birth_year').append('<option value="' + i + '">' + i + '</option>');
     }
     //1月～12月まで表示
     for (var i = 1; i <= 12; i++) {
-      $('#month').append('<option value="' + i + '">' + i + '</option>');
+      $('#user_user_detail_attributes_birth_month').append('<option value="' + i + '">' + i + '</option>');
     }
     //1日～31日まで表示
     for (var i = 1; i <= 31; i++) {
-      $('#day').append('<option value="' + i + '">' + i + '</option>');
+      $('#user_user_detail_attributes_birth_day').append('<option value="' + i + '">' + i + '</option>');
     }
 
-    $('#day').change(function(){
+    $('#user_user_detail_attributes_birth_day').change(function(){
       d = $(this).val();
     });
     //年か月が変わるごとに日数を計算
-    $('#year').change(calcDays);
-    $('#month').change(calcDays);
+    $('#user_user_detail_attributes_birth_year').change(calcDays);
+    $('#user_user_detail_attributes_birth_month').change(calcDays);
   });
 });
 
 $(function(){
   var time = new Date();
   var year = time.getFullYear();
-  for (var i = year; i >= 1900; i--) {
+  for (var i = 2030; i >= 2019; i--) {
       $('#year2').append('<option value="' + i + '">' + i + '</option>');
   }
   for (var i = 1; i <= 12; i++) {
       $('#month2').append('<option value="' + i + '">' + i + '</option>');
   }
 });
+

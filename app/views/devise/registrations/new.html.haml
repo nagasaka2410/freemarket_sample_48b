@@ -95,8 +95,8 @@
 
           .registration__sms
             .field
-              = i.label :telephone, "携帯電話の番号"
-              = i.text_field :telephone, class: "input-default", autocomplete: "telephone", placeholder: '携帯電話の番号を入力'
+              = i.label :mobile_phone, "携帯電話の番号"
+              = i.text_field :mobile_phone, class: "input-default", autocomplete: "mobile_phone", placeholder: '携帯電話の番号を入力'
               %p.caution-text
                 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
           
@@ -113,13 +113,14 @@
               = d.label :postal_code, "郵便番号"
               %span.require 必須
               = d.text_field :postal_code, class: "input-default", autocomplete: "postal_code", placeholder: '例) 123-4567'
-
+        = f.fields_for :prefecture do |k|
+          .registration__address
             .field
-              = f.label :都道府県 
+              = k.label :都道府県 
               %span.require 必須
-              %br/
-              %input.input-default(type="text")/
-
+              = d.text_field :prefecture, class: "input-default"
+        = f.fields_for :user_address do |d|
+          .registration__address
             .field
               = d.label :city, "市区町村" 
               %span.require 必須
