@@ -90,10 +90,10 @@ $(function(){
   var time = new Date();
   var year = time.getFullYear();
   for (var i = 2030; i >= 2019; i--) {
-      $('#year2').append('<option value="' + i + '">' + i + '</option>');
+      $('#user_creditcard_attributes_valid_year').append('<option value="' + i + '">' + i + '</option>');
   }
   for (var i = 1; i <= 12; i++) {
-      $('#month2').append('<option value="' + i + '">' + i + '</option>');
+      $('#user_creditcard_attributes_valid_month').append('<option value="' + i + '">' + i + '</option>');
   }
 });
 

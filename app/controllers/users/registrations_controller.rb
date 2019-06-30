@@ -8,6 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
     @user.build_user_address
     @user.build_user_detail
+    @user.build_creditcard
   end
 
   def create
@@ -27,7 +28,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up) do |params|
       params.permit(:email, :password, :password_confirmation, :current_password, :nickname,
                     user_detail_attributes: [:user_id, :last_name, :first_name, :last_name_kana, :first_name_kana, :birth_year, :birth_month, :birth_day, :mobile_phone],
-                    user_address_attributes: [:user_id, :postal_code, :city, :block_number, :building, :telephone, :prefecture])
+                    user_address_attributes: [:user_id, :postal_code, :city, :block_number, :building, :telephone, :prefecture],
+                    creditcard_attributes: [:user_id, :card_number, :valid_month, :valid_year, :security_code])
     end
   end
 

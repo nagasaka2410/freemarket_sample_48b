@@ -58,6 +58,18 @@ body {
 .registration__basic, .registration__sms, .registration__address, .registration__payment {
   max-width: 320px;
   margin: 0 auto;
+  .field {
+    select {
+      margin: 8px 0 0;
+      height: 50px;
+      padding: 10px 16px 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #fff;
+      line-height: 1.5;
+      font-size: 16px;
+    }
+  }
 }
 
 p.caution-text {
