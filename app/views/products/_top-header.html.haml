@@ -1,0 +1,53 @@
+.top-header
+  .header-in
+    .header-top
+      .header-logo
+        = image_tag("mercari_logo.svg", size: "133.99x36", alt: "mercari")
+
+      .header-search
+        %form.header-search__input
+          %textarea.header-search__input--text 何かお探しですか?
+          =link_to "#", class: "header-search__input--icon" do
+            = fa_icon 'search', class: "search"
+            %span<>
+
+        -# = form_for [@products] do |f|
+        -#   ＝f.text_area(プロパティ名 [, オプション])
+        -#   = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        -#   .form__mask
+        -#     = f.label :image, class: 'form__mask__image' do
+        -#       = fa_icon 'picture-o', class: 'icon'
+        -#       = f.file_field :image, class: 'hidden'
+        -#   = f.submit 'Send', class: 'form__submit'
+    .header-bottom
+      .h-left
+        =link_to "#",class: "category-search" do
+          = fa_icon 'list', class: "category-search__icon"
+          %h2.category-search__title カテゴリーから探す
+        =render 'category-search'
+
+        =link_to "#",class: "brand-search" do
+          = fa_icon 'tag', class: "brand-search__icon"
+          %h2.brand-search__title ブランドから探す
+        =render 'brand-search'
+
+      .h-right
+        -# - if user_signed_in?
+        .h-right__list
+          =link_to "#",class: "notification" do
+            = fa_icon 'bell', class: "notification__icon"
+            %span.notification__title お知らせ
+        .h-right__list
+          =link_to "#",class: "todo" do
+            = fa_icon 'check', class: "todo__icon"
+            %span.todo__title やることリスト
+        .h-right__list
+          =link_to "#",class: "mypage" do
+            = image_tag("#", size: "133.99x36", alt: "my", class: "mypage__image")
+            %span.mypage__title マイページ
+
+        -# - else
+        -#   =link_to "#",class: "sign-up" do
+        -#     新規会員登録
+        -#   =link_to "#",class: "sign-in" do
+        -#     ログイン

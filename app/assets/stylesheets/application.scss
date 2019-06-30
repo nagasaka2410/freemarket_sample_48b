@@ -1,4 +1,13 @@
 @import "config/reset";
+@import "font-awesome";
+@import "mixins/mixin";
+@import "modules/top-header";
+@import "modules/main";
+@import "modules/banner";
+@import "modules/top-footer";
+@import "modules/category-search";
+@import "modules/brand-search";
+@import "modules/sell-btn";
 @import "config/mypage";
 @import 'config/mypage-sidemenu';
 @import 'config/bread-crumbs';
