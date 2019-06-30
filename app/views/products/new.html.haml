@@ -1,0 +1,16 @@
+.main-container
+  = render 'shared/second_header'
+  %main.content--main
+    -# = form_for @item do |f|
+    -#   = f.hidden_field :user_id, value: current_user.id
+    .main-contents
+      %section.l-single-container.buy-item-container
+        %div#sell-container
+          %data-reactroot
+            %div.sell-container-inner
+              %h2.l-single-head 商品の情報を入力
+              %form.sell-form
+                %div
+                %div
+                %div
+    .main-footer 
