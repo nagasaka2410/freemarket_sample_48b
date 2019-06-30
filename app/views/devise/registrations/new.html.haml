@@ -113,14 +113,10 @@
               = d.label :postal_code, "郵便番号"
               %span.require 必須
               = d.text_field :postal_code, class: "input-default", autocomplete: "postal_code", placeholder: '例) 123-4567'
-        = f.fields_for :prefecture do |k|
-          .registration__address
             .field
-              = k.label :都道府県 
+              = d.label :prefecture, "都道府県" 
               %span.require 必須
-              = d.text_field :prefecture, class: "input-default"
-        = f.fields_for :user_address do |d|
-          .registration__address
+              = d.select :prefecture, [], {prompt: "北海道"}, {class: "input-default"}
             .field
               = d.label :city, "市区町村" 
               %span.require 必須
@@ -137,10 +133,9 @@
               = d.text_field :building, class: "input-default", autocomplete: "building", placeholder: '例) 柳ビル103'
 
             .field
-              = f.label :電話 
+              = d.label :telephone, "電話" 
               %span.optional 任意
-              %br/
-              %input.input-default(type="text")/
+              = d.text_field :telephone, class: "input-default", placeholder: '例) 09012345678'
             
             %input{type: "button",class: "btn-address", value: "次へ進む"}
 

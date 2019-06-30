@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_address_attributes => [:user_id, :postal_code, :city, :block_number, :building, :telephone, :prefecture_id]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_address_attributes => [:user_id, :postal_code, :city, :block_number, :building, :telephone, :prefecture]])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:user_detail_attributes => [:user_id, :last_name, :first_name, :last_name_kana, :first_name_kana, :birth_year, :birth_month, :birth_day, :mobile_phone]])
    end
 end
