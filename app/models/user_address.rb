@@ -3,6 +3,6 @@ class UserAddress < ApplicationRecord
 
   validates :postal_code, presence: true
   validates :prefecture, presence: true
-  validates :city,:block_number, presence: true
+  validates :city, presence: true
   validates :block_number, presence: true
 end
