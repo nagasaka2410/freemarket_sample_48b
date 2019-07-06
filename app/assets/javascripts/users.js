@@ -86,14 +86,12 @@ $(function(){
   });
 });
 
-$(function(){
-  var time = new Date();
-  var year = time.getFullYear();
-  for (var i = 2030; i >= 2019; i--) {
-      $('#user_creditcard_attributes_valid_year').append('<option value="' + i + '">' + i + '</option>');
-  }
-  for (var i = 1; i <= 12; i++) {
-      $('#user_creditcard_attributes_valid_month').append('<option value="' + i + '">' + i + '</option>');
-  }
-});
-
+// $('#btn-red').on('click',function()
+// {
+//   let error = $(this).find('span.error-info').length;
+//   if(error)
+//   {
+//     alert("入力エラーがあります");
+//     return false;
+//   }
+// });
