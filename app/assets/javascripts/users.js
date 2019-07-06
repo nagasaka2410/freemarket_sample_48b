@@ -85,13 +85,3 @@ $(function(){
     $('#user_user_detail_attributes_birth_month').change(calcDays);
   });
 });
-
-// $('#btn-red').on('click',function()
-// {
-//   let error = $(this).find('span.error-info').length;
-//   if(error)
-//   {
-//     alert("入力エラーがあります");
-//     return false;
-//   }
-// });
