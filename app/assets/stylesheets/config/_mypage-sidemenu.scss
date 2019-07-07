@@ -1,7 +1,7 @@
 .l-side {
+  width: 280px;
   &__list {
     width: 280px;
-    margin: 8px 0 0;
     &__link {
       &:hover { background-color: #eee; }
       background-color: white;
@@ -36,5 +36,8 @@
     li {
       font-weight: normal;
     }
+  }
+  .under-list{
+    margin-top: 8px;
   }
 }
