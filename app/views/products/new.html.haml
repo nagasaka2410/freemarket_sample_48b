@@ -6,41 +6,41 @@
       -#   = f.hidden_field :user_id, value: current_user.id
       .main-contents
         %section.l-single-container.buy-item-container
-          %div#sell-container
+          #sell-container
             %data-reactroot
-              %div.sell-container-inner
+              .sell-container-inner
                 %h2.l-single-head 商品の情報を入力
                 %form.sell-form
-                  %div.sell-form--upload-box
+                  .sell-form--upload-box
                     %h3.sell-upload-head 出品画像
                     %span.require 必須
                     %p 最大10枚までアップロードできます
-                    %div.sell-dropbox-container.clearfix.state-image-number-10
-                      %div.sell-upload-items-container
-                      %div.sell-upload-drop-box.have-item-0
+                    .sell-dropbox-container.clearfix.state-image-number-10
+                      .sell-upload-items-container
+                      .sell-upload-drop-box.have-item-0
                         %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
-                  %div.sell-content
-                    %div.form-group
+                  .sell-content
+                    .form-group
                       .form-group-text
                       商品名
                       %span.require 必須
                       %div
                         %input{class:'input-default',placeholder: '商品名（必須40文字まで）'}
-                    %div.form-group__2
+                    .form-group__2
                       .form-group-text
                       商品の説明
                       %span.require 必須
                       %div
                         %textarea{class:'textarea-default',placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'}
-                  %div.sell-content.clearfix
+                  .sell-content.clearfix
                     %h3.sell-sub-head 商品の詳細
-                    %div.sell-form-box
-                      %div.form-group
+                    .sell-form-box
+                      .form-group
                         .form-group-text
                         カテゴリー
                         %span.require 必須
                         %div
-                          %div.select-wrap
+                          .select-wrap
                             %select#select-default
                               %option{value:"0"}---
                               %option{value:"1"}レディース
@@ -57,12 +57,12 @@
                               %option{value:"1318"}自動車・オートバイ
                               %option{value:"10"}その他
                             %i.icon-arrow-bottom
-                      %div.form-group
+                      .form-group
                         .form-group-text
                         商品の状態
                         %span.require 必須
                         %div
-                          %div.select-wrap
+                          .select-wrap
                             %select#select-default
                               %option{value:""}---
                               %option{value:"1"}トップス
@@ -79,46 +79,46 @@
                               %option{value:"1318"}自動車・オートバイ
                               %option{value:"10"}その他
                             %i.icon-arrow-bottom
-                  %div.sell-content.clearfix
+                  .sell-content.clearfix
                     %h3.sell-sub-head 配送について
-                    %div.sell-form-box
-                      %div.form-group
+                    .sell-form-box
+                      .form-group
                         .form-group-text
                         配送料の負担
                         %span.require 必須
-                        %div.select-wrap
+                        .select-wrap
                           %select#select-default
                             %option{value:""}---
                             %option{value:"2"}送料込み(出品者負担)
                             %option{value:"1"}着払い(購入者負担)
                           %i.icon-arrow-bottom
-                      %div.form-group
+                      .form-group
                         .form-group-text
                         発送元の地域
                         %span.require 必須
-                        %div.select-wrap
+                        .select-wrap
                           %select#select-default
                             %option{value:""}---
                             %option{value:"1"}北海道
                             %option{value:"2"}青森県
                           %i.icon-arrow-bottom
-                      %div.form-group
+                      .form-group
                         .form-group-text
                         発送までの日数
                         %span.require 必須
-                        %div.select-wrap
+                        .select-wrap
                           %select#select-default
                             %option{value:""}---
                             %option{value:"1"}1~2日で発送
                             %option{value:"2"}2~3日で発送
                             %option{value:"3"}4~7日で発送
                           %i.icon-arrow-bottom
-                  %div.sell-content.clearfix
+                  .sell-content.clearfix
                     %h3.sell-sub-head 販売価格(300〜9,999,999)
-                    %div.sell-form-box
+                    .sell-form-box
                       %ul.sell-price
                         %li.form-group
-                          %div.clearfix
+                          .clearfix
                             .l-left
                               価格
                               %span 必須
@@ -127,13 +127,13 @@
                               ¥
                               %input{class:'priceField',placeholder: '例）300'}
                         %li.clearfix
-                          %div.l-left
+                          .l-left
                           販売手数料 (10%)
-                          %div.l-right.chargeField -
+                          .l-right.chargeField -
                         %li.clearfix.bold
-                          %div.l-left
+                          .l-left
                           販売利益
-                          %div.l-right.profitField -
+                          .l-right.profitField -
                   %div.sell-content.sell-btn-box
                     %div
                       %p 禁止されている出品、、行為を必ずご確認ください。
@@ -151,4 +151,3 @@
         = link_to "#", class: "single-iamge" do
           = image_tag "productsnew.png",lass:"my_class"
         %p © 2019 Mercari
-  -# ,size: '130x70'
