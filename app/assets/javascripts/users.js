@@ -516,7 +516,7 @@ $(function(){//セキュリティ番号判定
 });
 
 $(function(){//登録前判定
-  $('form').on('submit',function(){
+  $('form').on('submit.btn-end',function(){
     let error = $(this).find('span.error-info').length;
     let code = $('input#user_creditcard_attributes_security_code').val();
     let vmonth = $('select#user_creditcard_attributes_valid_month').val();
