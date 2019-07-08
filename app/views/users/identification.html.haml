@@ -1,0 +1,63 @@
+=render 'shared/top-header'
+=render 'shared/breadcrumbs'
+
+.identification-main
+  .identification-container
+    .identification-wrapper
+      %h2.identification-title 本人情報の登録
+      %form.identification-form
+        = render "devise/shared/error_messages", resource: resource
+        .identification-form__instruction
+          %p.identification-form__instruction--text お客さまの本人情報をご登録ください。<br>登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+
+        =link_to("#", class: "identification-form__link  ") do
+          = fa_icon 'chevron-right', class: "identification-form__link--arrow-right"
+          .identification-form__link--text 本人確認書類のアップロードについて
+
+        .identification-form__group
+          %label.identification-form__group--title お名前
+          %p.identification-form__group--text 枡田 様大
+
+        .identification-form__group
+          %label.identification-form__group--title お名前カナ
+          %p.identification-form__group--text マスターヨーダ
+
+        .identification-form__group
+          %label.identification-form__group--title 生年月日
+          %p.identification-form__group--text 1084/2/22
+
+        .identification-form__group
+          %label.identification-form__group--title 郵便番号
+          %span.optional 任意
+          %input{type: "text", class: "identification-form__group--textarea", placeholder: "例)1234567"}
+
+        .identification-form__group
+          %label.identification-form__group--title 都道府県
+          %span.optional 任意
+          %input{type: "text", class: "identification-form__group--textarea", placeholder: "--"}
+
+        .identification-form__group
+          %label.identification-form__group--title 市区町村
+          %span.optional 任意
+          %input{type: "text", class: "identification-form__group--textarea", placeholder: "例)ナブー"}
+
+        .identification-form__group
+          %label.identification-form__group--title 番地
+          %span.optional 任意
+          %input{type: "text", class: "identification-form__group--textarea", placeholder: "例)1-1-1"}
+
+        .identification-form__group
+          %label.identification-form__group--title 建物名
+          %span.optional 任意
+          %input{type: "text", class: "identification-form__group--textarea", placeholder: "例)巨大な城"}
+
+        .identification-form__group
+          %input{type: "button", class: "identification-form__group--button", value: "登録する"}
+        
+        =link_to("#", class: "identification-form__last") do
+          = fa_icon 'chevron-right', class: "identification-form__last--arrow-right"
+          .identification-form__last--text 本人情報の登録について
+    =render 'shared/mypage-sidemenu'
+=render 'shared/banner'
+=render 'shared/top-footer'
+=render 'shared/sell-btn'

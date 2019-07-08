@@ -24,12 +24,12 @@
         =link_to "#",class: "category-search" do
           = fa_icon 'list', class: "category-search__icon"
           %h2.category-search__title カテゴリーから探す
-        =render 'category-search'
+        =render 'products/category-search'
 
         =link_to "#",class: "brand-search" do
           = fa_icon 'tag', class: "brand-search__icon"
           %h2.brand-search__title ブランドから探す
-        =render 'brand-search'
+        =render 'products/brand-search'
 
       .h-right
         -# - if user_signed_in?
