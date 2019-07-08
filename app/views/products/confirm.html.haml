@@ -1,0 +1,60 @@
+.confirm-container
+  .confirm-header
+    =render '/shared/common-header'
+
+  .confirm-main
+    .buy-container
+      %h2.confirm-title 購入内容の確認
+
+      .product-wrapper
+        .product-wrapper__inner
+          .product-block
+            = image_tag("paprica.jpg", class: "product-block__pic")
+            .product-block__title 世界NO1そして世界最高の安価のパプリカ@名古屋市産
+
+          %form.product-form
+            .price-mini
+              %p.price-mini__amount ¥500
+              %p.price-mini__shipping-fee 送料込み
+
+            .product-point
+              %p.product-point__text ポイントはありません
+
+            .price-main
+              .price-main__text 支払い金額
+
+              .price-main__pay ¥500
+
+            .error-message
+
+            .buy-button
+              %input{type: "submit", value: "購入する" }
+
+      .buyer-wrapper
+        .user-info
+          %h3.user-info__title 配送先
+          %ul.user-info__text
+            %li 〒555-5555
+            %li ナメック星ナメック市ナメック町1-1-1-1
+            %li フリーザ
+
+          .user-info__fix
+            =link_to("#", class: "user-info__fix" )do
+              %p.user-info__fix--text 変更する
+              = fa_icon 'chevron-right', class: "user-info__fix--arrow-right"
+
+      .payment
+        .payment-info
+          %h3.payment-info__title 支払い方法
+          %ul.payment-info__text
+            %li **********3233
+            %li 07/19
+            %li 
+              = image_tag('visa.svg',class: "payment-info__image")
+          .payment-info__fix
+            =link_to "#" do
+              %p.payment-info__fix--text 変更する
+              = fa_icon 'chevron-right', class: "payment-info__fix--arrow-right"
+
+  .confirm-footer
+    =render 'devise/registrations/footer'
