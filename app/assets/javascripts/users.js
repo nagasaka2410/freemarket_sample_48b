@@ -521,3 +521,13 @@ $(function(){//登録前判定
     }
   });
 });
+
+$(function(){//Enterキーでsubmit無効化
+  $("input"). keydown(function(e) {
+      if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
+          return false;
+      } else {
+          return true;
+      }
+  });
+});
