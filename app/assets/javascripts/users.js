@@ -3,7 +3,7 @@ $(function() {
     $('.registration__address').hide();
     $('.registration__payment').hide();
   
-    $('.btn-next').on('click', function(){
+    $('.btn-next').on('click', function(){//携帯番号へ移動するボタン
       let error = $('form').find('span.error-info').length;
       let nickname = $('input#user_nickname').val();
       let email = $('input#user_email').val();
@@ -34,7 +34,7 @@ $(function() {
       }
     });
 
-    $('.btn-sms').on('click', function(){
+    $('.btn-sms').on('click', function(){//住所入力へ移動するボタン
       let error = $('form').find('span.error-info').length;
       let value = $('input#user_user_detail_attributes_mobile_phone').val();
       if(error){
@@ -57,7 +57,7 @@ $(function() {
       }
     });
 
-    $('.btn-address').on('click', function(){
+    $('.btn-address').on('click', function(){//クレカ入力へ移動するボタン
       let error = $('form').find('span.error-info').length;
       let postal = $('input#user_user_address_attributes_postal_code').val();
       let city = $('input#user_user_address_attributes_city').val();
@@ -81,11 +81,12 @@ $(function() {
         $('#address .progress-status_bar').css('background','#ea352d');
         $('#payment .progress-status').css('background','#ea352d');
         $('body, html').animate({ scrollTop: 0 }, 0);
+        $('input#user_creditcard_attributes_card_number').focus();
       }
     });
   });
 
-$(function(){
+$(function(){//誕生日
   //日付範囲決定
   function calcDays(){
     $('#user_user_detail_attributes_birth_day').empty();
@@ -134,7 +135,7 @@ $(function(){
   });
 });
 
-$(function(){
+$(function(){//カード有効期限
   var time = new Date();
   var year = time.getFullYear();
   for (var i = 2030; i >= 2019; i--) {
@@ -511,19 +512,12 @@ $(function(){//セキュリティ番号判定
   });
 });
 
-// $(function(){
-//   $('form').on('submit',function(){
-//     let error = $(this).find('span.error-info').length;
-//     // let card = $('input#user_creditcard_attributes_card_number').val();
-//     // let code = $('input#user_creditcard_attributes_security_code').val();
-//     // let check = card||code
-//     if(check == "") {
-//       alert("入力エラーがあります");
-//       return false;
-//     }
-//     // else if(error){
-//     //   alert("入力エラーがあります");
-//     //   return false;
-//     // }
-//   });
-// });
+$(function(){//登録前判定
+  $('form').on('submit',function(){
+    let error = $(this).find('span.error-info').length;
+    if(error){
+      alert("入力エラーがあります");
+      return false;
+    }
+  });
+});
