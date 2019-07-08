@@ -7,18 +7,261 @@ body{
   color: #333;
   line-height: 1;
   .main-container{
-    text-align: center;
     .main-contents{
       display: block;
       .l-single-container.buy-item-container{
         width: 700px;
         margin: 0 auto;
-        background: red;
+        background: #fff;
         #sell-container{
           margin: 0;
           padding: 0;
+          .l-single-head{
+            padding: 32px 16px;
+            font-size: 22px;
+            line-height: 1.5;
+            font-weight: bold;
+            text-align: center;
+          }
+          .sell-form{
+            border-top: 1px solid #eee;
+            &--upload-box{
+              width: 620px;
+              padding: 40px;
+              .sell-upload-head{
+                font-size: 16px;
+                float: left;
+              }
+              .require{
+                float: left;
+                font-size: 13px;
+              }
+              p{
+                clear: both;
+                text-align: left;
+                margin: 8px 0 0;
+                line-height: 1.5;
+              }
+              .sell-dropbox-container{
+                display: block;
+                width: 620px;
+                margin: 16px auto 0;
+                .sell-upload-drop-box{
+                  width: 100%;
+                  margin-left: 0;
+                  cursor: pointer;
+                  position: relative;
+                  min-height: 162px;
+                  background: #f5f5f5;
+                  border: 1px dashed #ccc;
+                  font-size: 0;
+                  text-align: center;
+                  .visible-pc{
+                    position: absolute;
+                    top: 50%;
+                    display: block;
+                    left: 16px;
+                    right: 16px;
+                    text-align: center;
+                    font-size: 14px;
+                    line-height: 1.5;
+                    -webkit-transform: translate(0, -50%);
+                    transform: translate(0, -50%);
+                    pointer-events: none;
+                    white-space: pre-wrap;
+                    word-wrap: break-word;
+                  }
+                }
+              }
+            }
+          }
+          .sell-content{
+            padding: 40px;
+            border-top: 1px solid #eee;
+            .form-group{
+              margin: 0;
+              font-weight: 600;
+              .form-group-text{
+                display: inline-block;
+              }
+              &__2{
+                margin: 40px 0 0;
+              }
+              .input-default{
+                width: 93%;
+                margin: 8px 0 0;
+                padding: 10px 16px 8px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                background: #fff;
+                line-height: 1.5;
+                font-size: 16px;
+                font-weight: normal;
+              }
+            }
+            .form-group__2{
+              font-weight: 600;
+              .textarea-default{
+                width: 93%;
+                margin: 8px 0 0;
+                padding: 10px 16px 8px;
+                border: 1px solid #ccc;
+                background: #fff;
+                line-height: 1.5;
+                height: 104px;
+                font-size: 16px;
+                font-weight: normal;
+              }
+            }
+          }
+          .sell-content.clearfix{
+            @include clearfix;
+            .sell-sub-head{
+              color: #888;
+              font-size: 14px;
+              float: left;
+            }
+            .sell-form-box{
+              float: right;
+              width: 400px;
+              margin: 0;
+              .form-group{
+                margin: 40px 0 0;
+                &:first-child{
+                  margin: 0;
+                }
+                .form-group-text{
+                  font-weight: 600;
+                }
+              }
+              .select-wrap{
+                margin: 8px 0 0;
+                #select-default{
+                  width: 100%;
+                  position: relative;
+                  z-index: 2;
+                  height: 48px;
+                  padding: 0 16px;
+                  border-radius: 4px;
+                  border: 1px solid #ccc;
+                  background: 0;
+                  font-size: 16px;
+                  line-height: 1.5;
+                  cursor: pointer;
+                }
+              }
+              li{
+                clear: both;
+                padding: 24px 0;
+                border-top: 1px solid #ccc;
+                &:first-child{
+                  padding: 0 0 70px;
+                  border: 0;
+                }
+                .l-left{
+                  line-height: 48px;
+                  float: left;
+                  span{
+                    margin: 0 0 0 6px;
+                    padding: 2px 4px;
+                    border-radius: 2px;
+                    color: #fff;
+                    background: #ea352d;
+                    font-size: 12px;
+                    vertical-align: top;
+                  }
+                }
+                .l-right{
+                  float: right;
+                  text-align: right;
+                  .yen_icon{
+                    width: 30%;
+                    text-align: right;
+                    float: right;
+                  }
+                  .priceField{
+                    padding: 11px 16px 10px;
+                    border-radius: 4px;
+                    border: 1px solid #ccc;
+                    background: #fff;
+                    line-height: 1.5;
+                    font-size: 16px;
+                    font-weight: normal;
+                    text-align: right;
+                    width: 125px;
+                  }
+                }
+              }
+              .bold{
+                font-size: 16px;
+                font-weight: 600;
+              }
+            }
+          }
+          .sell-btn-box{
+            p{
+              line-height: 1.5;
+            }
+            .btm_create{
+              margin: 40px 0 0;
+              color: #fff;
+              display: block;
+              width: 100%;
+              line-height: 48px;
+              font-size: 14px;
+              transition: all ease-out .3s;
+              cursor: pointer;
+              text-align: center;
+              background: #ea352d;
+              border: 1px solid #ea352d;
+              color: #fff;
+            }
+            .btm_back{
+              width: 45%;
+              margin: 24px auto 0;
+              background: #aaa;
+              border: 1px solid #aaa;
+              color: #fff;
+              display: block;
+              line-height: 48px;
+              font-size: 14px;
+              transition: all ease-out .3s;
+              cursor: pointer;
+              text-align: center;
+            }
+          }
         }
       }
+    }
+  }
+  .products-footer{
+    width: 456px;
+    height: 160px;
+    margin: 0 auto;
+    padding: 40px 0px;
+    text-align: center;
+    nav{
+      padding: 0px 0px 40px;
+      ul{
+        font-size: 12px;
+        li{
+          display: inline-block;
+          margin: 0 0 0 16px;
+          a{
+            display: block;
+          }
+        }
+      }
+    }
+    .single-iamge{
+      img{
+        width: 140px;
+        height: 80px;
+      }
+    }
+    p{
+      margin: 8px 0 0;
+      font-size: 12px;
     }
   }
 }
