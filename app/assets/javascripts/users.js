@@ -13,7 +13,10 @@ $(function() {
       let fname = $('input#user_user_detail_attributes_first_name').val();
       let lnamekana = $('input#user_user_detail_attributes_last_name_kana').val();
       let fnamekana = $('input#user_user_detail_attributes_first_name_kana').val();
-      let check = nickname||email||password||confirmation||lname||fname||lnamekana||fnamekana
+      let byear = $('select#user_user_detail_attributes_birth_year').val();
+      let bmonth = $('select#user_user_detail_attributes_birth_month').val();
+      let bday = $('select#user_user_detail_attributes_birth_day').val();
+      let check = nickname&&email&&password&&confirmation&&lname&&fname&&lnamekana&&fnamekana&&byear&&bmonth&&bday
       if(error){
         alert("入力エラーがあります");
         return false;
@@ -63,7 +66,7 @@ $(function() {
       let city = $('input#user_user_address_attributes_city').val();
       let block = $('input#user_user_address_attributes_block_number').val();
 
-      let check = postal||city||block
+      let check = postal&&city&&block
       if(error){
         alert("入力エラーがあります");
         return false;
@@ -457,7 +460,7 @@ $(function(){//任意電話判定
     if(error){//エラー時の処理
       //エラーで、エラーメッセージがなかったら
       if(!$(this).nextAll('span.error-info').length){//メッセージを後ろに追加
-        $(this).after('<span class = "error-info">必須項目です</span>');
+        $(this).after('<span class = "error-info">正しく入力してください</span>');
       }
     }
     else {//エラーじゃないのにメッセージがあったら
@@ -515,7 +518,15 @@ $(function(){//セキュリティ番号判定
 $(function(){//登録前判定
   $('form').on('submit',function(){
     let error = $(this).find('span.error-info').length;
+    let code = $('input#user_creditcard_attributes_security_code').val();
+    let vmonth = $('select#user_creditcard_attributes_valid_month').val();
+    let vyear = $('select#user_creditcard_attributes_valid_year').val();
+    let check = code&&vmonth&&vyear
     if(error){
+      alert("入力エラーがあります");
+      return false;
+    }
+    else if(check == "") {
       alert("入力エラーがあります");
       return false;
     }
