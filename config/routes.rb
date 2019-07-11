@@ -7,8 +7,7 @@ Rails.application.routes.draw do
   }
   root 'products#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :user_profiles, only: [:edit,:update]
-  resources :users, only: [:index, :show] do
+  resources :users do
     collection do
       get :identification
     end
