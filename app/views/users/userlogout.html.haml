@@ -1,0 +1,15 @@
+= render 'shared/top-header'
+
+
+= render 'shared/breadcrumbs'
+
+.mypage
+  %main.mypage__body.clearfix
+    .mypage__body__main
+      %section.mypage-logout-container
+        .mypage-logout-content
+          = button_to destroy_user_session_path,class: 'user-logout-btn',method: :delete do
+            ログアウト
+    = render 'shared/mypage-sidemenu'
+= render 'shared/banner'
+= render 'shared/top-footer'
