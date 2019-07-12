@@ -7,7 +7,7 @@
   %main.mypage__body.clearfix
     .mypage__body__main
       %section.mypage-logout-container
-        .mypage-logouto-content
+        .mypage-logout-content
           = button_to destroy_user_session_path,class: 'user-logout-btn',method: :delete do
             ログアウト
     = render 'shared/mypage-sidemenu'
