@@ -18,4 +18,6 @@ Rails.application.routes.draw do
       get :confirm
     end
   end
+
+  resources :categories, only: :index
 end
