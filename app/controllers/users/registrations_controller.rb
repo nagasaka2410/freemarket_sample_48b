@@ -2,7 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
 
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
 
   def new
     @user = User.new
@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
     if @user.save
-
+      redirect_to root_path
     else
       # flash[:notice] = "メールアドレスに誤りがあります。ご確認いただき、正しく変更してください。"
       render :new

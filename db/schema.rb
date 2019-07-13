@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190630075312) do
+ActiveRecord::Schema.define(version: 20190706120334) do
+
+  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.string   "ancestry",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "creditcards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",       null: false
@@ -21,6 +34,43 @@ ActiveRecord::Schema.define(version: 20190630075312) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["user_id"], name: "index_creditcards_on_user_id", using: :btree
+  end
+
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_images_on_product_id", using: :btree
+  end
+
+  create_table "product_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "comment",    limit: 65535
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["product_id"], name: "index_product_comments_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_product_comments_on_user_id", using: :btree
+  end
+
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",                           null: false
+    t.text     "description",      limit: 65535, null: false
+    t.integer  "user_id"
+    t.string   "status",                         null: false
+    t.integer  "price",                          null: false
+    t.string   "condition",                      null: false
+    t.string   "product_size",                   null: false
+    t.string   "shippoing_method",               null: false
+    t.integer  "shipping_burden",                null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "category_id"
+    t.integer  "brand_id"
+    t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
+    t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+    t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
 
   create_table "user_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -65,6 +115,12 @@ ActiveRecord::Schema.define(version: 20190630075312) do
   end
 
   add_foreign_key "creditcards", "users"
+  add_foreign_key "images", "products"
+  add_foreign_key "product_comments", "products"
+  add_foreign_key "product_comments", "users"
+  add_foreign_key "products", "brands"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "users"
   add_foreign_key "user_addresses", "users"
   add_foreign_key "user_details", "users"
 end

@@ -1,0 +1,213 @@
+.confirm-container{
+  padding-bottom: 220px;
+  position: relative;
+  .confirm-main {
+    width: 100%;
+    min-height: calc(100vh - 348px);
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+
+    .buy-container {
+      width: 700px;
+      margin: 0 auto;
+      background-color: white;
+  
+      .confirm-title {
+        font-size: 22px;
+        line-height: 1.5;
+        text-align: center;
+        padding: 16px;
+        font-weight: bold;
+        border-bottom: solid 1px #f5f5f5;
+      }
+  
+      .product-wrapper {
+        @include clearfix;
+        padding: 24px 12.5%;
+        &__inner {
+          font-family: Arial, Helvetica, sans-serif;
+          max-width: 320px;
+          margin: 0 auto;
+
+          .product-block{
+            height: 100%;
+            width: 100%;
+            .product-block__pic {
+              float: left;
+              box-sizing: border-box;
+              width: 64px;
+              img {
+                display: inline-block;
+                width: 64px;
+              }
+            }
+            .product-block__title {
+              display: inline-block;
+              margin-left: 16px;
+              width: calc(100% - 80px);
+              font-size: 16px;
+              font-weight: bold;
+            }
+          }
+          .product-form {
+            clear: both;
+            text-align: center;
+            .price-mini {
+              clear: both;
+              margin-top: 8px;
+              display: inline-block;
+              &__amount {
+                float: left;
+                font-size: 22px;
+              }
+              &__shipping-fee {
+                float: left;
+                font-size: 15px;
+                margin-left: 8px;
+                height: 100%;
+                margin-top: 5px;
+              }
+            }
+          }
+          .product-point{
+            box-sizing: border-box;
+            width: 320px;
+            display: inline-block;
+            margin-top: 16px;
+            padding: 16px;
+            text-align: center;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            background-color: #ccc;
+          }
+        }
+        .price-main {
+          @include clearfix;
+          height: 100%;
+          padding: 16px 0;
+          box-sizing: border-box;
+          &__text {
+            float: left;
+            font-size: 18px;
+            margin: 4px;
+          }
+          &__pay {
+            float: right;
+            font-size: 28px;
+          }
+        }
+  
+        .buy-button {
+          margin-top: 8px;
+          input {
+            width: 100%;
+            box-sizing: border-box;
+            display: inline-block;
+            background-color: #ea352d;
+            color: white;
+            padding: 16px;
+            font-weight: bold;
+            border: none;
+          }
+        }
+      }
+  
+      .buyer-wrapper {
+        padding: 24px 12.5%;
+        border-top: 1px solid #f5f5f5;
+        margin-top: 40px;
+        .user-info {
+          max-width: 320px;
+          margin: 0 auto;
+          font-size: 15px;
+          &__title {
+            font-weight: bold;
+          }
+  
+          &__text {
+            margin-top: 8px;
+            line-height: 1.4;
+          }
+  
+          &__fix {
+            width: 100%;
+            margin-top: 8px;
+            position: relative;
+            
+            a {
+              display: block;
+              text-decoration: none;
+              color: #0099E8;
+            }
+            &--text {
+              color: #0099E8;
+              text-decoration: none;
+              position: absolute;
+              right: 18px;
+            }
+            &--arrow-right{
+              position: absolute;
+              right: 0;
+            }
+          }
+        }
+      }
+      .payment {
+        padding: 24px 12.5%;
+        border-top: 1px solid #f5f5f5;
+        margin-top: 40px;
+        .payment-info {
+          padding-bottom: 40px;
+          max-width: 320px;
+          margin: 0 auto;
+          font-size: 15px;
+          &__title {
+            font-weight: bold;
+          }
+          &__text {
+            margin-top: 8px;
+            line-height: 1.4;
+          }
+          &__image {
+            height: 20px;
+            box-sizing: border-box;
+            img {
+              height: 20px;
+              box-sizing: border-box;
+            }
+          }
+          &__fix {
+            width: 100%;
+            margin-top: 8px;
+            position: relative;
+            
+            a {
+              display: block;
+              text-decoration: none;
+              color: #0099E8;
+              text-align: right;
+            }
+            &--text {
+              color: #0099E8;
+              text-decoration: none;
+              position: absolute;
+              right: 18px;
+            }
+            &--arrow-right{
+              position: absolute;
+              right: 0;
+              margin-left: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .confirm-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+}
