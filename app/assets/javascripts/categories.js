@@ -13,18 +13,7 @@ $(function(){
   )
 
   // マウスオーバーしたらカテゴリーの孫要素の色が変化
-  $('.category-child__all-text').hover(
-    function(){
-      $(this).css('opacity', '0.7');
-      $(this).css('border-bottom', '1px solid');
-    },
-    function(){
-      $(this).css('border-bottom', 'none');
-      $(this).css('opacity', '1.0');
-    }
-  )
-
-  $('.category-grandchild__title-text').hover(
+  $('.category-child__all-text, .category-grandchild__title-text').hover(
     function(){
       $(this).css('opacity', '0.7');
       $(this).css('border-bottom', '1px solid');
