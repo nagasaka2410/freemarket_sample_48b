@@ -2,16 +2,13 @@
   .main-container
     = render 'shared/second_header'
     %main.content--main
-      -# TODO: このページでの情報をデータベースに保存させる時に使用予定
-      -# = form_for @item do |f|
-      -#   = f.hidden_field :user_id, value: current_user.id
       .main-contents
         %section.l-single-container.buy-item-container
           #sell-container
             %data-reactroot
               .sell-container-inner
                 %h2.l-single-head 商品の情報を入力
-                %form.sell-form
+                = form_for @product, html: {class: "simple_content_form", id: "item-dropzone"} do |f|
                   .sell-form--upload-box
                     %h3.sell-upload-head 出品画像
                     %span.require 必須
@@ -19,20 +16,23 @@
                     .sell-dropbox-container.clearfix.state-image-number-10
                       .sell-upload-items-container
                       .sell-upload-drop-box.have-item-0
-                        %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
+                        = f.fields_for :image, class: 'upload-box', id: 'imag-upload' do |i|
+                          #form_upload.form_upload
+                            = i.file_field :image, class: "upload0", accept:"image/*", required: "required", name: "images[image][]", id: "input_image", multipart: true
+                        %pre.visible-pc ドラッグアンドドロップ<br />またはクリックしてファイルをアップロード
                   .sell-content
                     .form-group
                       .form-group-text
                       商品名
                       %span.require 必須
                       %div
-                        %input{class:'input-default',placeholder: '商品名（必須40文字まで）'}
+                        = f.text_field :name, class: "input-default", placeholder: "商品名 (必須40文字まで)", value: "#{@product.name}"
                     .form-group__2
                       .form-group-text
                       商品の説明
                       %span.require 必須
                       %div
-                        %textarea{class:'textarea-default',placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'}
+                        = f.text_area :description, class: "textarea-default", placeholder: "商品の説明 (必須1,000文字以内) (色、素材、重さ、定価、注意点など) 例) 2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。合わせやすいのでおすすめです。", rows: "5", value: "#{@product.description}"
                   .sell-content.clearfix
                     %h3.sell-sub-head 商品の詳細
                     .sell-form-box
