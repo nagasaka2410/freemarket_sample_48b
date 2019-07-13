@@ -1,8 +1,67 @@
 .detail-box
-  %h1
+  %h1.item-name
     アイテムネーム
   .detail-box__main
     .detail-box__main__image
-    .detail-box__main__table
+      .top-image
+        = image_tag 'tepodon.jpg', alt: '', height: '300px', width: '300px', class: 'item-image-active'
+      .thumbnails
+        = image_tag 'tpdn.jpg', alt: '', height: '60px', width: '60px', class: 'item-image'
+        = image_tag 'tpdn2.jpg', alt: '', height: '60px', width: '60px', class: 'item-image'
+    %table.detail-box__main__table
+      %tbody
+        %tr
+          %th 出品者
+          %td
+            = link_to "金正恩", "#"
+            .user-ratings
+              .user-ratings__list
+                %i.fas.fa-laugh
+                %span 0
+              .user-ratings__list
+                %i.fas.fa-meh
+                %span 0
+              .user-ratings__list
+                %i.fas.fa-frown
+                %span 999
+        %tr
+          %th カテゴリー
+          %td 準中距離弾道ミサイル
+        %tr
+          %th ブランド
+          %td
+            = link_to "北朝鮮", "#"
+        %tr
+          %th 商品のサイズ
+          %td 32m
+        %tr
+          %th 商品の状態
+          %td 新品、未使用
+        %tr
+          %th 配送料の負担
+          %td 送料込み(出品者負担)
+        %tr
+          %th 配送の方法
+          %td らくらくメルカリ便
+        %tr
+          %th 配送元地域
+          %td 
+            = link_to "北朝鮮", "#"
+        %tr
+          %th 発送日の目安
+          %td 10分で発送
+
+
+
   .detail-box__price
+    %span.item-price ¥ 17,750
+    %span.item-tax (税込)
+    %span.shipping-fee 送料込み
+
+  = link_to "購入画面へ進む", "#", type: "button", class: "item-buy-button"
+  
   .detail-box__item-description
+    %p
+      テポドン2号は朝鮮民主主義人民共和国（北朝鮮）が開発した大陸間弾道ミサイル (ICBM) のプロトタイプ。「テポドン」とは、このミサイルの原型であるテポドン1号が確認された地名の大浦洞からアメリカがつけたコードネームである。
+      2012年にアメリカ合衆国国防総省が、テポドン2号はミサイルとして配備されていないと分析しており、実戦配備を目指した弾道ミサイルのプロトタイプというよりは後述の「銀河」系列のローンチ・ヴィークルのプロトタイプの性格を持つものとして分析されている。
+  .detail-box__item-button
