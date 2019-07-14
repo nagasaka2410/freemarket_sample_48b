@@ -1,6 +1,6 @@
 .detail-box
   %h1.item-name
-    アイテムネーム
+    テポドンⅡ
   .detail-box__main
     .detail-box__main__image
       .top-image
@@ -61,7 +61,106 @@
   = link_to "購入画面へ進む", "#", type: "button", class: "item-buy-button"
   
   .detail-box__item-description
-    %p
+    %p.item-description
       テポドン2号は朝鮮民主主義人民共和国（北朝鮮）が開発した大陸間弾道ミサイル (ICBM) のプロトタイプ。「テポドン」とは、このミサイルの原型であるテポドン1号が確認された地名の大浦洞からアメリカがつけたコードネームである。
       2012年にアメリカ合衆国国防総省が、テポドン2号はミサイルとして配備されていないと分析しており、実戦配備を目指した弾道ミサイルのプロトタイプというよりは後述の「銀河」系列のローンチ・ヴィークルのプロトタイプの性格を持つものとして分析されている。
   .detail-box__item-button
+    .detail-box__item-button__left
+      %button{type:'button', class: 'button-like'}
+        %i.far.fa-heart
+        %span いいね!
+        %span 132
+      = link_to "", class: "button-report" do
+        %i.far.fa-flag
+        不適切な商品の報告 
+    .detail-box__item-button__right
+      =link_to '#' do
+        %i.fas.fa-lock.clock-font
+        %span あんしん・あんぜんへの取り組み
+.item-comments
+  .item-comments__container
+    .item-comments__container__message
+      %ul.messeage-items
+        %li.messeage-coments
+          .message-user
+            %figure
+              .message-user__unknown
+                = image_tag("user-icon.svg", size: "32x32")
+              %figcaption.bold
+                テスト
+            .message-seller
+              出品者
+          .message-body
+            .message-body__text
+              テストコメント
+            .message-body__icon__left
+              %time
+                %i.far.fa-clock
+                %span XX日前
+            .message-body__icon__right
+              = link_to "" do
+                %i.far.fa-flag
+        %li.messeage-coments
+          .message-user
+            %figure
+              .message-user__unknown
+                = image_tag("user-icon.svg", size: "32x32")
+              %figcaption.bold
+                テスト
+            .message-seller
+              出品者
+          .message-body
+            .message-body__text
+              テストコメント
+            .message-body__icon__left
+              %time
+                %i.far.fa-clock
+                %span XX日前
+            .message-body__icon__right
+              = link_to "" do
+                %i.far.fa-flag
+    .item-comments__container__message
+      .form-test
+        %p
+          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textarea{type: "text", class: "textarea-test"}
+        %button{type: "submit", class: "btn-test"}
+          %span
+            コメントする
+
+%ul.item-link-prev-next
+  %li.item-link-prev
+    = link_to "#" do
+      = fa_icon "chevron-left"
+      万景峰号
+  %li.item-link-next
+    = link_to "#" do
+      大陸間弾道ミサイル
+      = fa_icon "chevron-right"
+.detail-box__social-link
+  .text-center
+  %ul.social-box
+    %li
+      = link_to "#", target: "_blank", class: "share-btn" do
+        %i.fab.fa-facebook-square
+    %li
+      = link_to "#", target: "_blank", class: "share-btn" do
+        %i.fab.fa-twitter
+    %li
+      = link_to "#", target: "_blank", class: "share-btn" do
+        %i.fab.fa-line
+    %li
+      = link_to "#", target: "_blank", class: "share-btn" do
+        %i.fab.fa-pinterest
+.related-products
+  %section
+    %h2.related-products__items-head
+      = link_to "#" do
+        金正恩さんのその他の出品
+    .related-products__items-box
+      =render 'item'
+      =render 'item'
+      =render 'item'
+
+
+
