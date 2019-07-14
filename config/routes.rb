@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   }
   root 'products#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, only: [:index, :show] do
+  resources :users do
     collection do
       get :identification
+      get :userlogout
     end
   end
 
@@ -18,4 +19,6 @@ Rails.application.routes.draw do
       get :confirm
     end
   end
+
+  resources :categories, only: :index
 end
