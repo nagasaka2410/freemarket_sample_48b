@@ -16,9 +16,8 @@
                     .sell-dropbox-container.clearfix.state-image-number-10
                       .sell-upload-items-container
                       .sell-upload-drop-box.have-item-0
-                        = f.fields_for :image, class: 'upload-box', id: 'imag-upload' do |i|
-                          #form_upload.form_upload
-                            = i.file_field :image, class: "upload0", accept:"image/*", required: "required", name: "images[image][]", id: "input_image", multipart: true
+                        = f.fields_for :images,class:"upload0" do |i|
+                          = i.file_field :image, multiple: true, id:"itemnew_file1",name: "images[name][]",class:"upload0"
                         %pre.visible-pc ドラッグアンドドロップ<br />またはクリックしてファイルをアップロード
                   .sell-content
                     .form-group
@@ -58,6 +57,40 @@
                               %option{value:"1318"}自動車・オートバイ
                               %option{value:"10"}その他
                             %i.icon-arrow-bottom
+                          .select-wrap
+                            %select#select-default
+                              %option{value:"0"}---
+                              %option{value:"1"}レディース
+                              %option{value:"2"}メンズ
+                              %option{value:"3"}ベビー・キッズ
+                              %option{value:"4"}インテリア・住まい・小物
+                              %option{value:"5"}本・音楽・ゲーム
+                              %option{value:"1328"}おもちゃ・ホビー・グッズ
+                              %option{value:"6"}コスメ・香水・美容
+                              %option{value:"7"}家電・スマホ・カメラ
+                              %option{value:"8"}スポーツ・レジャー
+                              %option{value:"9"}ハンドメイド
+                              %option{value:"1027"}チケット
+                              %option{value:"1318"}自動車・オートバイ
+                              %option{value:"10"}その他
+                            %i.icon-arrow-bottom
+                          .select-wrap
+                            %select#select-default
+                              %option{value:"0"}---
+                              %option{value:"1"}レディース
+                              %option{value:"2"}メンズ
+                              %option{value:"3"}ベビー・キッズ
+                              %option{value:"4"}インテリア・住まい・小物
+                              %option{value:"5"}本・音楽・ゲーム
+                              %option{value:"1328"}おもちゃ・ホビー・グッズ
+                              %option{value:"6"}コスメ・香水・美容
+                              %option{value:"7"}家電・スマホ・カメラ
+                              %option{value:"8"}スポーツ・レジャー
+                              %option{value:"9"}ハンドメイド
+                              %option{value:"1027"}チケット
+                              %option{value:"1318"}自動車・オートバイ
+                              %option{value:"10"}その他
+                            %i.icon-arrow-bottom
                       .form-group
                         .form-group-text
                         商品の状態
@@ -66,19 +99,12 @@
                           .select-wrap
                             %select#select-default
                               %option{value:""}---
-                              %option{value:"1"}トップス
-                              %option{value:"2"}ジャケット/アウター
-                              %option{value:"3"}パンツ
-                              %option{value:"4"}スカート
-                              %option{value:"5"}ワンピース
-                              %option{value:"1328"}おもちゃ
-                              %option{value:"6"}コスメ・香水・美容
-                              %option{value:"7"}家電・スマホ・カメラ
-                              %option{value:"8"}スポーツ・レジャー
-                              %option{value:"9"}ハンドメイド
-                              %option{value:"1027"}チケット
-                              %option{value:"1318"}自動車・オートバイ
-                              %option{value:"10"}その他
+                              %option{value:"1"}新品、未使用
+                              %option{value:"2"}未使用に近い
+                              %option{value:"3"}目立った傷や汚れなし
+                              %option{value:"4"}やや傷や汚れあり
+                              %option{value:"5"}傷や汚れあり
+                              %option{value:"1328"}全体的に状態が悪い
                             %i.icon-arrow-bottom
                   .sell-content.clearfix
                     %h3.sell-sub-head 配送について
@@ -141,7 +167,7 @@
                       %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であ
                       %P り処罰される可能性があります。
                       %p また、出品をもちまして加盟店規約に同意したことになります。
-                    = button_tag '出品する', class: 'btm_create'
+                    = f.submit '出品する', class:'btm_create'
                     = button_tag '戻る', class: 'btm_back'
       .products-footer
         %nav

@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   
   def new
     @product = Product.new
+    @product.images.build
   end
 
   def confirm
@@ -12,6 +13,13 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(item_params)
+    @product = Product.new(product_params)
   end
+
+  private
+
+  def product_params
+    params.require(:product).permit(:name, :description, :user_id, :status, :price, :condition, :product_size, :shippoing_method, :shipping_burden, :created_at, :updated_at,)
+  end
+
 end
