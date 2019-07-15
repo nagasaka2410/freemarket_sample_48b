@@ -1,0 +1,19 @@
+.sign-in-container
+  .single-container
+    = render "devise/sessions/header"
+    .single-main
+      .registration-container
+        %h2.registration-head
+          新規会員登録
+        .registration-container__form
+          .registration-container__form__container
+            = link_to "sign_up" ,class: "btn-default btn-red-mail" do
+              %i.far.fa-envelope              
+              メールアドレスで登録する
+            %button.btn-default.btn-fb
+              %i.fab.fa-facebook-square
+              Facebookで登録する
+            %button.btn-default.btn-go
+              = image_tag("google.png", size: "20x20", class: "google-icon")
+              Googleで登録する
+    = render "devise/registrations/footer"
