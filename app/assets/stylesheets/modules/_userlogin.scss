@@ -100,3 +100,29 @@ body .new_user {
     font-size: 14px;
   }
 }
+
+body .registration-container form {
+  padding: 64px;
+  border-top: 1px solid #f5f5f5;
+}
+
+.field-forget {
+  margin: 0;
+  .input-default {
+    width: 286px;
+    margin: 8px 0 0;
+    height: 28px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  p {
+    margin: 8px 0 0;
+    line-height: 1.5;
+    font-size: 12px;
+    color: #888;
+  }
+}
