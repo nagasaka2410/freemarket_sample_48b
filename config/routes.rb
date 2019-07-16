@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     collection do
       get :identification
       get :userlogout
-      get :usersignup
+      get :user_signup
     end
   end
 
