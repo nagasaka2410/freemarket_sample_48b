@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get :identification
-      get :userlogout
-      get :card
+      get :user_logout
+      get :user_signup
     end
   end
 
