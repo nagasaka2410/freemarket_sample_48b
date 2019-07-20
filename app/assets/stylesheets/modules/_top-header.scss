@@ -9,7 +9,7 @@
     width: 1020px;
     margin: 0 auto;
     .header-top {
-      height: 50px;
+      height: 40px;
       padding: 8px 0 0;
 
       .header-logo {
@@ -69,7 +69,7 @@
       }
     }
     .header-bottom {
-      height: 50px;
+      height: 44px;
       width: 100%;
       margin: 8px 0 0;
       font-size: 15px;
@@ -78,6 +78,7 @@
       .h-left {
         position: absolute;
         left: 0;
+        margin-top: 8px;
         a {
           color: #333;
           display: block;
@@ -88,7 +89,7 @@
           width: 161px;
           cursor: pointer;
           font-weight: bold;
-          padding:0 11px 12px 0;
+          padding:0 11px 25px 0;
           position: relative;
 
           &__icon {
@@ -108,7 +109,7 @@
           float: left;
           width: 161px;
           cursor: pointer;
-          padding: 0 0 12px 11px;
+          padding: 0 0 25px 11px;
           position: relative;
           &__icon {
             float: left;
@@ -128,6 +129,8 @@
       .h-right {
         position: absolute;
         right: 0;
+        line-height: 32px;
+        padding-top: 2px;
         a {
           text-decoration: none;
           color: #3b3a3a;
@@ -138,9 +141,10 @@
         &__list{
           float: left;
           font-weight: normal;
-          .notification {
+
+          .good-index {
             float: left;
-            padding-left: 14px;
+            padding:0 14px;
             cursor: pointer;
             min-width: 100%;
   
@@ -149,7 +153,32 @@
               display: block;
               font-size: 1.2em;
               padding-top: 3px;
-              margin-right: 10px;
+              margin: 3px 10px 0 0;
+              color: #666666;
+            }
+  
+            &__titile {
+              float: left;
+              font-size: 14px;
+              padding-right: 14px;
+              width: 100%;
+              font-weight: normal;
+            }
+          }
+
+          .notification {
+            float: left;
+            padding:0 14px;
+            cursor: pointer;
+            min-width: 100%;
+  
+            &__icon{
+              float: left;
+              display: block;
+              font-size: 1.2em;
+              padding-top: 3px;
+              margin: 3px 10px 0 0;
+              color: #666666;
             }
   
             &__titile {
@@ -171,7 +200,8 @@
               display: block;
               font-size: 1.2em;
               padding-top: 3px;
-              margin-right: 10px;
+              margin: 3px 10px 0 0;
+              color: #666666;
             }
   
             &__titile {
@@ -180,22 +210,42 @@
             }
           }
   
-          .mypage {
+          .top-mypage {
             float: left;
-            padding: 0 14px;
             cursor: pointer;
   
             &__image {
               float: left;
               display: block;
               margin-right: 10px;
+              width: 32px;
+              height: 32px;
             }
   
-            &__titile {
+            &__text {
               float: left;
               font-size: 14px;
             }
           }
+        }
+        .signin__button {
+          padding: 0 10px;
+          background-color: #ea352d;
+          border: 1px solid #ea352d;
+          line-height: 30px;
+          display: inline-block;
+          color: white;
+          border-radius: 4px;
+        }
+        .login__button {
+          margin-left: 8px;
+          border: 1px solid #0099e8;
+          background: #fff;
+          color: #0099e8;
+          padding: 0 10px;
+          line-height: 30px;
+          display: inline-block;
+          border-radius: 4px;
         }
       }
     }
