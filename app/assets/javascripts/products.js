@@ -15,6 +15,7 @@ $(function (){
     function(){
       $('.parent-wrap').css('display', 'block');
       $(this).css('background-color', '#EA352D');
+      $(this).children('a').css('color', 'white');
       $(this).find('.child-wrap').css('display', 'block');
 
       var $child = $(this).find('.child-wrap__list')
@@ -41,6 +42,7 @@ $(function (){
     },
     function(){
       $(this).css('background-color', 'white');
+      $(this).find('a').css('color', '#333');
       $('.parent-wrap').css('display', 'none');
       $(this).find('.child-wrap').css('display', 'none');
     }
@@ -62,10 +64,12 @@ $(function (){
     function(){
       $('.b-parent-wrap').css('display', 'block');
       $(this).css('background-color', '#EA352D');
+      $(this).children('a').css('color', 'white');
     },
     function(){
       $(this).css('background-color', 'white');
       $('.b-parent-wrap').css('display', 'none');
+      $(this).find('a').css('color', '#333');
     }
   )
 
