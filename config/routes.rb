@@ -12,6 +12,9 @@ Rails.application.routes.draw do
       get :identification
       get :user_logout
       get :user_signup
+      get :card
+      get :complete
+      get :card_create
     end
   end
 

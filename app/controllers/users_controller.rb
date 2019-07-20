@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def index
   end
@@ -14,6 +14,12 @@ class UsersController < ApplicationController
 
   def update
 
+  end
+
+  def complete
+  end
+
+  def card_create
   end
 
 end

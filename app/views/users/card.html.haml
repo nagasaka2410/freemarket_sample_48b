@@ -3,8 +3,23 @@
   %main.mypage__body.clearfix
     .mypage__body__main
       .registration-container
-        %h2
+        %h2.card-head
           支払い方法
+        .registration-container__card
+          %section
+            .card-content
+              %h3
+                クレジットカード一覧
+          %section.add-card
+            .add-card__content
+              = link_to "card_create" ,class: "btn-card btn-signin" do
+                %i.fas.fa-credit-card
+                クレジットカードを追加する
+          .about-payment
+            = link_to "#" ,class: "about-payment-link" do
+              支払い方法について
+              %i.fas.fa-angle-right
+
     = render 'shared/mypage-sidemenu'
 = render 'shared/banner'
 = render 'shared/top-footer'
