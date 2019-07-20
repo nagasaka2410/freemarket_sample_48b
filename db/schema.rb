@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190706120334) do
+ActiveRecord::Schema.define(version: 20190720061950) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -55,19 +55,20 @@ ActiveRecord::Schema.define(version: 20190706120334) do
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                           null: false
-    t.text     "description",      limit: 65535, null: false
+    t.string   "name"
+    t.text     "description",      limit: 65535
     t.integer  "user_id"
-    t.string   "status",                         null: false
-    t.integer  "price",                          null: false
-    t.string   "condition",                      null: false
-    t.string   "product_size",                   null: false
-    t.string   "shippoing_method",               null: false
-    t.integer  "shipping_burden",                null: false
+    t.string   "status"
+    t.integer  "price"
+    t.string   "condition"
+    t.string   "product_size"
+    t.string   "shippoing_method"
+    t.integer  "shipping_burden"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "category_id"
     t.integer  "brand_id"
+    t.string   "shipping_date"
     t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
