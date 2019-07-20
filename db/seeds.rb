@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# 変更の際は　rake db:migrate:reset　rake db:seedを実行する
+
+
 ladies = Category.create(name: "レディース")
 mens = Category.create(name: "メンズ")
 kids = Category.create(name: "ベビー・キッズ")
