@@ -3,7 +3,10 @@
   position: relative;
   a {
     text-decoration: none;
-    color: #0099E8;
+  }
+
+  .far {
+    @include item-link;
   }
   .campaign {
     height: 390px;
@@ -15,18 +18,16 @@
     }
   }
 
-  .pickup {
+  .pickup-category {
     width: 940px;
     margin: 0 auto;
     padding: 40px 0 ;
 
     &__title {
-      h2 {
         font-size: 28px;
         text-align: center;
         line-height: 1.4;
         font-weight: bold;
-      }
     }
 
     .items-container {
@@ -38,6 +39,105 @@
           color: #0099E8;
           text-align: center;
           margin: 26px 11px;
+          @include link_color;
+        }
+      }
+      .item-boxes {
+        a {
+          text-decoration: none;
+        }
+        width: 940px;
+        margin: 0 auto;
+        .item-box {
+          float: left;
+          margin-left: 20px;
+          width: 213px;
+          background-color: white;
+          position: relative;
+          &__photo {
+            img {
+              width: 213px; height: 213px;
+              object-fit: cover;
+            }
+          }
+          &__body {
+            height: 110px;
+            padding: 16px;
+            box-sizing: border-box;
+            &--text p{
+              overflow: hidden;
+              font-weight: 400;
+              line-height: 1.5;
+              height: 3em;
+              font-size: 16px;
+              color: #333;
+            }
+            &--block {
+              padding: 0;
+              margin-top: 8px;
+              .product-price {
+                float: left;
+                p {
+                  @include item-link;
+                  font-size: 17px;
+                  color: #333;
+                }
+              }
+              .product-evaluation {
+                float: right;
+                &__heart-icon {
+                  float: left;
+                  margin: 3px 5px 0 0;
+                  color: #333;
+                }
+                &__count {
+                  float: left;
+                  p{
+                    @include item-link;
+                    color: #333;
+                  }
+                }
+              }
+            }
+          }
+          &__tax {
+            position: absolute;
+            bottom: 0;
+            left: 16px;
+            font-weight: none;
+          }
+        }
+      }
+    }
+    .view-all {
+      @include link_color;
+      padding: 20px 5px 30px;
+      text-align: right;
+    }
+  }
+
+  .pickup-brand {
+    width: 940px;
+    margin: 0 auto;
+    padding: 40px 0 ;
+
+    &__title {
+        font-size: 28px;
+        text-align: center;
+        line-height: 1.4;
+        font-weight: bold;
+    }
+
+    .items-container {
+      @include clearfix;
+      &__title {
+        h3 {
+          font-size: 22px;
+          font-weight: bold;
+          color: #0099E8;
+          text-align: center;
+          margin: 26px 11px;
+          @include link_color;
         }
       }
       .item-boxes {
@@ -73,16 +173,25 @@
               .product-price {
                 float: left;
                 p {
+                  @include item-link;
                   font-size: 17px;
+                  color: #333;
                 }
               }
-              .evaluation {
+              .product-evaluation {
                 float: right;
-                &__icon {
+                &__heart-icon {
                   float: left;
+                  margin: 3px 5px 0 0;
+                  @include item-link;
+                  color: #333;
                 }
-                &__number {
+                &__count {
                   float: left;
+                  p{
+                    @include item-link;
+                    color: #333;
+                  }
                 }
               }
             }
@@ -97,6 +206,7 @@
       }
     }
     .view-all {
+      @include link_color;
       padding: 20px 5px 30px;
       text-align: right;
     }
