@@ -8,7 +8,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.integer :price, null: false
       t.string :condition, null: false
       t.string :product_size, null: false
-      t.string :shippoing_method, null: false
+      t.string :shipping_method, null: false
       t.integer :shipping_burden, null: false
       t.timestamps
     end
