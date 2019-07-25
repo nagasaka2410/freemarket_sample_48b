@@ -1,19 +1,70 @@
 .top-main
   .campaign
     = image_tag("banner-thanks.png", class: "campaign-banner")
-  
-  .pickup.category
-    .pickup__title
-      %h2 ピックアップカテゴリー
+  .pickup-category
+    %h2.pickup-category__title ピックアップカテゴリー
+    .items-container
+      .items-container__title
+        %h3
+          =link_to "レディース 新着アイテム", "#"
+        = render partial: "item", collection:  @lady_items
+    .view-all
+      =link_to "全ての商品を見る", "#"
 
-      =render "item_container"
+    .items-container
+      .items-container__title
+        %h3
+          =link_to "メンズ 新着アイテム", "#"
+        = render partial: "item", collection:  @lady_items
+    .view-all
+      =link_to "全ての商品を見る", "#"
 
-  .pickup.brand
-    .pickup__title
-      %h2 ピックアップブランド
+    .items-container
+      .items-container__title
+        %h3
+          =link_to "ベビーキッズ 新着アイテム", "#"
+        = render partial: "item", collection:  @lady_items
+    .view-all
+      =link_to "全ての商品を見る", "#"
 
-      =render "item_container"
-      
+    .items-container
+      .items-container__title
+        %h3
+          =link_to "コスメ・香水・美容 新着アイテム", "#"
+        = render partial: "item", collection:  @lady_items
+    .view-all
+      =link_to "全ての商品を見る", "#"
+
   .pickup-brand
+    %h2.pickup-brand__title ピックアップブランド
+    .items-container
+      .items-container__title
+        %h3
+          =link_to "シャネル 新着アイテム", "#"
+        = render partial: "item", collection:  @lady_items
+    .view-all
+      =link_to "全ての商品を見る", "#"
 
- 
+    .items-container
+      .items-container__title
+        %h3
+          =link_to "ルイヴィトン 新着アイテム", "#"
+        = render partial: "item", collection:  @lady_items
+    .view-all
+      =link_to "全ての商品を見る", "#"
+
+    .items-container
+      .items-container__title
+        %h3
+          =link_to "シュプリーム 新着アイテム", "#"
+        = render partial: "item", collection:  @lady_items
+    .view-all
+      =link_to "全ての商品を見る", "#"
+
+    .items-container
+      .items-container__title
+        %h3
+          =link_to "ナイキ 新着アイテム", "#"
+        = render partial: "item", collection:  @lady_items
+    .view-all
+      =link_to "全ての商品を見る", "#"
