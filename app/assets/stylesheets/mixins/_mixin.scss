@@ -5,3 +5,18 @@
     display: block;
   }
 }
+
+@mixin link_color {
+  a {
+    text-decoration: none;
+    color: #0099E8;
+  }
+}
+
+@mixin item_link {
+  a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+  }
+}
