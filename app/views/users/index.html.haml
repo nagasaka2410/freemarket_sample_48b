@@ -1,6 +1,5 @@
-/= render partial: 'shared/header'
-
-
+- breadcrumb :mypage
+= render "shared/top-header"
 = render 'shared/breadcrumbs'
 
 .mypage
@@ -97,8 +96,5 @@
               過去に取引した商品がありません
     = render 'shared/mypage-sidemenu'
 
-
-
-/= render partial: 'layouts/banner'
-/= render partial: 'layouts/footer'
-/= render 'shared/sellbtn'
+= render "shared/banner"
+= render "shared/top-footer"
