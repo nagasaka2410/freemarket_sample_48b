@@ -66,6 +66,8 @@ gem 'fog-aws'
 gem "font-awesome-rails"
 gem 'ancestry'
 gem 'active_hash'
+gem 'gretel'
+gem 'owlcarousel-rails'
 
 group :production do
   gem 'unicorn', '5.4.1'
