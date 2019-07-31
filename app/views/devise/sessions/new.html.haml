@@ -8,12 +8,12 @@
         =link_to 'sign_up' , class: "btn-signin btn-newregi" do
           新規会員登録
       .sns-login
-        %button.btn-signin.btn-fbk
+        = link_to '/users/auth/facebook',class: "btn-signin btn-fbk" , method: :get do
           %i.fab.fa-facebook-square
-          Facebookで登録する
+          Facebookでログイン
         %button.btn-signin.btn-go
           = image_tag("google.png", size: "20x20", class: "google-icon")
-          Googleで登録する
+          Googleでログイン
       .login-container
         = form_for(resource, as: resource_name, url: session_path(resource_name), id: "signin-container") do |f|
           .field-signin.first
@@ -24,4 +24,5 @@
             = f.submit "ログイン", class: "btn-red-signin btn-signin"
           .forget-link
             = link_to "パスワードをお忘れの方", new_password_path(resource_name)
+  = render "devise/shared/links"
   = render "devise/registrations/footer"

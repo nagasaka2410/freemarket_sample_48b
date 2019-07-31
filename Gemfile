@@ -67,6 +67,10 @@ gem "font-awesome-rails"
 gem 'ancestry'
 gem 'gretel'
 gem 'owlcarousel-rails'
+gem 'dotenv-rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 group :production do
   gem 'unicorn', '5.4.1'

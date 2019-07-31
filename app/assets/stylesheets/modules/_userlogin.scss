@@ -78,6 +78,7 @@ body .new_user {
 
 .btn-fbk {
   margin: 0;
+  border: 1px solid;
   background: #385185;
   color: #fff;
   width: 100%;
@@ -89,6 +90,11 @@ body .new_user {
     transform: translate(0, -50%);
     font-size: 30px;
   }
+}
+
+.facebook-in {
+  text-decoration: none;
+  color: #fff;
 }
 
 .forget-link {
