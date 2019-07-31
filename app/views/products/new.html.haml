@@ -13,15 +13,12 @@
                     .sell-form--upload-box
                       %h3.sell-upload-head 出品画像
                       %span.require 必須
-                      %p 最大10枚までアップロードできます
-                      = f.fields_for :images, @product.images.first do |image|
+                      .p 最大10枚までアップロードできます
+                      = f.fields_for :images do |image|
                         .sell-dropbox-container.clearfix
-                          #preview
-                          -# １〜５枚目プレビュー表示
                           .item__img__dropzone__input
-                            = image.label :image, for: "upload-image" do
-                              .input-area
-                                = image.file_field :image_url, id: "upload-image", class: "upload-image", 'data-image': 0
+                            .input-area
+                              = image.file_field :name, id: "upload-image", class: "upload-image",style:' width:620px; height:160px;'
                             %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
                     .sell-content
                       .form-group
@@ -43,10 +40,17 @@
                           .form-group-text
                           カテゴリー
                           %span.require 必須
-                          .select-wrap
-                          = f.select :category_id,Category.all.where(ancestry: nil).map{|c| [c.name, c.id]},{include_blank: "---"},{class:'sell__form__itemdescription__right__descriptionselect',id:'selectitembox'}
-                          = f.select :category_id,{},{include_blank: "---"},{class:'sell__form__itemdescription__right__descriptionselect',id:'selectitembox1',style: "display:none"}
-                          = f.select :category_id,{},{include_blank: "---"},{class:'sell__form__itemdescription__right__descriptionselect',id:'selectitembox2',style: "display:none"}
+                          .listing-select-wrapper
+                            .listing-select-wrapper__box
+                              = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {include_blank: "---"}, { class: "listing-select-wrapper__box--select", id: "parent_category"}
+                            .listing-select-wrapper__box2
+                            .listing-select-wrapper__box3
+                            .listing-select-wrapper__box4
+                        .form-group
+                          .form-group-text
+                          ブランド
+                          %span
+                          = f.select :brand_id,["シャネル","ナイキ"],{include_blank: "---"},{class:'sell__form__itemdescription__right__descriptionselect'}
                         .form-group
                           .form-group-text
                           商品の状態
@@ -60,12 +64,17 @@
                           配送料の負担
                           %span.require 必須
                           .select-wrap
-                          = f.select :shipping_date,["送料込み(出品者負担)","着払い(購入者負担)"],{include_blank: "---"},{class:'sell__form__itemdescription__right__descriptionselect',id:'selectitemdelivery'}
+                          = f.select :shipping_burden,["送料込み(出品者負担)","着払い(購入者負担)"],{include_blank: "---"},{class:'sell__form__itemdescription__right__descriptionselect',id:'selectitemdelivery'}
+                        .form-group
+                          .form-group-text
+                          配送の方法
+                          %span.require 必須
+                          = f.select :shippoing_method,["未定","らくらくメルカリ便","ゆうメール","レターパック","普通郵便(定型、定型外)","クロネコヤマト","ゆうパック","クリックポスト","ゆうパケット"],{include_blank: "---"},{class:'sell__form__itemdescription__right__descriptionselect',id:'selectitemdelivery1'}
                         .form-group
                           .form-group-text
                           発送元の地域
                           %span.require 必須
-                          = f.select :shipping_date,["東京","名古屋","大阪"],{include_blank: "---"},{class:'sell__form__itemdescription__right__descriptionselect',id:'select_item_shipping_date'}
+                          = f.collection_select :shipping_region, Prefecture.all, :id, :name, {include_blank: "---"}, { class: 'sell__form__itemdescription__right__descriptionselect', id:'select_item_shipping_date'}
                         .form-group
                           .form-group-text
                           発送までの日数
@@ -84,7 +93,7 @@
                               .l-right
                                 .yen_icon
                                 ¥
-                                %input{class:'priceField',placeholder: '例）300'}
+                                = f.text_field :price,class:'priceField',placeholder:"例) 300"
                           %li.clearfix
                             .l-left
                             販売手数料 (10%)
@@ -108,5 +117,5 @@
               %li メルカリ利用規約
               %li 特定商取引に関する表記
           = link_to "#", class: "single-iamge" do
-            = image_tag "productsnew.png",lass:"my_class"
+            = image_tag "productsnew.png",class:"my_class"
           %p © 2019 Mercari

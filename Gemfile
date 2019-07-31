@@ -65,6 +65,7 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem "font-awesome-rails"
 gem 'ancestry'
+gem 'active_hash'
 
 group :production do
   gem 'unicorn', '5.4.1'
