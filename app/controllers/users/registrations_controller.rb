@@ -14,6 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
     if @user.save
+      sign_in @user
       redirect_to complete_users_path
     else
       # flash[:notice] = "メールアドレスに誤りがあります。ご確認いただき、正しく変更してください。"

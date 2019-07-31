@@ -19,7 +19,4 @@ class UsersController < ApplicationController
   def complete
   end
 
-  def card_create
-  end
-
 end

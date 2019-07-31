@@ -24,5 +24,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :products
+
+  resources :creditcards
+
   resources :categories, only: :index
 end
