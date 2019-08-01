@@ -6,5 +6,10 @@ has_many :images
 accepts_nested_attributes_for :images
 belongs_to :user
 belongs_to :category
-belongs_to :brand, foreign_key: "brand_id", optional: true
+belongs_to :brand
+
+enum status: {
+  sell: 0, sold: 1, soldout: 2
+}, _prefix: true
+# sell 出品中、sold 売れた、soldout 売れて消える
 end
