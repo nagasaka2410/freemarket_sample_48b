@@ -65,6 +65,7 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem "font-awesome-rails"
 gem 'ancestry'
+gem 'active_hash'
 gem 'gretel'
 gem 'owlcarousel-rails'
 gem 'kaminari'
