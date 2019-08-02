@@ -5,13 +5,13 @@
       .no-account
         %p
           アカウントをお持ちでない方はこちら
-        =link_to 'sign_up' , class: "btn-signin btn-newregi" do
+        =link_to '/users/new' , class: "btn-signin btn-newregi" do
           新規会員登録
       .sns-login
         = link_to '/users/auth/facebook',class: "btn-signin btn-fbk" , method: :get do
           %i.fab.fa-facebook-square
           Facebookでログイン
-        %button.btn-signin.btn-go
+        = link_to '/users/auth/google_oauth2',class: "btn-signin btn-go" , method: :get do
           = image_tag("google.png", size: "20x20", class: "google-icon")
           Googleでログイン
       .login-container
@@ -24,5 +24,4 @@
             = f.submit "ログイン", class: "btn-red-signin btn-signin"
           .forget-link
             = link_to "パスワードをお忘れの方", new_password_path(resource_name)
-  = render "devise/shared/links"
   = render "devise/registrations/footer"
