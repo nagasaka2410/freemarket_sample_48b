@@ -18,4 +18,8 @@ class ProductsController < ApplicationController
   def confirm
 
   end
+
+  def search
+    @products = Product.where('name LIKE(?)',"%#{params[:keyword]}%").page(params[:page]).per(114)
+  end
 end
