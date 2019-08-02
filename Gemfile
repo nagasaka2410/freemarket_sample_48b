@@ -67,6 +67,7 @@ gem "font-awesome-rails"
 gem 'ancestry'
 gem 'gretel'
 gem 'owlcarousel-rails'
+gem 'kaminari'
 
 group :production do
   gem 'unicorn', '5.4.1'
