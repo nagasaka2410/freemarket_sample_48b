@@ -1,0 +1,16 @@
+%li.search-items__lists--list
+  = link_to "" do
+    .product-box
+      .product-box__photo
+        = image_tag(product.images.first.name.to_s)
+      .product-box__body
+        .product-box__body--text
+          %p
+            = product.name
+        .product-box__body--block
+          .search-product-price
+            %p ¥#{product.price}
+          .search-product-evaluation
+            %i.far.fa-heart.search-product-evaluation__heart-icon
+            .search-product-evaluation__count
+              %p 5
