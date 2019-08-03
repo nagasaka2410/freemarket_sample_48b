@@ -8,19 +8,6 @@
 
 # 変更の際は　rake db:migrate:reset　rake db:seedを実行する
 
-Product.create(name: "シュシュ", description: "oooooo", user_id: 1, status: 0, price: 2000, condition: "1", product_size: "2", shipping_method: "1", shipping_burden: "2", category_id: 120, brand_id: 1)
-Image.create(name: "paprica.jpg", product_id: 1)
-
-Product.create(name: "こんなパプリカ見たことない", description: "oooooo", user_id: 1, status: 0, price: 2000, condition: "1", product_size: "2", shipping_method: "1", shipping_burden: "2", category_id: 120, brand_id: 1)
-Image.create(name: "paprica.jpg", product_id: 2)
-
-Product.create(name: "OOOOOOOOOOOOOOOOOO", description: "oooooo", user_id: 1, status: 0, price: 2000, condition: "1", product_size: "2", shipping_method: "1", shipping_burden: "2", category_id: 120, brand_id: 1)
-Image.create(name: "paprica.jpg", product_id: 3)
-
-Product.create(name: "早く終われーーーー", description: "oooooo", user_id: 1, status: 0, price: 2000, condition: "1", product_size: "2", shipping_method: "1", shipping_burden: "2", category_id: 120, brand_id: 1)
-Image.create(name: "paprica.jpg", product_id: 4)
-
-
 Brand.create([{name: "シャネル"}, {name: "ナイキ"},{name: "ルイヴィトン"}, {name: "シュプリーム"}, {name: "アディダス"}])
 
 
