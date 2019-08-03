@@ -23,6 +23,11 @@ crumb :logout do
 end
 
 crumb :identification do
-  link "本人情報の登録", user_logout_users_path
+  link "本人情報の登録", identification_users_path
   parent :mypage
+end
+
+crumb :search do
+  link "#{params[:keyword]}", search_products_path
+  parent :root
 end

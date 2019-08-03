@@ -1,0 +1,254 @@
+.search-main {
+  @include clearfix;
+  background-color: #f5f5f5;
+  .search-wrapper {
+    @include clearfix;
+    width: 1020px;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 40px 0;
+
+    .search-side {
+      float: left;
+      width: 280px;
+      margin-right: 40px;
+      .search-form {
+        .search-sort {
+          position: relative;
+          background-color: white;
+          &__select {
+            &--order {
+              text-decoration: none;
+              @include select_box;
+            }
+            &--icon {
+              position: absolute;
+              right: 16px;
+              top: 50%;
+            }
+          }
+        }
+        .search-dropdown-wrapper {
+          margin-top: 40px;
+          padding: 16px;
+          background-color: white;
+          &__title {
+            font-size: 16px;
+          }
+  
+          &__form {
+            margin-top: 24px;
+            @include clearfix;
+            &--icon {
+              display: inline-block;
+              color: gray;
+            }
+            &--title {
+              display: inline-block;
+              font-size: 14px;
+            }
+            &--box {
+              margin-top: 8px;
+              height: 48px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              line-height: 1.5;
+              font-size: 16px;
+              box-sizing: border-box;
+              width: 100%;
+            }
+            &--number1 {
+              float: left;
+              margin-top: 8px;
+              height: 48px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              line-height: 1.5;
+              font-size: 16px;
+              box-sizing: border-box;
+              width: 45%;
+              font: #ccc;
+            }
+            p {
+              float: left;
+              display: inline-block;
+              line-height: 48px;
+              margin: 8px 0px 0 10px;
+            }
+            &--number2 {
+              float: right;
+              margin-top: 8px;
+              height: 48px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              line-height: 1.5;
+              font-size: 16px;
+              box-sizing: border-box;
+              width: 45%;
+              font: #ccc;
+            }
+            .product-state {
+              @include clearfix;
+              &__checkbox-list {
+                margin-top: 16px;
+                float: left;
+                width: 48%;
+                input {
+                  font-size: 16px;
+                  background-color: white;
+                }
+              }
+            }
+            .delivery-fee {
+              @include clearfix;
+              &__checkbox-list {
+                margin-top: 16px;
+                float: left;
+                width: 48%;
+                input {
+                  font-size: 16px;
+                  background-color: white;
+                }
+              }
+            }
+            .sales-condition {
+              @include clearfix;
+              &__checkbox-list {
+                margin-top: 16px;
+                float: left;
+                width: 48%;
+                input {
+                  font-size: 16px;
+                  background-color: white;
+                }
+              }
+            }
+          }
+
+          &__button {
+            padding-top: 40px;
+            @include clearfix;
+            &--clear {
+              float: left;
+              width: 45%;
+              background-color: #aaa;
+              border: 1px solid #aaa;
+              color: white;
+              line-height: 48px;
+              font-size: 14px;
+              text-align: center;
+            }
+            &--complete {
+              float: right;
+              width: 45%;
+              background-color: #ea352d;
+              border: 1px solid #ea352d;
+              color: white;
+              line-height: 48px;
+              font-size: 14px;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+  .search-items {
+    float: right;
+    width: 700px;
+    height: 3000px;
+    &__title {
+      font-size: 22px;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    &__number {
+      margin: 16px 0;
+      font-size: 12px;
+      color: #888;
+    }
+    &__lists {
+      li {
+        float: left;
+        display: block;
+        margin: 0 20px 20px 0;
+        box-sizing: border-box;
+      }
+      li:nth-child(4n) {
+        text-decoration: none;
+        margin: 0 0 20px 0;
+        box-sizing: border-box;
+      }
+      &--list {
+        .product-box {
+          box-sizing: border-box;
+          height: 240px;
+          float: left;
+          width: 160px;
+          background-color: white;
+          position: relative;
+          &__photo {
+            img {
+              width: 160px; height: 160px;
+              object-fit: cover;
+            }
+          }
+          &__body {
+            height: 80px;
+            padding: 8px 12px;
+            box-sizing: border-box;
+            &--text p{
+              overflow: hidden;
+              font-weight: 400;
+              line-height: 1.5;
+              font-size: 14px;
+              color: #333;
+              height: 3em;
+              box-sizing: border-box;
+            }
+            &--block {
+              padding: 0;
+              margin-top: 2px;
+              @include clearfix;
+              .search-product-price {
+                float: left;
+                p {
+                  @include item-link;
+                  font-size: 14px;
+                  color: #333;
+                }
+              }
+              .search-product-evaluation {
+                float: right;
+                &__heart-icon {
+                  float: left;
+                  margin: 3px 5px 0 0;
+                  @include item-link;
+                  color: #333;
+                }
+                &__count {
+                  float: left;
+                  p{
+                    @include item-link;
+                    color: #333;
+                  }
+                }
+              }
+            }
+          }
+          &__tax {
+            position: absolute;
+            bottom: 0;
+            left: 16px;
+            font-weight: none;
+          }
+        }
+      }
+    }
+  }
+}
