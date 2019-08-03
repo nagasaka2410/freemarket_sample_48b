@@ -1,0 +1,52 @@
+.l-main-container
+  = render 'shared/second_header'
+  .purchase-main
+    .l-purchase-container--buy-item-container
+      %h2.purchase-head 購入内容の確認
+      .purchase-content.purchase-item
+        .purchase-content-inner
+          .purchase-item-image
+            = image_tag @product.images[0].name.url, class: "item_photo",size: '63x64'
+          %p.purchase-item-name
+            = @product.name
+          .purchase-form
+            .purchase-price-ja 
+              = "¥ #{@product.price}"
+              .product-shipping-fee 送料込み
+            %ul.purchase-accordion.not-have
+              %li.accordion-parent
+                .accordion-toggle ポイントはありません
+            %ul.purchase-price-table
+              %li.purchase-price-row
+                .purchase-price-cell 支払い金額
+                .purchase-price-cell
+                  %span
+                  = "¥ #{@product.price}"
+            = button_tag '購入する', class: 'purchase-btn'
+      .purchase-content.purchase-user-info
+        .purchase-content-inner
+          %h3 配送先
+          .purchase-user-info-text
+            = "〒 #{current_user.user_address.postal_code}"
+            %br
+            = "#{current_user.user_address.prefecture} #{current_user.user_address.city} #{current_user.user_address.block_number} #{current_user.user_address.building}"
+            %br
+            = "#{current_user.user_detail.last_name}#{current_user.user_detail.first_name}"
+          =link_to "", class: 'purchase-user-info-fix' do
+            %span 変更する
+            = fa_icon "angle-right"
+      .purchase-content.purchase-user-info
+        .purchase-content-inner
+          %h3 支払い方法
+          =link_to "", class: 'purchase-user-info-fix' do
+            %span 変更する
+            = fa_icon "angle-right"
+  .products-footer
+    %nav
+      %ul.clearfix
+        %li プライバシーポリシー
+        %li メルカリ利用規約
+        %li 特定商取引に関する表記
+    = link_to "#", class: "single-iamge" do
+      = image_tag "productsnew.png",class:"my_class"
+    %p © 2019 Mercari
