@@ -48,6 +48,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def purchase
+    @product = Product.find(params[:id])
+  end
+
   def search
     @products = Product.where('name LIKE(?)',"%#{params[:keyword]}%").page(params[:page]).per(114)
   end

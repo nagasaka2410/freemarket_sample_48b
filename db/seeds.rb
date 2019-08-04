@@ -8,6 +8,7 @@
 
 # 変更の際は　rake db:migrate:reset　rake db:seedを実行する
 
+
 Brand.create([{name: "シャネル"}, {name: "ナイキ"},{name: "ルイヴィトン"}, {name: "シュプリーム"}, {name: "アディダス"}])
 
 
