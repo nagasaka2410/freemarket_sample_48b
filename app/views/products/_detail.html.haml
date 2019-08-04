@@ -1,6 +1,6 @@
 .detail-box
   %h1.item-name
-    テポドンⅡ
+    = @product.name
   .detail-box__main
     .detail-box__main__image
       .top-image
@@ -33,28 +33,29 @@
             = link_to "北朝鮮", "#"
         %tr
           %th 商品のサイズ
-          %td 32m
+          %td 
         %tr
           %th 商品の状態
-          %td 新品、未使用
+          %td #{@product.condition}
         %tr
           %th 配送料の負担
-          %td 送料込み(出品者負担)
+          %td #{@product.shipping_burden}
         %tr
           %th 配送の方法
-          %td らくらくメルカリ便
+          %td #{@product.shipping_method}
         %tr
           %th 配送元地域
           %td 
             = link_to "北朝鮮", "#"
         %tr
           %th 発送日の目安
-          %td 10分で発送
+          %td #{@product.shipping_date}
 
 
 
   .detail-box__price
-    %span.item-price ¥ 17,750
+    %span.item-price
+      = converting_to_jpy(@product.price)
     %span.item-tax (税込)
     %span.shipping-fee 送料込み
 
@@ -62,8 +63,7 @@
   
   .detail-box__item-description
     %p.item-description
-      テポドン2号は朝鮮民主主義人民共和国（北朝鮮）が開発した大陸間弾道ミサイル (ICBM) のプロトタイプ。「テポドン」とは、このミサイルの原型であるテポドン1号が確認された地名の大浦洞からアメリカがつけたコードネームである。
-      2012年にアメリカ合衆国国防総省が、テポドン2号はミサイルとして配備されていないと分析しており、実戦配備を目指した弾道ミサイルのプロトタイプというよりは後述の「銀河」系列のローンチ・ヴィークルのプロトタイプの性格を持つものとして分析されている。
+      #{@product.description}
   .detail-box__item-button
     .detail-box__item-button__left
       %button{type:'button', class: 'button-like'}
