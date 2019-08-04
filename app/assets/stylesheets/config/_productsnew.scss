@@ -46,7 +46,7 @@
                 display: block;
                 width: 620px;
                 margin: 16px auto 0;
-                .sell-upload-drop-box{
+                .item__img__dropzone__input{
                   width: 100%;
                   margin-left: 0;
                   cursor: pointer;
@@ -56,6 +56,11 @@
                   border: 1px dashed #ccc;
                   font-size: 0;
                   text-align: center;
+                  .input-area{
+                    #upload-image{
+                      opacity: 0;
+                    }
+                  }
                   .visible-pc{
                     position: absolute;
                     top: 50%;
