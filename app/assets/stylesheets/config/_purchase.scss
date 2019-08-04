@@ -14,10 +14,7 @@
     .purchase-content{
       padding: 24px 12.5% 0;
       border-top: 1px solid #f5f5f5;
-    }
-    .purchase-item{
-      text-align: center;
-      .purchase-content-inner{
+      &--inner{
         display: flex;
         flex-wrap: wrap;
         max-width: 320px;
@@ -90,6 +87,9 @@
           }
         }
       }
+    }
+    .purchase-item{
+      text-align: center;
     }
     .purchase-user-info{
       margin: 40px 0 0;

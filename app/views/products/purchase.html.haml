@@ -4,8 +4,8 @@
     .l-purchase-container--buy-item-container
       %h2.purchase-head 購入内容の確認
       .purchase-content.purchase-item
-        .purchase-content-inner
-          .purchase-item-image
+        .purchase-content--inner
+          .purchase-content-image
             = image_tag @product.images[0].name.url, class: "item_photo",size: '63x64'
           %p.purchase-item-name
             = @product.name
