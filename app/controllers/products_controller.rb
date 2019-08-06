@@ -11,10 +11,12 @@ class ProductsController < ApplicationController
     @nike = Product.includes(:images).where(brand_id: 4, status: 0).order(created_at: "DESC").limit(4)
   end
   
+
   def new
     @product = Product.new
     2.times{@product.images.build}
   end
+
 
     # 親カテゴリーが選択された後に動くアクション
   def get_category_children
@@ -22,10 +24,12 @@ class ProductsController < ApplicationController
     @category_children = Category.find_by(id: "#{params[:parent_name]}", ancestry: nil).children
   end
 
+
   def get_category_grandchildren
     #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
+
 
   def get_size
     selected_grandchild = Category.find("#{params[:grandchild_id]}") #孫カテゴリーを取得
@@ -39,6 +43,7 @@ class ProductsController < ApplicationController
     end
  end
   
+
   def create
     @product = Product.new(product_params)
     if @product.save
@@ -48,13 +53,30 @@ class ProductsController < ApplicationController
     end
   end
 
+
   def purchase
     @product = Product.find(params[:id])
   end
 
+
   def search
     @products = Product.where('name LIKE(?)',"%#{params[:keyword]}%").page(params[:page]).per(114)
   end
+
+
+  def destroy
+    product = Product.find(params[:product_id])
+    if product.user_id == current_user.id
+      product.destroy
+      redirect_to root_path
+      flash.now[:alert] = '商品を削除しました'
+    else
+      render :index
+      flash[:alert] = '商品削除に失敗しました'
+    end
+  end
+
+
   private
 
   def product_params
