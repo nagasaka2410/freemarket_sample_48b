@@ -70,9 +70,10 @@ ActiveRecord::Schema.define(version: 20190727114250) do
     t.integer  "status",          limit: 1,     default: 0, null: false
     t.integer  "price",                                     null: false
     t.string   "condition",                                 null: false
-    t.integer  "size_id",                                   null: false
+    t.integer  "size_id"
     t.string   "shipping_method",                           null: false
     t.string   "shipping_burden",                           null: false
+    t.integer  "buyer_id"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.integer  "category_id"
