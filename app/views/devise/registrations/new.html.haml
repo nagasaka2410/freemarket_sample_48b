@@ -16,13 +16,13 @@
                 = f.label :ニックネーム
                 %span.require 必須
                 %br/
-                = f.text_field :nickname, class: "input-default", placeholder: '例)メルカリ太郎'
+                = f.text_field :nickname, class: "nickname input-default", placeholder: '例)メルカリ太郎'
 
               .field
                 = f.label :メールアドレス
                 %span.require 必須
                 %br/
-                = f.email_field :email, class: "input-default", autocomplete: "email", placeholder: 'PC・携帯どちらでも可'
+                = f.email_field :email, class: "email input-default", autocomplete: "email", placeholder: 'PC・携帯どちらでも可'
               .field
                 = f.label :パスワード
                 - if @minimum_password_length
@@ -30,13 +30,13 @@
                     (#{@minimum_password_length} characters minimum)
                 %span.require 必須
                 %br/
-                = f.password_field :password, class: "input-default", autocomplete: "new-password", placeholder: '6文字以上'
+                = f.password_field :password, class: "password input-default", autocomplete: "new-password", placeholder: '6文字以上'
             
               .field
                 = f.label :"パスワード (確認) "
                 %span.require 必須
                 %br/
-                = f.password_field :password_confirmation, class: "input-default", autocomplete: "new-password", placeholder: '6文字以上'
+                = f.password_field :password_confirmation, class: "password_confirmation input-default", autocomplete: "new-password", placeholder: '6文字以上'
             
               .field
                 %h3.text 本人確認
@@ -46,22 +46,22 @@
               .field
                 = i.label :last_name, "姓 (全角)"
                 %span.require 必須
-                = i.text_field :last_name, class: "input-default", autocomplete: "last_name", placeholder: '例) 山田'
+                = i.text_field :last_name, class: "last_name input-default", autocomplete: "last_name", placeholder: '例) 山田'
 
               .field
                 = i.label :first_name, "名 (全角)"
                 %span.require 必須
-                = i.text_field :first_name, class: "input-default", autocomplete: "first_name", placeholder: '例) 彩'
+                = i.text_field :first_name, class: "first_name input-default", autocomplete: "first_name", placeholder: '例) 彩'
 
               .field
                 = i.label :last_name_kana, "姓カナ (全角)"
                 %span.require 必須
-                = i.text_field :last_name_kana, class: "input-default", autocomplete: "last_name_kana"
+                = i.text_field :last_name_kana, class: "last_name_kana input-default", autocomplete: "last_name_kana"
 
               .field
                 = i.label :first_name_kana, "名カナ (全角)"
                 %span.require 必須
-                = i.text_field :first_name_kana, class: "input-default", autocomplete: "first_name_kana"
+                = i.text_field :first_name_kana, class: "first_name_kana input-default", autocomplete: "first_name_kana"
                       
               .field
                 = i.label "生年月日"
@@ -69,13 +69,13 @@
                 %br/  
                 .birthday-wrap
                   .select
-                    = i.select :birth_year, [], {prompt: "--"}, {class: "select-default"}
+                    = i.select :birth_year, [], {prompt: "--"}, {class: "select-year"}
                   %span 年
                   .select
-                    = i.select :birth_month, [], {prompt: "--"}, {class: "select-default"}
+                    = i.select :birth_month, [], {prompt: "--"}, {class: "select-month"}
                   %span 月
                   .select
-                    = i.select :birth_day, [], {prompt: "--"}, {class: "select-default"}
+                    = i.select :birth_day, [], {prompt: "--"}, {class: "select-day"}
                   %span 日
                 %p.caution-text
                   ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
@@ -97,7 +97,7 @@
             .registration__sms
               .field
                 = i.label :mobile_phone, "携帯電話の番号"
-                = i.text_field :mobile_phone, class: "input-default", autocomplete: "mobile_phone", placeholder: '携帯電話の番号を入力'
+                = i.text_field :mobile_phone, class: "mobile_phone input-default", autocomplete: "mobile_phone", placeholder: '携帯電話の番号を入力'
                 %p.caution-text
                   本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
             
@@ -113,7 +113,7 @@
               .field
                 = d.label :postal_code, "郵便番号"
                 %span.require 必須
-                = d.text_field :postal_code, class: "input-default", autocomplete: "postal_code", placeholder: '例) 123-4567'
+                = d.text_field :postal_code, class: "postal_code input-default", autocomplete: "postal_code", placeholder: '例) 123-4567'
               .field
                 = d.label :prefecture, "都道府県" 
                 %span.require 必須
@@ -121,12 +121,12 @@
               .field
                 = d.label :city, "市区町村" 
                 %span.require 必須
-                = d.text_field :city, class: "input-default", autocomplete: "city", placeholder: '例) 横浜市緑区'
+                = d.text_field :city, class: "city input-default", autocomplete: "city", placeholder: '例) 横浜市緑区'
 
               .field
                 = d.label :block_number, "番地" 
                 %span.require 必須
-                = d.text_field :block_number, class: "input-default", autocomplete: "block_number", placeholder: '例) 青山1-1-1'
+                = d.text_field :block_number, class: "block_number input-default", autocomplete: "block_number", placeholder: '例) 青山1-1-1'
 
               .field
                 = d.label :building, "建物名" 
@@ -146,7 +146,7 @@
               .field
                 = c.label :card_number, "カード番号"
                 %span.require 必須
-                = c.text_field :card_number, class: "input-default", placeholder: '半角数字のみ'
+                = c.text_field :card_number, class: "card-number input-default", placeholder: '半角数字のみ'
                 %ul.card-list
                   %li
                     = image_tag("visa.svg",size: "49x20")
@@ -169,16 +169,16 @@
                 %br/
                 .birthday-wrap
                   .select
-                    = c.select :valid_month, [], {prompt: "--"}, {class: "select-default"}
+                    = c.select :valid_month, [], {prompt: "--"}, {class: "card-month"}
                   %span 月
                   .select
-                    = c.select :valid_year, [], {prompt: "--"}, {class: "select-default"}
+                    = c.select :valid_year, [], {prompt: "--"}, {class: "card-year"}
                   %span 年
 
               .field
                 = c.label :security_code, "セキュリティコード"
                 %span.require 必須
-                = c.text_field :security_code, class: "input-default", placeholder: 'カード背面4桁もしくは3桁の番号'
+                = c.text_field :security_code, class: "security-code input-default", placeholder: 'カード背面4桁もしくは3桁の番号'
                 .text-right__card
                   %span.card-question ?
                   カード裏の番号とは？

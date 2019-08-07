@@ -1,18 +1,23 @@
 class CreditcardsController < ApplicationController
+  # before_action :authenticate_user!
+
+  def index
+  end
 
   def new
     @creditcard = Creditcard.new
   end
 
   def show
-    render :new
+    @creditcard = Creditcard.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def create
     @creditcard = Creditcard.new(new_params)
     user_id = current_user.id
     if @creditcard.save
-      redirect_to complete_users_path
+      redirect_to root_path
     else
       render :new
     end

@@ -1,0 +1,55 @@
+= render 'shared/top-header'
+.mypage
+  %main.mypage__body.clearfix
+    .mypage__body__main
+      .registration-container
+        %h2.card-head
+          クレジットカード情報入力
+          
+        = form_for(@creditcard, url: {action: :create }) do |f|
+          .registration__payment
+            .field
+              = f.label :card_number, "カード番号"
+              %span.require 必須
+              = f.text_field :card_number, class: "card-number input-default", placeholder: '半角数字のみ'
+              %ul.card-list
+                %li
+                  = image_tag("visa.svg",size: "49x20")
+                %li
+                  = image_tag("master-card.svg",size: "34x20")
+                %li
+                  = image_tag("saison-card.svg",size: "30x20")
+                %li
+                  = image_tag("jcb.svg",size: "32x20")
+                %li
+                  = image_tag("american_express.svg",size: "21x20")
+                %li
+                  = image_tag("dinersclub.svg",size: "32x20")
+                %li
+                  = image_tag("discover.svg",size: "32x20")
+            .field
+              = f.label :有効期限
+              %span.require 必須
+              %br/
+              .birthday-wrap
+                .select
+                  = f.select :valid_month, [], {prompt: "--"}, {class: "card-month"}
+                %span 月
+                .select
+                  = f.select :valid_year, [], {prompt: "--"}, {class: "card-year"}
+                %span 年
+
+            .field
+              = f.label :security_code, "セキュリティコード"
+              %span.require 必須
+              = f.text_field :security_code, class: "security-code input-default", placeholder: 'カード背面4桁もしくは3桁の番号'
+              .text-right__card
+                %span.card-question ?
+                カード裏の番号とは？
+            .actions
+              = f.submit class: "btn-end", value: "追加する"
+
+
+    = render 'shared/mypage-sidemenu'
+= render 'shared/banner'
+= render 'shared/top-footer'
