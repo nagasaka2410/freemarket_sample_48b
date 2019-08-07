@@ -170,7 +170,7 @@ li.messeage-coments {
     padding: 4px;
     background: #eef0f4;
     color: #000;
-    margin: 0 0 0 8px;
+    // margin: 0 0 0 8px;
     padding: 2px 4px;
     border-radius: 2px;
     font-size: 12px;
@@ -198,6 +198,10 @@ li.messeage-coments {
       color: #aaa;
       text-decoration: none;
       float: right;
+      a {
+        text-decoration: none;
+        color: #aaa;
+      }
     }
     &__left {
       display: block;
@@ -440,4 +444,10 @@ figcaption.bold {
       font-weight: none;
     }
   }
+}
+
+.is-thumbnails__item {
+  height: 60px;
+  width: 60px;
+  float: left;
 }

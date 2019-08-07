@@ -4,16 +4,21 @@
   .detail-box__main
     .detail-box__main__image
       .top-image
-        = image_tag 'tepodon.jpg', alt: '', height: '300px', width: '300px', class: 'item-image-active'
-      .thumbnails
-        = image_tag 'tpdn.jpg', alt: '', height: '60px', width: '60px', class: 'item-image'
-        = image_tag 'tpdn2.jpg', alt: '', height: '60px', width: '60px', class: 'item-image'
+        .is-slider
+          - @product.images.each do |img|
+            .is-slider__item
+              = image_tag(img.name.url, height: '300px', width: '300px', class: 'item-image-active')
+        .is-thumbnails
+          - @product.images.each do |img|
+            .is-thumbnails__item
+              = image_tag(img.name.url, height: '60px', width: '60px', class: 'item-image')
     %table.detail-box__main__table
       %tbody
         %tr
           %th 出品者
           %td
-            = link_to "金正恩", "#"
+            = link_to "/" do
+              = @product.user.nickname
             .user-ratings
               .user-ratings__list
                 %i.fas.fa-laugh
@@ -26,30 +31,46 @@
                 %span 999
         %tr
           %th カテゴリー
-          %td 準中距離弾道ミサイル
+          %td
+            = link_to "/" do
+              - if @product.category.present?
+                = @product.category.root.name
+                %br > #{@product.category.parent.name}
+                > #{@product.category.name}
+            
         %tr
           %th ブランド
           %td
-            = link_to "北朝鮮", "#"
+            = link_to "/" do
+              - if @product.brand.present?
+                = @product.brand.name
         %tr
           %th 商品のサイズ
-          %td 
+          %td
+            - if @product.products_size.present?
+              = @product.products_size.size
         %tr
           %th 商品の状態
-          %td #{@product.condition}
+          %td
+            = @product.condition
         %tr
           %th 配送料の負担
-          %td #{@product.shipping_burden}
+          %td 
+            = @product.shipping_burden
         %tr
           %th 配送の方法
-          %td #{@product.shipping_method}
+          %td 
+            = @product.shipping_method
         %tr
           %th 配送元地域
           %td 
-            = link_to "北朝鮮", "#"
+            = link_to "/" do
+              = @product.shipping_region
+          
         %tr
           %th 発送日の目安
-          %td #{@product.shipping_date}
+          %td 
+            = @product.shipping_date
 
 
 
@@ -63,7 +84,7 @@
   
   .detail-box__item-description
     %p.item-description
-      #{@product.description}
+      = @product.description
   .detail-box__item-button
     .detail-box__item-button__left
       %button{type:'button', class: 'button-like'}
@@ -130,12 +151,12 @@
 
 %ul.item-link-prev-next
   %li.item-link-prev
-    = link_to "#" do
+    = link_to "#{@previous_product.id}" do
       = fa_icon "chevron-left"
-      万景峰号
+      #{@previous_product.name}
   %li.item-link-next
-    = link_to "#" do
-      大陸間弾道ミサイル
+    = link_to "#{@next_product.id}" do
+      #{@next_product.name}
       = fa_icon "chevron-right"
 .detail-box__social-link
   .text-center
@@ -156,11 +177,46 @@
   %section
     %h2.related-products__items-head
       = link_to "#" do
-        金正恩さんのその他の出品
+        #{@product.user.nickname}さんのその他の出品
     .related-products__items-box
-      =render 'item'
-      =render 'item'
-      =render 'item'
-
-
+      - @user_products.each do |product|
+        = link_to "/products/#{product.id}" ,class: "item-boxes" do
+          .item-box
+            .item-box__photo
+              = image_tag(product.images.first.name)
+            .item-box__body
+              .item-box__body--text
+                %p
+                  = product.name
+              .item-box__body--block
+                .product-price
+                  %p
+                    = converting_to_jpy(product.price)
+                .product-evaluation
+                  %i.far.fa-heart.product-evaluation__heart-icon
+                  .product-evaluation__count
+                    %p 5
+.related-products
+  %section
+    %h2.related-products__items-head
+      = link_to "#" do
+        #{@product.brand.name}その他の出品
+    .related-products__items-box
+      - @brand_products.each do |product|
+        = link_to "/products/#{product.id}" ,class: "item-boxes" do
+          .item-box
+            .item-box__photo
+              = image_tag(product.images.first.name)
+            .item-box__body
+              .item-box__body--text
+                %p
+                  = product.name
+              .item-box__body--block
+                .product-price
+                  %p
+                    = converting_to_jpy(product.price)
+                .product-evaluation
+                  %i.far.fa-heart.product-evaluation__heart-icon
+                  .product-evaluation__count
+                    %p 5
 
