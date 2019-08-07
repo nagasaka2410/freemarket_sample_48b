@@ -150,14 +150,16 @@
             コメントする
 
 %ul.item-link-prev-next
-  %li.item-link-prev
-    = link_to "#{@previous_product.id}" do
-      = fa_icon "chevron-left"
-      #{@previous_product.name}
-  %li.item-link-next
-    = link_to "#{@next_product.id}" do
-      #{@next_product.name}
-      = fa_icon "chevron-right"
+  - if @product.previous
+    %li.item-link-prev
+      = link_to "#{@previous_product.id}" do
+        = fa_icon "chevron-left"
+        #{@previous_product.name}
+  - if @product.next
+    %li.item-link-next
+      = link_to "#{@next_product.id}" do
+        #{@next_product.name}
+        = fa_icon "chevron-right"
 .detail-box__social-link
   .text-center
   %ul.social-box
