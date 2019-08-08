@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190706120334) do
+ActiveRecord::Schema.define(version: 20190727114250) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20190706120334) do
     t.string   "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "category_sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "category_id"
+    t.integer  "products_size_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["category_id"], name: "index_category_sizes_on_category_id", using: :btree
+    t.index ["products_size_id"], name: "index_category_sizes_on_products_size_id", using: :btree
   end
 
   create_table "creditcards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -55,22 +64,32 @@ ActiveRecord::Schema.define(version: 20190706120334) do
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                           null: false
-    t.text     "description",      limit: 65535, null: false
+    t.string   "name"
+    t.text     "description",     limit: 65535
     t.integer  "user_id"
-    t.string   "status",                         null: false
-    t.integer  "price",                          null: false
-    t.string   "condition",                      null: false
-    t.string   "product_size",                   null: false
-    t.string   "shippoing_method",               null: false
-    t.integer  "shipping_burden",                null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "status",          limit: 1,     default: 0, null: false
+    t.integer  "price",                                     null: false
+    t.string   "condition",                                 null: false
+    t.integer  "size_id"
+    t.string   "shipping_method",                           null: false
+    t.string   "shipping_burden",                           null: false
+    t.integer  "buyer_id"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.integer  "category_id"
     t.integer  "brand_id"
+    t.string   "shipping_date"
+    t.string   "shipping_region"
     t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
+  end
+
+  create_table "products_sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "size"
+    t.string   "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -114,6 +133,8 @@ ActiveRecord::Schema.define(version: 20190706120334) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "category_sizes", "categories"
+  add_foreign_key "category_sizes", "products_sizes"
   add_foreign_key "creditcards", "users"
   add_foreign_key "images", "products"
   add_foreign_key "product_comments", "products"

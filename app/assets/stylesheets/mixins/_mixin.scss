@@ -5,3 +5,27 @@
     display: block;
   }
 }
+
+@mixin link_color {
+  a {
+    text-decoration: none;
+    color: #0099E8;
+  }
+}
+
+@mixin item_link {
+  a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+  }
+}
+
+@mixin select_box {
+  height: 48px;
+  width: 280px;
+  padding: 0 16px;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  background-color: white;
+}

@@ -6,6 +6,10 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'load'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'load'
-    %link{ crossorigin: "anonymous", href: "https://use.fontawesome.com/releases/v5.6.1/css/all.css", integrity: "sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP", rel: "stylesheet"}/
+    %link{ crossorigin: "anonymous", href: "https://use.fontawesome.com/releases/v5.6.1/css/all.css", integrity: "sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP", rel: "stylesheet"}/    
+    %link{ rel: "stylesheet", type: "text/css", href: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"}
+    %script{ type: "text/javascript", src: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"}
   %body
     = yield
+    
+  

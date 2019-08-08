@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:new]
 
   def index
   end
 
   def identification
     @user = User.new
+  end
+
+  def new
   end
 
   def edit

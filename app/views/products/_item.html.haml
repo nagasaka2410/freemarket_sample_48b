@@ -1,17 +1,15 @@
-.item-boxes
+= link_to "" ,class: "item-boxes" do
   .item-box
     .item-box__photo
-      = image_tag("paprica.jpg", size: "133.99x36")
+      = image_tag(item.images.first.name)
     .item-box__body
       .item-box__body--text
-        %p 世界一のパプリカ
+        %p
+          = item.name
       .item-box__body--block
         .product-price
-          %p ¥ 500
-        .evaluation
-          .evaluation__icon
-            = fa_icon 'heart'
-          .evaluation__number
+          %p ¥#{item.price}
+        .product-evaluation
+          %i.far.fa-heart.product-evaluation__heart-icon
+          .product-evaluation__count
             %p 5
-    .item-box__tax
-      %p (税込)

@@ -1,19 +1,24 @@
 .detail-box
   %h1.item-name
-    テポドンⅡ
+    = @product.name
   .detail-box__main
     .detail-box__main__image
       .top-image
-        = image_tag 'tepodon.jpg', alt: '', height: '300px', width: '300px', class: 'item-image-active'
-      .thumbnails
-        = image_tag 'tpdn.jpg', alt: '', height: '60px', width: '60px', class: 'item-image'
-        = image_tag 'tpdn2.jpg', alt: '', height: '60px', width: '60px', class: 'item-image'
+        .is-slider
+          - @product.images.each do |img|
+            .is-slider__item
+              = image_tag(img.name.url, height: '300px', width: '300px', class: 'item-image-active')
+        .is-thumbnails
+          - @product.images.each do |img|
+            .is-thumbnails__item
+              = image_tag(img.name.url, height: '60px', width: '60px', class: 'item-image')
     %table.detail-box__main__table
       %tbody
         %tr
           %th 出品者
           %td
-            = link_to "金正恩", "#"
+            = link_to "/" do
+              = @product.user.nickname
             .user-ratings
               .user-ratings__list
                 %i.fas.fa-laugh
@@ -26,35 +31,52 @@
                 %span 999
         %tr
           %th カテゴリー
-          %td 準中距離弾道ミサイル
+          %td
+            = link_to "/" do
+              - if @product.category.present?
+                = @product.category.root.name
+                %br > #{@product.category.parent.name}
+                > #{@product.category.name}
+            
         %tr
           %th ブランド
           %td
-            = link_to "北朝鮮", "#"
+            = link_to "/" do
+              - if @product.brand.present?
+                = @product.brand.name
         %tr
           %th 商品のサイズ
-          %td 32m
+          %td
+            - if @product.products_size.present?
+              = @product.products_size.size
         %tr
           %th 商品の状態
-          %td 新品、未使用
+          %td
+            = @product.condition
         %tr
           %th 配送料の負担
-          %td 送料込み(出品者負担)
+          %td 
+            = @product.shipping_burden
         %tr
           %th 配送の方法
-          %td らくらくメルカリ便
+          %td 
+            = @product.shipping_method
         %tr
           %th 配送元地域
           %td 
-            = link_to "北朝鮮", "#"
+            = link_to "/" do
+              = @product.shipping_region
+          
         %tr
           %th 発送日の目安
-          %td 10分で発送
+          %td 
+            = @product.shipping_date
 
 
 
   .detail-box__price
-    %span.item-price ¥ 17,750
+    %span.item-price
+      = converting_to_jpy(@product.price)
     %span.item-tax (税込)
     %span.shipping-fee 送料込み
 
@@ -62,8 +84,7 @@
   
   .detail-box__item-description
     %p.item-description
-      テポドン2号は朝鮮民主主義人民共和国（北朝鮮）が開発した大陸間弾道ミサイル (ICBM) のプロトタイプ。「テポドン」とは、このミサイルの原型であるテポドン1号が確認された地名の大浦洞からアメリカがつけたコードネームである。
-      2012年にアメリカ合衆国国防総省が、テポドン2号はミサイルとして配備されていないと分析しており、実戦配備を目指した弾道ミサイルのプロトタイプというよりは後述の「銀河」系列のローンチ・ヴィークルのプロトタイプの性格を持つものとして分析されている。
+      = @product.description
   .detail-box__item-button
     .detail-box__item-button__left
       %button{type:'button', class: 'button-like'}
@@ -129,14 +150,16 @@
             コメントする
 
 %ul.item-link-prev-next
-  %li.item-link-prev
-    = link_to "#" do
-      = fa_icon "chevron-left"
-      万景峰号
-  %li.item-link-next
-    = link_to "#" do
-      大陸間弾道ミサイル
-      = fa_icon "chevron-right"
+  - if @product.previous
+    %li.item-link-prev
+      = link_to "#{@previous_product.id}" do
+        = fa_icon "chevron-left"
+        #{@previous_product.name}
+  - if @product.next
+    %li.item-link-next
+      = link_to "#{@next_product.id}" do
+        #{@next_product.name}
+        = fa_icon "chevron-right"
 .detail-box__social-link
   .text-center
   %ul.social-box
@@ -156,11 +179,46 @@
   %section
     %h2.related-products__items-head
       = link_to "#" do
-        金正恩さんのその他の出品
+        #{@product.user.nickname}さんのその他の出品
     .related-products__items-box
-      =render 'item'
-      =render 'item'
-      =render 'item'
-
-
+      - @user_products.each do |product|
+        = link_to product_path(product) ,class: "item-boxes" do
+          .item-box
+            .item-box__photo
+              = image_tag(product.images.first.name)
+            .item-box__body
+              .item-box__body--text
+                %p
+                  = product.name
+              .item-box__body--block
+                .product-price
+                  %p
+                    = converting_to_jpy(product.price)
+                .product-evaluation
+                  %i.far.fa-heart.product-evaluation__heart-icon
+                  .product-evaluation__count
+                    %p 5
+.related-products
+  %section
+    %h2.related-products__items-head
+      = link_to "#" do
+        #{@product.brand.name}その他の出品
+    .related-products__items-box
+      - @brand_products.each do |product|
+        = link_to product_path(product) ,class: "item-boxes" do
+          .item-box
+            .item-box__photo
+              = image_tag(product.images.first.name)
+            .item-box__body
+              .item-box__body--text
+                %p
+                  = product.name
+              .item-box__body--block
+                .product-price
+                  %p
+                    = converting_to_jpy(product.price)
+                .product-evaluation
+                  %i.far.fa-heart.product-evaluation__heart-icon
+                  .product-evaluation__count
+                    %p 5
 

@@ -81,7 +81,7 @@
 |brand|references|null:false,foreign_key: true|
 |product_size|string|--------|
 |shipping_method|string|null:false|
-|shipping_burden|integer|null:false|
+|shipping_burden|string|null:false|
 |prefecture|references|null:false,foreign_key: true|
 |user|references|null:false|
 

@@ -15,6 +15,7 @@ $(function (){
     function(){
       $('.parent-wrap').css('display', 'block');
       $(this).css('background-color', '#EA352D');
+      $(this).children('a').css('color', 'white');
       $(this).find('.child-wrap').css('display', 'block');
 
       var $child = $(this).find('.child-wrap__list')
@@ -41,6 +42,7 @@ $(function (){
     },
     function(){
       $(this).css('background-color', 'white');
+      $(this).find('a').css('color', '#333');
       $('.parent-wrap').css('display', 'none');
       $(this).find('.child-wrap').css('display', 'none');
     }
@@ -62,15 +64,17 @@ $(function (){
     function(){
       $('.b-parent-wrap').css('display', 'block');
       $(this).css('background-color', '#EA352D');
+      $(this).children('a').css('color', 'white');
     },
     function(){
       $(this).css('background-color', 'white');
       $('.b-parent-wrap').css('display', 'none');
+      $(this).find('a').css('color', '#333');
     }
   )
 
   // アイテム上でマウスオーバーした際の対応
-  $('.items-container__title').find('a').hover(
+  $('.items-container__title h3, .view-all').find('a').hover(
     function(){
       $(this).css('border-bottom', 'solid 1px #0099E8');
       $(this).css('opacity', '0.7');
@@ -92,3 +96,29 @@ $(function (){
     }
   )
 })
+
+// 商品詳細ページ商品画像スライダー
+$(function() {
+  var $slider = $('.is-slider');
+  if ($slider.length < 1) { return; }
+
+  var $thumbs = $('.is-thumbnails__item');
+
+  $slider.slick({
+    arrows: false,
+  });
+
+  $('.is-thumbnails__item:first').addClass('current');
+
+  $thumbs.on('mouseover', function(e){
+    e.preventDefault();
+    var index = $thumbs.index(this);
+    $slider.slick('slickGoTo', index, true);
+  });
+
+  $slider.on('beforeChange', function(event, slick, currentSlide, nextSlide){
+    var currentClass = 'current';
+    $thumbs.removeClass(currentClass)
+      .eq(nextSlide).addClass(currentClass);
+  });
+});
