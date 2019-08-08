@@ -182,7 +182,7 @@
         #{@product.user.nickname}さんのその他の出品
     .related-products__items-box
       - @user_products.each do |product|
-        = link_to "/products/#{product.id}" ,class: "item-boxes" do
+        = link_to product_path(product) ,class: "item-boxes" do
           .item-box
             .item-box__photo
               = image_tag(product.images.first.name)
@@ -205,7 +205,7 @@
         #{@product.brand.name}その他の出品
     .related-products__items-box
       - @brand_products.each do |product|
-        = link_to "/products/#{product.id}" ,class: "item-boxes" do
+        = link_to product_path(product) ,class: "item-boxes" do
           .item-box
             .item-box__photo
               = image_tag(product.images.first.name)
