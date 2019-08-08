@@ -74,7 +74,7 @@
                           .form-group-text
                           発送元の地域
                           %span.require 必須
-                          = f.collection_select :shipping_region, Prefecture.all, :id, :name, {include_blank: "---"}, { class: 'sell__form__itemdescription__right__descriptionselect', id:'select_item_shipping_date'}
+                          = f.collection_select :shipping_region, Prefecture.all, :name, :name, {include_blank: "---"}, { class: 'sell__form__itemdescription__right__descriptionselect', id:'select_item_shipping_date'}
                         .form-group
                           .form-group-text
                           発送までの日数

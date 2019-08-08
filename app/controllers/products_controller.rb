@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!,only: [:new]
+
   def index
     @lady_items = Product.includes(:images).where(category_id: Category.find(1).subtree_ids, status: 0).order(created_at: "DESC").limit(4)
     @man_items = Product.includes(:images).where(category_id: Category.find(2).subtree_ids, status: 0).order(created_at: "DESC").limit(4)
@@ -14,6 +16,16 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     2.times{@product.images.build}
+  end
+
+  def show
+    @product = Product.find(params[:id])
+    category_id = @product.category_id
+    @products = Category.find(category_id).products
+    @brand_products = Product.where(brand_id: @product.brand_id).where.not(id: @product.id).order("id DESC").limit(6)
+    @user_products = Product.where(user_id: @product.user.id).where.not(id: @product.id).order("id DESC").limit(6)
+    @previous_product = @product.previous
+    @next_product = @product.next
   end
 
     # 親カテゴリーが選択された後に動くアクション

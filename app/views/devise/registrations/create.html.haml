@@ -11,6 +11,7 @@
             ありがとうございます。
             %br.text-center
               会員登録が完了しました。
-          %input{type: "button",class: "btn-start", value: "メルカリをはじめる"}
+          = link_to '/',class: "btn-start text-start" do
+            メルカリをはじめる
 
   = render "footer"
