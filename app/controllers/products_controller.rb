@@ -74,29 +74,38 @@ class ProductsController < ApplicationController
     @products = Product.where('name LIKE(?)',"%#{params[:keyword]}%").page(params[:page]).per(114)
   end
 
+  
+  def bought
+    @product = Product.find(params[:id])
+    if @product.status == "sell" and @product.buyer_id.nil? == true
+      @product.update(status: "sold")
+      @product.update(buyer_id: current_user.id)
+    else
+      redirect_to root_path
+    end
+  end
+
+  def my_show
+    @product = Product.find(params[:id])
+    category_id = @product.category_id
+    @products = Category.find(category_id).products
+    @brand_products = Product.where(brand_id: @product.brand_id).where.not(id: @product.id).order("id DESC").limit(6)
+    @user_products = Product.where(user_id: @product.user.id).where.not(id: @product.id).order("id DESC").limit(6)
+    @previous_product = @product.previous
+    @next_product = @product.next
+  end
 
   def destroy
-    product = Product.find(params[:product_id])
+    product = Product.find(params[:id])
     if product.user_id == current_user.id
-      product.destroy
-      redirect_to root_path
-      flash.now[:alert] = '商品を削除しました'
+        product.destroy
+        redirect_to root_path
+        flash.now[:alert] = '商品を削除しました'
     else
       render :index
       flash[:alert] = '商品削除に失敗しました'
     end
   end
-
-  
- def bought
-  @product = Product.find(params[:id])
-  if @product.status == "sell" and @product.buyer_id.nil? == true
-    @product.update(status: "sold")
-    @product.update(buyer_id: current_user.id)
-  else
-    redirect_to root_path
-  end
-end
 
   private
 

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     member do
       get :purchase
       patch :bought
+      get :my_show
     end
   end
 
