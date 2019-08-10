@@ -22,9 +22,7 @@
                 .purchase-price-cell
                   %span
                   = "¥ #{@product.price}"
-            -# = button_tag '購入する', class: 'purchase-btn'
             = link_to '購入する', bought_product_path, method: :PATCH, class: 'purchase-btn'
-            -# = link_to buy_show_products_cards_path,method: :POST, class: 'purchase-btn',id: "buy__modal--btn" do
       .purchase-content.purchase-user-info
         .purchase-content-inner
           %h3 配送先

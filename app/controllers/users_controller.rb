@@ -19,7 +19,9 @@ class UsersController < ApplicationController
 
   end
 
-  def complete
+
+  def user_products
+    @products = Product.where(user_id: current_user.id)
   end
 
 end

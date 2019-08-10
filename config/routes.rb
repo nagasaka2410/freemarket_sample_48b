@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get :identification
       get :user_logout
       get :user_signup
-      get :complete
+      get :user_products
     end
   end
 
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     member do
       get :purchase
       patch :bought
+      get :my_show
     end
   end
 

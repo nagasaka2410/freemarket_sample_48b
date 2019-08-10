@@ -1,0 +1,20 @@
+- breadcrumb :mypage
+= render "shared/top-header"
+= render 'shared/breadcrumbs'
+
+.mypage
+  %main.mypage__body.clearfix
+    .mypage__body__main
+      %section.mypage-tab-saling
+        %h2.mypage-tab-head 出品した商品
+      %section.mypage-todo
+        %ul.mypage-tabs.up
+          %li.notification.is-active
+            %h3 出品中
+          %li.todo
+            %h3 取引中
+        = render partial: "users_product", collection: @products
+    = render 'shared/mypage-sidemenu'
+
+= render "shared/banner"
+= render "shared/top-footer"
