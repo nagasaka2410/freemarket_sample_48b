@@ -30,8 +30,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products
-
   resources :creditcards, only: [:index, :new, :show, :destroy, :create]
 
   resources :categories, only: :index

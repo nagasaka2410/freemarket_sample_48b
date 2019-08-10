@@ -12,14 +12,11 @@ class CreditcardsController < ApplicationController
 
   def show
     @creditcard = Creditcard.find(params[:id])
-    if @creditcard.blank?
-      redirect_to action: "new" 
-    end
+    redirect_to action: "new" if @creditcard.blank?
   end
 
   def create
     @creditcard = Creditcard.new(new_params)
-    user_id = current_user.id
     if @creditcard.save
       redirect_to creditcards_path
     else
