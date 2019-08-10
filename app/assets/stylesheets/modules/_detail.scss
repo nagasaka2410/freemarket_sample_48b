@@ -452,3 +452,11 @@ figcaption.bold {
   width: 60px;
   float: left;
 }
+
+.item-image {
+  object-fit: contain;
+}
+
+.item-image-active {
+  object-fit: contain;
+}
