@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!,only: [:new]
+  before_action :set_product, only: [:show, :purchase, :bought, :my_show, :update, :destroy]
 
   def index
     @lady_items = Product.includes(:images).where(category_id: Category.find(1).subtree_ids, status: 0).order(created_at: "DESC").limit(4)
@@ -20,7 +21,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
     category_id = @product.category_id
     @products = Category.find(category_id).products
     @brand_products = Product.where(brand_id: @product.brand_id).where.not(id: @product.id).order("id DESC").limit(6)
@@ -67,7 +67,6 @@ class ProductsController < ApplicationController
 
 
   def purchase
-    @product = Product.find(params[:id])
   end
 
 
@@ -77,17 +76,14 @@ class ProductsController < ApplicationController
 
   
   def bought
-    @product = Product.find(params[:id])
     if @product.status == "sell" and @product.buyer_id.nil? == true
-      @product.update(status: "sold")
-      @product.update(buyer_id: current_user.id)
+      @product.update(status: "sold", buyer_id: current_user.id)
     else
       redirect_to root_path
     end
   end
 
   def my_show
-    @product = Product.find(params[:id])
     category_id = @product.category_id
     @products = Category.find(category_id).products
     @brand_products = Product.where(brand_id: @product.brand_id).where.not(id: @product.id).order("id DESC").limit(6)
@@ -97,7 +93,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
     if @product.user_id == current_user.id
         @product.destroy
         redirect_to root_path
@@ -112,6 +107,10 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:buyer_id, :brand_id, :category_id, :shipping_date, :name, :description, :status, :price, :condition, :size_id, :shipping_method, :shipping_burden, :shipping_region, images_attributes: [:name]).merge(user_id: current_user.id)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 
 end

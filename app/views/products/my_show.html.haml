@@ -21,7 +21,7 @@
               %tr
                 %th 出品者
                 %td
-                  = link_to "/" do
+                  = link_to root_path do
                     = @product.user.nickname
                   .user-ratings
                     .user-ratings__list
@@ -36,7 +36,7 @@
               %tr
                 %th カテゴリー
                 %td
-                  = link_to "/" do
+                  = link_to root_path do
                     - if @product.category.present?
                       = @product.category.root.name
                       %br > #{@product.category.parent.name}
@@ -45,7 +45,7 @@
               %tr
                 %th ブランド
                 %td
-                  = link_to "/" do
+                  = link_to root_path do
                     - if @product.brand.present?
                       = @product.brand.name
               %tr
@@ -68,7 +68,7 @@
               %tr
                 %th 配送元地域
                 %td 
-                  = link_to "/" do
+                  = link_to root_path do
                     = @product.shipping_region
                 
               %tr
@@ -109,7 +109,7 @@
                       %i.far.fa-clock
                       %span XX日前
                   .message-body__icon__right
-                    = link_to "" do
+                    = link_to root_path do
                       %i.far.fa-flag
               %li.messeage-coments
                 .message-user
@@ -128,7 +128,7 @@
                       %i.far.fa-clock
                       %span XX日前
                   .message-body__icon__right
-                    = link_to "" do
+                    = link_to root_path do
                       %i.far.fa-flag
           .item-comments__container__message
             .form-test

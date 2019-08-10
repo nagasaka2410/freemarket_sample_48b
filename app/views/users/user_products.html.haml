@@ -15,7 +15,7 @@
             %h3 取引中
         %ul.tab-content
           %ul.notification-list.tab
-            - @product.each do |product|
+            - @products.each do |product|
               %li
                 = link_to my_show_product_path(product), class: "notification-list__link" do
                   %figure
