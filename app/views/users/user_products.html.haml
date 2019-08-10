@@ -13,25 +13,7 @@
             %h3 出品中
           %li.todo
             %h3 取引中
-        %ul.tab-content
-          %ul.notification-list.tab
-            - @products.each do |product|
-              %li
-                = link_to my_show_product_path(product), class: "notification-list__link" do
-                  %figure
-                    = image_tag(product.images.first.name)
-                  .notification-list__body
-                    .notification-list__body__text
-                      = product.name
-                    .listing-item-count
-                      %i.far.fa-heart
-                      %span 0
-                    .listing-item-count
-                      %i.far.fa-comment-alt
-                      %span 0
-                    .mypage-item-status
-                      出品中
-                    = fa_icon "angle-right"
+        = render partial: "users_product", collection: @products
     = render 'shared/mypage-sidemenu'
 
 = render "shared/banner"
