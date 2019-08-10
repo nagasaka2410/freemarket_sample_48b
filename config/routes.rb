@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get :identification
       get :user_logout
       get :user_signup
+      get :user_products
     end
   end
 

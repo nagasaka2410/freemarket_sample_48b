@@ -1,0 +1,99 @@
+.mypage{
+  margin: 0;
+  padding: 0;
+  border-style: solid;
+  border-width: 0;
+  background-color: #f5f5f5;
+  font-size: 14px;
+  line-height: 1;
+  cursor: auto;
+  box-sizing: border-box;
+  color: #000;
+  min-height: 100%;
+  &__body{
+    margin: 0 auto 0;
+    width: 1020px;
+    padding: 40px 0 40px;
+    &__main{
+      float: right;
+      width: 700px;
+    .mypage-tab-saling {
+      margin: 0;
+      background: #fff;
+      .mypage-tab-head{
+        padding: 0 16px;
+        background: #fafafa;
+        font-size: 16px;
+        line-height: 72px;
+      }
+      .mypage-tabs{
+        border: 0;
+        background: #eee;
+        font-size: 0;
+        li{
+          width: 50%;
+          display: inline-block;
+          text-align: center;
+          vertical-align: top;
+          h3{
+            font-size: 22px;
+            font-weight: bold;
+              position: relative;
+              display: block;
+              color: #333;
+              font-size: 16px;
+              line-height: 72px;
+              text-decoration: none;
+          }
+        }
+        .is-action{
+          border-top: 2px solid #ea352d;
+          background-color: #fff;
+        }
+      }
+      .tab-content{
+        .trading-list{
+          display: block;
+          list-style: none;
+          .trading-item-not-found{
+            padding: 160px 0 60px;
+            background: url(logo-gray-icon.svg);
+            background-repeat: no-repeat;
+            background-position: center 40px;
+            background-size: 78px 85px;
+            text-align: center;
+            font-size: 16px;
+            color: #ccc;
+            img{
+              background-image: url(logo-gray-icon.svg);
+            }
+          }
+          .bold{
+            font-weight: 600;
+          }
+        }
+      }
+    }
+    .traded-list{
+      display: block;
+      list-style: none;
+      .traded-item-not-found{
+        padding: 160px 0 60px;
+        background: url(logo-gray-icon.svg);
+        background-repeat: no-repeat;
+        background-position: center 40px;
+        background-size: 78px 85px;
+        text-align: center;
+        font-size: 16px;
+        color: #ccc;
+        img{
+          background-image: url(logo-gray-icon.svg);
+        }
+      .bold{
+        font-weight: 600;
+      }
+      }
+    }
+  }
+}
+}
