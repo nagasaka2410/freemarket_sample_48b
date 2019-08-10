@@ -138,19 +138,5 @@
               %button{type: "submit", class: "btn-test"}
                 %span
                   コメントする
-
-      %ul.item-link-prev-next
-        - if @product.previous
-          %li.item-link-prev
-            = link_to "#{@previous_product.id}" do
-              = fa_icon "chevron-left"
-              #{@previous_product.name}
-        - if @product.next
-          %li.item-link-next
-            = link_to "#{@next_product.id}" do
-              #{@next_product.name}
-              = fa_icon "chevron-right"
-
-              %i.fab.fa-pinterest
   =render 'shared/banner'
   =render 'shared/top-footer'
