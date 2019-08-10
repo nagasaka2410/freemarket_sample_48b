@@ -46,6 +46,9 @@ body {
       
     }
   }
+  &__card {
+    padding: 64px;
+  }
 }
 
 
@@ -267,6 +270,11 @@ h3 {
   line-height: 48px;
   font-size: 14px;
 
+}
+
+.btn-complete {
+  text-decoration: none;
+  text-align: center;
 }
 
 .text-center {

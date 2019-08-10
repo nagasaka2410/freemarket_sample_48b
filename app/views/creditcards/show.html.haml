@@ -1,0 +1,37 @@
+= render 'shared/top-header'
+.mypage
+  %main.mypage__body.clearfix
+    .mypage__body__main
+      %h2.card-head
+        支払い方法
+      .registration-container
+        .registration-container__card
+          %section
+            .card-content
+              %h3
+                クレジットカード一覧
+          %section.add-card
+            .add-card__content
+              %ul.user-card-list
+                %li
+                  = image_tag("visa.svg",size: "49x20")
+              .add-card__content__number
+                %a
+                  - regexp = /\d(?=(\D*\d){4})/
+                  = @creditcard.card_number.gsub(regexp, '*')
+              .add-card__content__number
+                - exp_month = @creditcard.valid_month.to_s
+                - exp_year = @creditcard.valid_year.to_s.slice(2,3)
+                %a
+                  = exp_month + " / " + exp_year
+              = link_to creditcard_path,method: :delete,class:"btn-cd-delete" do
+                削除する
+          .about-payment
+            = link_to "#" ,class: "about-payment-link" do
+              支払い方法について
+              %i.fas.fa-angle-right
+
+    = render 'shared/mypage-sidemenu'
+= render 'shared/banner'
+= render 'shared/top-footer'
+=render 'shared/sell-btn'

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get :identification
       get :user_logout
       get :user_signup
+      get :complete
     end
   end
 
@@ -28,6 +29,8 @@ Rails.application.routes.draw do
       patch :bought
     end
   end
+
+  resources :creditcards, only: [:index, :new, :show, :destroy, :create]
 
   resources :categories, only: :index
 end
