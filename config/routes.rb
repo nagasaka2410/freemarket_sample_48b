@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get :user_logout
       get :user_signup
       get :user_products
+      get :complete
     end
   end
 
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
       get :my_show
     end
   end
+
+  resources :creditcards, only: [:index, :new, :show, :destroy, :create]
 
   resources :categories, only: :index
 end
