@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   resources :products
 
-  resources :creditcards
+  resources :creditcards, only: [:index, :new, :show, :destroy, :create]
 
   resources :categories, only: :index
 end

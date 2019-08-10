@@ -2,11 +2,10 @@
 .mypage
   %main.mypage__body.clearfix
     .mypage__body__main
-      .registration-container
-        %h2.card-head
-          クレジットカード情報入力
-          
-        = form_for(@creditcard, url: {action: :create }) do |f|
+      %h2.card-head
+        クレジットカード情報入力
+      .registration-container__new
+        = form_for(@creditcard) do |f|
           .registration__payment
             .field
               = f.label :card_number, "カード番号"

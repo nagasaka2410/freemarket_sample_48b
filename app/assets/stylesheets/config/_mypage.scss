@@ -17,6 +17,17 @@
     &__main{
       float: right;
       width: 700px;
+      .card-head {
+        background-color: #fff;
+      }
+      .registration-container__new {
+        background-color: #fff;
+        padding: 24px 16px 40px;
+      }
+      .registration-container {
+        background-color: #fff;
+        padding: 64px;
+      }
     
       .mypage-user-icon{
         position: relative;

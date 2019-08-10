@@ -1,7 +1,9 @@
 class CreditcardsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
+    card = current_user.creditcard
+    redirect_to creditcard_path(card) unless card.blank?
   end
 
   def new
@@ -10,16 +12,28 @@ class CreditcardsController < ApplicationController
 
   def show
     @creditcard = Creditcard.find(params[:id])
-    @user = User.find(params[:id])
+    if @creditcard.blank?
+      redirect_to action: "new" 
+    end
   end
 
   def create
     @creditcard = Creditcard.new(new_params)
     user_id = current_user.id
     if @creditcard.save
-      redirect_to root_path
+      redirect_to creditcards_path
     else
       render :new
+    end
+  end
+
+  def destroy
+    @creditcard = Creditcard.find(params[:id])
+    if @creditcard.blank?
+      redirect_to action: "new"
+    else
+      @creditcard.delete if @creditcard.user_id == current_user.id
+      redirect_to creditcards_path
     end
   end
 
