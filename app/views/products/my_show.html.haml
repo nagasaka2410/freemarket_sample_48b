@@ -83,7 +83,7 @@
           %span.shipping-fee 送料込み
       
       .item-change-box
-        = button_tag '商品の編集', class: 'btn-edit'
+        = link_to '商品の編集', edit_product_path, class: 'btn-edit'
         %p.text-center or
         = button_tag '商品を一旦停止する', class: 'btn-stop'
         = link_to 'この商品を削除する', product_path, method: :delete, class: 'btn-delete'

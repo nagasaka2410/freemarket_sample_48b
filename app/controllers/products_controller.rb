@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!,only: [:new]
-  before_action :set_product, only: [:show, :purchase, :bought, :my_show, :update, :destroy]
+  before_action :set_product, only: [:show, :purchase, :bought, :my_show, :edit, :update, :destroy]
 
   def index
     @lady_items = Product.includes(:images).where(category_id: Category.find(1).subtree_ids, status: 0).order(created_at: "DESC").limit(4)
@@ -65,6 +65,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to product_path(@product)
+    else
+      render :edit
+    end
+  end
 
   def purchase
   end

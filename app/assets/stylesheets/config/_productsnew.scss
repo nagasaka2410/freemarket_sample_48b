@@ -28,6 +28,38 @@
             &--upload-box{
               width: 620px;
               padding: 40px;
+              &__upload {
+                margin: 16px auto 0;
+                display: block;
+                width: 620px;
+                &__item {
+                  // float: left;
+                  display: block;
+                  width: 114px;
+                  height: 162px;
+                  margin: 0 0 10px 10px;
+                  background: #f5f5f5;
+                  border: 1px solid #eee;
+                  .upload-image {
+                    object-fit: contain;
+                  }
+                  .button {
+                    font-size: 14px;
+                    a {
+                      display: inline-block;
+                      width: 50%;
+                      background: #f5f5f5;
+                      line-height: 44px;
+                      text-align: center;
+                      color: #0099e8;
+                      text-decoration: none;
+                    }
+                    a:last-child {
+                      // border-left: 1px solid #eee;
+                    }
+                  }
+                }
+              }
               .sell-upload-head{
                 font-size: 16px;
                 float: left;
@@ -45,6 +77,7 @@
               .sell-dropbox-container{
                 display: block;
                 width: 620px;
+                height: 162px;
                 margin: 16px auto 0;
                 .item__img__dropzone__input{
                   width: 100%;

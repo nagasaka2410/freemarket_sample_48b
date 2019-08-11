@@ -1,0 +1,11 @@
+-# .sell-form--upload-box__upload
+-#   %ul
+-#     - if @product.images.present?
+-#       - @product.images.each do |img|
+-#         %li.sell-form--upload-box__upload__item
+-#           = image_tag(img.name.url, height: '116px', width: '114px', class: 'upload-image')
+-#           .button
+-#             = link_to "/" do
+-#               編集
+-#             = link_to "/" do
+-#               削除
