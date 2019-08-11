@@ -135,7 +135,7 @@ $(function(){
     var sizeSelectHtml = '';
     sizeSelectHtml = `<div class="listing-product-detail__size" id= 'size_wrapper'>
                         <label class="listing-default__label" for="サイズ">サイズ</label>
-                        <span class='listing-default--require'>必須</span>
+                        <span class='require'>必須</span>
                         <div class='listing-select-wrapper__added--size'>
                           <div class='listing-select-wrapper__box'>
                             <select class="listing-select-wrapper__box--select" id="size" name="product[size_id]">

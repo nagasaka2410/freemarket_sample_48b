@@ -172,9 +172,8 @@
                   font-weight: 600;
                 }
               }
-              .select-wrap{
-                margin: 8px 0 0;
-                #select-default{
+              .listing-select-wrapper__box{
+                &--select{
                   width: 100%;
                   position: relative;
                   z-index: 2;
@@ -186,7 +185,12 @@
                   font-size: 16px;
                   line-height: 1.5;
                   cursor: pointer;
+                  font-weight: normal;
+                  margin: 8px 0 0;
                 }
+              }
+              .listing-select-wrapper__box4{
+                margin: 40px 0px;
               }
               li{
                 clear: both;
