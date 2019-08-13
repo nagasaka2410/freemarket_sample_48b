@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
           @sizes = related_size_parent.children #紐づいたサイズ（親）の子供の配列を取得
        end
     end
- end
+  end
   
   def create
     @product = Product.new(product_params)
@@ -68,15 +68,15 @@ class ProductsController < ApplicationController
     @products = Product.where('name LIKE(?)',"%#{params[:keyword]}%").page(params[:page]).per(114)
   end
   
- def bought
-  @product = Product.find(params[:id])
-  if @product.status == "sell" and @product.buyer_id.nil? == true
-    @product.update(status: "sold")
-    @product.update(buyer_id: current_user.id)
-  else
-    redirect_to root_path
+  def bought
+    @product = Product.find(params[:id])
+    if @product.status == "sell" and @product.buyer_id.nil? == true
+      @product.update(status: "sold")
+      @product.update(buyer_id: current_user.id)
+    else
+      redirect_to root_path
+    end
   end
-end
 
   private
 
