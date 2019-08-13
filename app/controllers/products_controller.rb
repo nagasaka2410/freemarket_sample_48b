@@ -78,8 +78,7 @@ class ProductsController < ApplicationController
   def bought
     @product = Product.find(params[:id])
     if @product.status == "sell" and @product.buyer_id.nil? == true
-      @product.update(status: "sold")
-      @product.update(buyer_id: current_user.id)
+      @product.update(status: "sold", buyer_id: current_user.id)
     else
       redirect_to root_path
     end

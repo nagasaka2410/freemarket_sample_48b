@@ -13,9 +13,6 @@ Rails.application.routes.draw do
       get :user_signup
       get :user_products
     end
-    
-    # resource :user_addresses , only: [:edit, :update] do
-    # end
 
     member do
       get :identification
