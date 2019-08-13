@@ -34,4 +34,9 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, user_address_attributes:[:id, :postal_code, :prefecture,  :city, :block_number, :building])
   end
 
+
+  def user_products
+    @products = Product.where(user_id: current_user.id)
+  end
+
 end

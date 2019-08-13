@@ -17,6 +17,17 @@
     &__main{
       float: right;
       width: 700px;
+      .card-head {
+        background-color: #fff;
+      }
+      .registration-container {
+        background-color: #fff;
+        padding: 64px;
+        &__new {
+          padding: 24px 16px 40px;
+          background-color: #fff;
+        }
+      }
     
       .mypage-user-icon{
         position: relative;
@@ -149,6 +160,30 @@
             -webkit-box-orient: vertical;
             text-overflow: ellipsis;
             line-height: 1.5;
+          }
+          .listing-item-count{
+            vertical-align: 2px;
+            margin: 0 6px 0 0;
+            display: inline-block;  
+            i{
+              vertical-align: middle;
+              color: #ccc;
+            }
+            span{
+              vertical-align: middle;
+              margin: 0 0 0 2px;
+              font-size: 14px;
+              color: #888;
+            }
+          }
+          .mypage-item-status{
+            background: #0099e8;
+            display: inline-block;
+            margin: 8px 0 0 0;
+            padding: 5px 6px;
+            border-radius: 2px;
+            font-size: 12px;
+            color: #fff;
           }
           time{
             display: inline-block;

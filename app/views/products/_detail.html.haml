@@ -80,7 +80,7 @@
     %span.item-tax (税込)
     %span.shipping-fee 送料込み
 
-  = link_to "購入画面へ進む", "#", type: "button", class: "item-buy-button"
+  = link_to "購入画面へ進む", purchase_product_path, type: "button", class: "item-buy-button"
   
   .detail-box__item-description
     %p.item-description
@@ -200,6 +200,7 @@
                     %p 5
 .related-products
   %section
+  - if @product.brand.present?
     %h2.related-products__items-head
       = link_to "#" do
         #{@product.brand.name}その他の出品
@@ -221,4 +222,25 @@
                   %i.far.fa-heart.product-evaluation__heart-icon
                   .product-evaluation__count
                     %p 5
-
+  - else
+    %h2.related-products__items-head
+      = link_to "#" do
+        #{@product.category.name}その他の出品
+    .related-products__items-box
+      - @category_products.each do |product|
+        = link_to product_path(product) ,class: "item-boxes" do
+          .item-box
+            .item-box__photo
+              = image_tag(product.images.first.name)
+            .item-box__body
+              .item-box__body--text
+                %p
+                  = product.name
+              .item-box__body--block
+                .product-price
+                  %p
+                    = converting_to_jpy(product.price)
+                .product-evaluation
+                  %i.far.fa-heart.product-evaluation__heart-icon
+                  .product-evaluation__count
+                    %p 5

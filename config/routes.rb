@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     collection do
       get :user_logout
       get :user_signup
+      get :user_products
     end
     
     # resource :user_addresses , only: [:edit, :update] do
@@ -32,8 +33,11 @@ Rails.application.routes.draw do
     member do
       get :purchase
       patch :bought
+      get :my_show
     end
   end
+
+  resources :creditcards, only: [:index, :new, :show, :destroy, :create]
 
   resources :categories, only: :index
 end
