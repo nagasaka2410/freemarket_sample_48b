@@ -53,7 +53,7 @@ class ProductsController < ApplicationController
           @sizes = related_size_parent.children #紐づいたサイズ（親）の子供の配列を取得
        end
     end
- end
+  end
   
 
   def create
@@ -76,6 +76,12 @@ class ProductsController < ApplicationController
 
   
   def bought
+    @product = Product.find(params[:id])
+    if @product.status == "sell" and @product.buyer_id.nil? == true
+      @product.update(status: "sold", buyer_id: current_user.id)
+    else
+      redirect_to root_path
+    end
     if @product.status == "sell" and @product.buyer_id.nil? == true
       @product.update(status: "sold", buyer_id: current_user.id)
     else

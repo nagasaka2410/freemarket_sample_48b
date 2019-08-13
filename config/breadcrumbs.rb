@@ -23,7 +23,7 @@ crumb :logout do
 end
 
 crumb :identification do
-  link "本人情報の登録", identification_users_path
+  link "本人情報の登録", identification_user_path(current_user)
   parent :mypage
 end
 
