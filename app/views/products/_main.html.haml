@@ -5,34 +5,34 @@
     .items-container
       .items-container__title
         %h3
-          =link_to "レディース 新着アイテム", "/categories/1"
+          =link_to "レディース 新着アイテム", category_path(1)
         = render partial: "item", collection:  @lady_items
     .view-all
-      =link_to "全ての商品を見る", "/categories/1"
+      =link_to "全ての商品を見る", category_path(1)
 
     .items-container
       .items-container__title
         %h3
-          =link_to "メンズ 新着アイテム", "/categories/2"
+          =link_to "メンズ 新着アイテム", category_path(2)
         = render partial: "item", collection:  @man_items
     .view-all
-      =link_to "全ての商品を見る", "/categories/2"
+      =link_to "全ての商品を見る", category_path(2)
 
     .items-container
       .items-container__title
         %h3
-          =link_to "ベビーキッズ 新着アイテム", "/categories/3"
+          =link_to "ベビーキッズ 新着アイテム", category_path(3)
         = render partial: "item", collection:  @kids_items
     .view-all
-      =link_to "全ての商品を見る", "/categories/3"
+      =link_to "全ての商品を見る", category_path(3)
 
     .items-container
       .items-container__title
         %h3
-          =link_to "コスメ・香水・美容 新着アイテム", "/categories/7"
+          =link_to "コスメ・香水・美容 新着アイテム", category_path(7)
         = render partial: "item", collection:  @beauty_items
     .view-all
-      =link_to "全ての商品を見る", "/categories/7"
+      =link_to "全ての商品を見る", category_path(7)
 
   .pickup-brand
     %h2.pickup-brand__title ピックアップブランド
