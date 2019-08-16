@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!,only: [:new]
-  before_action :set_product, only: [:show, :purchase, :bought, :my_show, :update, :destroy]
+  before_action :set_product, only: [:show, :purchase, :bought, :my_show, :update, :unpublished, :destroy]
 
   def index
     @lady_items = Product.includes(:images).where(category_id: Category.find(1).subtree_ids, status: 0).order(created_at: "DESC").limit(4)
@@ -84,6 +84,14 @@ class ProductsController < ApplicationController
     end
     if @product.status == "sell" and @product.buyer_id.nil? == true
       @product.update(status: "sold", buyer_id: current_user.id)
+    else
+      redirect_to root_path
+    end
+  end
+
+  def unpublished
+    if @product.status == "sell" and @product.buyer_id.nil? == true
+      @product.update(status: "unpublished")
     else
       redirect_to root_path
     end
