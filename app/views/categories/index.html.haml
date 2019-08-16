@@ -8,28 +8,28 @@
 
       .category-children__box
         - @parents.each do |parent|
-          = link_to("#",class: "category-children__box-list") do
+          = link_to "#parent#{parent.id}", class: "category-children__box-list", id: "parent" do
             =parent.name
 
     .category-list-box
       - @parents.each do |parent|
         .category-parent
-          %h2.category-parent__title 
+          %h2.category-parent__title{id: "parent#{parent.id}"}
             =parent.name
 
           .category-child
             .category-child__all
-              = link_to("すべて","#", class: "category-child__all-text")
+              = link_to("すべて",category_path(parent.id), class: "category-child__all-text")
             - parent.children.each do |child|
               .category-child__title
                 = child.name
 
               .category-grandchild
                 .category-grandchild__title
-                  = link_to("すべて","#", class: "category-grandchild__title-text")
+                  = link_to("すべて",category_path(child.id), class: "category-grandchild__title-text")
                 - child.children.each do |grandchild|
                   .category-grandchild__title
-                    =link_to("#",class: "category-grandchild__title-text") do
+                    =link_to(category_path(grandchild.id),class: "category-grandchild__title-text") do
                       = grandchild.name
 
 =render 'shared/banner'
