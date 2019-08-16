@@ -13,13 +13,27 @@
                     .sell-form--upload-box
                       %h3.sell-upload-head 出品画像
                       %span.require 必須
-                      .p 最大10枚までアップロードできます
-                      = f.fields_for :images do |image|
-                        .sell-dropbox-container.clearfix
-                          .item__img__dropzone__input
-                            .input-area
-                              = image.file_field :name, id: "upload-image", class: "upload-image",style:' width:620px; height:160px;'
-                            %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
+                      %p 最大10枚までアップロードできます
+                      .sell-form--upload-box__upload
+                        %ul
+                          - @product.images.each do |img|
+                            = f.fields_for :images, img do |image|
+                              - if @product.images.present?
+                                %li.sell-form--upload-box__upload__item
+                                  = image_tag(img.name.url, height: '116px', width: '114px', class: 'upload-image', id:"img1")
+                                  -# %img{id:"img1", height: '116px', width: '114px'}
+                                  .button
+                                    .edit
+                                      %p.edit-image-btn
+                                        編集
+                                      = image.file_field :name, id: "edit-image", class: "edit-image"
+                                    %a{ class: "delete-btn", "data-imgid": "#{img.id}" }削除
+                          
+                              .sell-dropbox-container--edit.clearfix
+                                .item__img__dropzone__input
+                                  .input-area
+                                    -# = image.file_field :name, id: "upload-image", class: "upload-image",style:' width:620px; height:160px;'
+                                    %a ドラッグアンドドロップまたはクリックしてファイルをアップロード
                     .sell-content
                       .form-group
                         .form-group-text
@@ -43,19 +57,43 @@
                           .listing-select-wrapper
                             .listing-select-wrapper__box
                               = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {include_blank: "---"}, { class: "listing-select-wrapper__box--select", id: "parent_category"}
+                            -#   %select{id: :parent_id,data: {root: @category.root.id}}
+                            -#     %option{value: 0} ---
+                            -#     - Category.where('ancestry IS NULL').each do |cat|
+                            -#       %option{value: "#{cat.id}",class: "root"} #{cat.name}
+                            -#   %i.fas.fa-chevron-down
+                            -# .listing-select-wrapper__box
+                            -#   %select{id: :child_id,data: {child: @category.parent.id}}
+                            -#     %option{value: ""} ---
+                            -#     - @child_categories.each do |cat|
+                            -#       %option{value: "#{cat.id}"} #{cat.name}
+                            -#   %i.fas.fa-chevron-down
+                            -#   = f.collection_select(:category_id, @grand_child, :id, :name, {prompt: "---"}, {id: "grand_child"})
+                              -# = f.collection_select :category_id, Category.where(params[:category_id]), :id, :name, {placeholder: "#{@product.category.root.name}"}, { class: "listing-select-wrapper__box--select", id: "parent_category"}
+                              -# = @product.category.root.name
+                              -# %br > #{@product.category.parent.name}
+                              -# > #{@product.category.name}
                             .listing-select-wrapper__box2
                             .listing-select-wrapper__box3
+                          - if @product.size_id.present?
                             .listing-select-wrapper__box4
+                              %size_wrapper.listing-product-detail__size
+                                %label(for="listing-default__label")
+                                  サイズ
+                                %span
+                                .listing-select-wrapper__added--size
+                                  .listing-select-wrapper__box
+                                    = f.collection_select :size_id, ProductsSize.where(params[:id]), :id, :size, {include_blank: "---"}, { class: "listing-select-wrapper__box--select", id: "size"}
                         .form-group
                           .form-group-text
                           ブランド
                           %span
-                          = f.select :brand_id,["シャネル","ナイキ"],{include_blank: "---"},{class:'sell__form__itemdescription__right__descriptionselect'}
+                          = f.collection_select :brand_id, Brand.all,:id, :name,{include_blank: "---"},{class:'listing-select-wrapper__box--select'}
                         .form-group
                           .form-group-text
                           商品の状態
                           %span.require 必須
-                          = f.select :condition,["新品、未使用","未使用に近い","やや傷や汚れあり","全体的に状態が悪い"],{include_blank: "---"},{class:'sell__form__itemdescription__right__descriptionselect',id:'select_item_conditon'}
+                          = f.select :condition,["新品、未使用","未使用に近い","やや傷や汚れあり","全体的に状態が悪い"],{include_blank: "---"},{class:'listing-select-wrapper__box--select',id:'select_item_conditon'}
                     .sell-content.clearfix
                       %h3.sell-sub-head 配送について
                       .sell-form-box
@@ -64,23 +102,23 @@
                           配送料の負担
                           %span.require 必須
                           .select-wrap
-                          = f.select :shipping_burden,["送料込み(出品者負担)","着払い(購入者負担)"],{include_blank: "---"},{class:'sell__form__itemdescription__right__descriptionselect',id:'selectitemdelivery'}
+                          = f.select :shipping_burden,["送料込み(出品者負担)","着払い(購入者負担)"],{include_blank: "---"},{class:'listing-select-wrapper__box--select',id:'selectitemdelivery'}
                         .form-group
                           .form-group-text
                           配送の方法
                           %span.require 必須
-                          = f.select :shipping_method,["未定","らくらくメルカリ便","ゆうメール","レターパック","普通郵便(定型、定型外)","クロネコヤマト","ゆうパック","クリックポスト","ゆうパケット"],{include_blank: "---"},{class:'sell__form__itemdescription__right__descriptionselect',id:'selectitemdelivery1'}
+                          = f.select :shipping_method,["未定","らくらくメルカリ便","ゆうメール","レターパック","普通郵便(定型、定型外)","クロネコヤマト","ゆうパック","クリックポスト","ゆうパケット"],{include_blank: "---"},{class:'listing-select-wrapper__box--select',id:'selectitemdelivery1'}
                         .form-group
                           .form-group-text
                           発送元の地域
                           %span.require 必須
-                          = f.collection_select :shipping_region, Prefecture.all, :name, :name, {include_blank: "---"}, { class: 'sell__form__itemdescription__right__descriptionselect', id:'select_item_shipping_date'}
+                          = f.collection_select :shipping_region, Prefecture.all, :name, :name, {include_blank: "---"}, { class: 'listing-select-wrapper__box--select', id:'select_item_shipping_date'}
                         .form-group
                           .form-group-text
                           発送までの日数
                           %span.require 必須
                           .select-wrap
-                          = f.select :shipping_date,["1〜2日で発送","2〜3日で発送","4〜7日で発送"],{include_blank: "---"},{class:'sell__form__itemdescription__right__descriptionselect',id:'select_item_shipping_date'}
+                          = f.select :shipping_date,["1〜2日で発送","2〜3日で発送","4〜7日で発送"],{include_blank: "---"},{class:'listing-select-wrapper__box--select',id:'select_item_shipping_date'}
                     .sell-content.clearfix
                       %h3.sell-sub-head 販売価格(300〜9,999,999)
                       .sell-form-box
@@ -108,8 +146,8 @@
                         %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であ
                         %P り処罰される可能性があります。
                         %p また、出品をもちまして加盟店規約に同意したことになります。
-                      = f.submit '出品する', class:'btm_create'
-                      = button_tag '戻る', class: 'btm_back'
+                      = f.submit '変更する', class:'btn_edit'
+                      = button_tag 'キャンセル', class: 'btm_back'
         .products-footer
           %nav
             %ul.clearfix

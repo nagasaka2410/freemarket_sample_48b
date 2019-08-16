@@ -1,11 +1,21 @@
--# .sell-form--upload-box__upload
--#   %ul
--#     - if @product.images.present?
--#       - @product.images.each do |img|
--#         %li.sell-form--upload-box__upload__item
--#           = image_tag(img.name.url, height: '116px', width: '114px', class: 'upload-image')
--#           .button
--#             = link_to "/" do
--#               編集
--#             = link_to "/" do
--#               削除
+.sell-form--upload-box__upload
+  %ul
+    - if @product.images.present?
+      - @product.images.each do |img|
+        %li.sell-form--upload-box__upload__item
+          = image_tag(img.name.url, height: '116px', width: '114px', class: 'upload-image')
+          .button
+            = link_to "/" do
+              編集
+            = link_to "/" do
+              削除
+
+
+
+<div class="listing-product-detail__size" id= 'size_wrapper'>
+                        <label class="listing-default__label" for="サイズ">サイズ</label>
+                        <span class='require'>必須</span>
+                        <div class='listing-select-wrapper__added--size'>
+                          <div class='listing-select-wrapper__box'>
+                            <select class="listing-select-wrapper__box--select" id="size" name="product[size_id]">
+                              <option value="---">---</option>
