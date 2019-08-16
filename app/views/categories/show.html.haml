@@ -7,7 +7,7 @@
       %ul.category-items__index
         - @category.children.each do |child|
           %li.category-items__index--list
-            = link_to category_path(child.id) do
+            = link_to category_path(child) do
               =child.name
 
       %h2.category-items__title

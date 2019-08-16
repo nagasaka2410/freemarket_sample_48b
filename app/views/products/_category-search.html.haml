@@ -2,15 +2,15 @@
   %ul.parent-wrap
     - @parents.each do |parent|
       %li.parent-wrap__list
-        = link_to category_path(parent.id) do
+        = link_to category_path(parent) do
           =parent.name
         %ul.child-wrap
           - parent.children.each do |child|
             %li.child-wrap__list
-              = link_to category_path(child.id) do
+              = link_to category_path(child) do
                 =child.name
               %ul.grandchild-wrap
                 - child.children.each do |grandchild|
                   %li.grandchild-wrap__list
-                    = link_to category_path(grandchild.id) do
+                    = link_to category_path(grandchild) do
                       =grandchild.name
