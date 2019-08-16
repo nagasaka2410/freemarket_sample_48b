@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   end
 
   resources :products do
-    resources :productcomments, only: [:create]
     collection do
       get :confirm
       get :search
