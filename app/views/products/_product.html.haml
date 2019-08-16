@@ -1,5 +1,5 @@
 %li.search-items__lists--list
-  = link_to "" do
+  = link_to product_path(product.id) do
     .product-box
       .product-box__photo
         = image_tag(product.images.first.name.to_s)
@@ -9,7 +9,8 @@
             = product.name
         .product-box__body--block
           .search-product-price
-            %p ¥#{product.price}
+            %p 
+              = converting_to_jpy(product.price)
           .search-product-evaluation
             %i.far.fa-heart.search-product-evaluation__heart-icon
             .search-product-evaluation__count

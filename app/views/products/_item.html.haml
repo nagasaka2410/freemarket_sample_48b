@@ -1,4 +1,4 @@
-= link_to "" ,class: "item-boxes" do
+= link_to product_path(item.id) ,class: "item-boxes" do
   .item-box
     .item-box__photo
       = image_tag(item.images.first.name)
@@ -8,7 +8,8 @@
           = item.name
       .item-box__body--block
         .product-price
-          %p ¥#{item.price}
+          %p 
+            = converting_to_jpy(item.price)
         .product-evaluation
           %i.far.fa-heart.product-evaluation__heart-icon
           .product-evaluation__count
