@@ -8,6 +8,10 @@
           - @product.images.each do |img|
             .is-slider__item
               = image_tag(img.name.url, height: '300px', width: '300px', class: 'item-image-active')
+              - if @product.status == "sold"
+                .category-box__sold
+                  .category-box__sold--text SOLD
+
         .is-thumbnails
           - @product.images.each do |img|
             .is-thumbnails__item
