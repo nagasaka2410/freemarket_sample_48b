@@ -102,52 +102,14 @@
   .item-comments__container
     .item-comments__container__message
       %ul.messeage-items
-        %li.messeage-coments
-          .message-user
-            %figure
-              .message-user__unknown
-                = image_tag("user-icon.svg", size: "32x32")
-              %figcaption.bold
-                テスト
-            .message-seller
-              出品者
-          .message-body
-            .message-body__text
-              テストコメント
-            .message-body__icon__left
-              %time
-                %i.far.fa-clock
-                %span XX日前
-            .message-body__icon__right
-              = link_to "" do
-                %i.far.fa-flag
-        %li.messeage-coments
-          .message-user
-            %figure
-              .message-user__unknown
-                = image_tag("user-icon.svg", size: "32x32")
-              %figcaption.bold
-                テスト
-            .message-seller
-              出品者
-          .message-body
-            .message-body__text
-              テストコメント
-            .message-body__icon__left
-              %time
-                %i.far.fa-clock
-                %span XX日前
-            .message-body__icon__right
-              = link_to "" do
-                %i.far.fa-flag
+        = render partial: "shared/comment", collection: @comments
     .item-comments__container__message
       .form-test
         %p
           相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %textarea{type: "text", class: "textarea-test"}
-        %button{type: "submit", class: "btn-test"}
-          %span
-            コメントする
+        = form_for([@product, @product_comments], url: product_product_comments_path(@product.id)) do |f|
+          = f.text_area :comment, class:'textarea-test'
+          = f.submit "コメントする", class:'btn-comment'
 
 %ul.item-link-prev-next
   - if @product.previous
