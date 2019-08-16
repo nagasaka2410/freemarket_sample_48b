@@ -1,6 +1,9 @@
 %li.search-items__lists--list
   = link_to product_path(product.id) do
     .product-box
+      - if product.status == "sold"
+        .product-box__sold
+          .product-box__sold--text SOLD
       .product-box__photo
         = image_tag(product.images.first.name.to_s)
       .product-box__body
