@@ -31,3 +31,8 @@ crumb :search do
   link "#{params[:keyword]}", search_products_path
   parent :root
 end
+
+crumb :categories do |category|
+  link "#{category.name}", category_path(category)
+  parent :category
+end

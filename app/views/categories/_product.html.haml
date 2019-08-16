@@ -1,13 +1,13 @@
-%li.search-items__lists--list
+%li.category-items__lists--list
   = link_to product_path(product.id) do
-    .product-box
-      .product-box__photo
+    .category-box
+      .category-box__photo
         = image_tag(product.images.first.name.to_s)
-      .product-box__body
-        .product-box__body--text
+      .category-box__body
+        .category-box__body--text
           %p
             = product.name
-        .product-box__body--block
+        .category-box__body--block
           .search-product-price
             %p 
               = converting_to_jpy(product.price)
