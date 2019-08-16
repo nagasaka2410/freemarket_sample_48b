@@ -83,9 +83,12 @@
       = converting_to_jpy(@product.price)
     %span.item-tax (税込)
     %span.shipping-fee 送料込み
+  - if @product.status == "sold"
+    .item-sold-button 売り切れました
+  - else
+    = link_to "購入画面へ進む", purchase_product_path, type: "button", class: "item-buy-button"
 
-  = link_to "購入画面へ進む", purchase_product_path, type: "button", class: "item-buy-button"
-  
+
   .detail-box__item-description
     %p.item-description
       = @product.description

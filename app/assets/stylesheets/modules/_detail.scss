@@ -398,6 +398,20 @@ figcaption.bold {
   text-decoration: none;
 }
 
+.item-sold-button {
+  font-size: 24px;
+  height: 60px;
+  line-height: 60px;
+  margin: 16px 0 24px 0;
+  background: #888888;
+  color: #fff;
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: not-allowed;
+}
+
 .related-products {
   width: 700px;
   margin: 0 auto;
