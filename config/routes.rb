@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :products do
-    resources :product_comments, only: [:create]
+    resource :product_comments, only: [:create]
     post 'my_product_comments'=> 'product_comments#my_product_comments'
     collection do
       get :confirm
