@@ -1,0 +1,17 @@
+%li.category-items__lists--list
+  = link_to product_path(product.id) do
+    .category-box
+      .category-box__photo
+        = image_tag(product.images.first.name.to_s)
+      .category-box__body
+        .category-box__body--text
+          %p
+            = product.name
+        .category-box__body--block
+          .search-product-price
+            %p 
+              = converting_to_jpy(product.price)
+          .search-product-evaluation
+            %i.far.fa-heart.search-product-evaluation__heart-icon
+            .search-product-evaluation__count
+              %p 5
