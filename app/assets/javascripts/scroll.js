@@ -7,3 +7,4 @@ $(function(){
     $('body,html').animate({scrollTop:position}, 2000, 'swing');
     return false;
   });
+})

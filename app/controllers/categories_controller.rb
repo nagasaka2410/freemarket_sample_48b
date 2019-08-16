@@ -5,6 +5,6 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @products = Product.includes(:images).where(category_id: Category.find(@category.id).subtree_ids).order(created_at: "DESC").page(params[:page]).per(5)
+    @products = Product.includes(:images).where(category_id: Category.find(@category.id).subtree_ids).order(created_at: "DESC")
   end
 end
