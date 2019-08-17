@@ -1,96 +1,94 @@
 $(function() {
-  $(window).on('load',function(){
-    if(document.URL.match("sign_up")) {
-      $('.registration__sms').hide();
-      $('.registration__address').hide();
-      $('.registration__payment').hide();
-    
-      $('.btn-next').on('click', function(){//携帯番号へ移動するボタン
-        let error = $('form').find('span.error-info').length;
-        let nickname = $('.nickname').val();
-        let email = $('.email').val();
-        let password = $('.password').val();
-        let confirmation = $('.password_confirmation').val();
-        let lname = $('.last_name').val();
-        let fname = $('.first_name').val();
-        let lnamekana = $('.last_name_kana').val();
-        let fnamekana = $('.first_name_kana').val();
-        let byear = $('.select-year').val();
-        let bmonth = $('.select-month').val();
-        let bday = $('.select-day').val();
-        let check = nickname&&email&&password&&confirmation&&lname&&fname&&lnamekana&&fnamekana&&byear&&bmonth&&bday
-        if(error){
-          alert("入力エラーがあります");
-          return false;
-        }
-        else if(check == "") {
-          alert("入力エラーがあります");
-          return false;
-        }
-        else {
-          $('.registration__basic').hide();
-          $('.registration__sms').show();
-          $('h2').text("電話番号の確認");
-          $('#active').css('color','#ea352d');
-          $('#through').css('color','#888');
-          $('#through .progress-status_bar').css('background','#ea352d');
-          $('#active .progress-status').css('background','#ea352d');
-          $('body, html').animate({ scrollTop: 0 }, 0);
-        }
-      });
+  if(document.URL.match("sign_up")) {
+    $('.registration__sms').hide();
+    $('.registration__address').hide();
+    $('.registration__payment').hide();
+  
+    $('.btn-next').on('click', function(){//携帯番号へ移動するボタン
+      let error = $('form').find('span.error-info').length;
+      let nickname = $('.nickname').val();
+      let email = $('.email').val();
+      let password = $('.password').val();
+      let confirmation = $('.password_confirmation').val();
+      let lname = $('.last_name').val();
+      let fname = $('.first_name').val();
+      let lnamekana = $('.last_name_kana').val();
+      let fnamekana = $('.first_name_kana').val();
+      let byear = $('.select-year').val();
+      let bmonth = $('.select-month').val();
+      let bday = $('.select-day').val();
+      let check = nickname&&email&&password&&confirmation&&lname&&fname&&lnamekana&&fnamekana&&byear&&bmonth&&bday
+      if(error){
+        alert("入力エラーがあります");
+        return false;
+      }
+      else if(check == "") {
+        alert("入力エラーがあります");
+        return false;
+      }
+      else {
+        $('.registration__basic').hide();
+        $('.registration__sms').show();
+        $('h2').text("電話番号の確認");
+        $('#active').css('color','#ea352d');
+        $('#through').css('color','#888');
+        $('#through .progress-status_bar').css('background','#ea352d');
+        $('#active .progress-status').css('background','#ea352d');
+        $('body, html').animate({ scrollTop: 0 }, 0);
+      }
+    });
 
-      $('.btn-sms').on('click', function(){//住所入力へ移動するボタン
-        let error = $('form').find('span.error-info').length;
-        let value = $('.mobile_phone').val();
-        if(error){
-          alert("入力エラーがあります");
-          return false;
-        }
-        else if(value == "") {
-          alert("入力エラーがあります");
-          return false;
-        }
-        else {
-          $('.registration__sms').hide();
-          $('.registration__address').show();
-          $('h2').text("住所入力");
-          $('#address').css('color','#ea352d');
-          $('#active').css('color','#888');
-          $('#active .progress-status_bar').css('background','#ea352d');
-          $('#address .progress-status').css('background','#ea352d');
-          $('body, html').animate({ scrollTop: 0 }, 0);
-        }
-      });
+    $('.btn-sms').on('click', function(){//住所入力へ移動するボタン
+      let error = $('form').find('span.error-info').length;
+      let value = $('.mobile_phone').val();
+      if(error){
+        alert("入力エラーがあります");
+        return false;
+      }
+      else if(value == "") {
+        alert("入力エラーがあります");
+        return false;
+      }
+      else {
+        $('.registration__sms').hide();
+        $('.registration__address').show();
+        $('h2').text("住所入力");
+        $('#address').css('color','#ea352d');
+        $('#active').css('color','#888');
+        $('#active .progress-status_bar').css('background','#ea352d');
+        $('#address .progress-status').css('background','#ea352d');
+        $('body, html').animate({ scrollTop: 0 }, 0);
+      }
+    });
 
-      $('.btn-address').on('click', function(){//クレカ入力へ移動するボタン
-        let error = $('form').find('span.error-info').length;
-        let postal = $('.postal_code').val();
-        let city = $('.city').val();
-        let block = $('.block_number').val();
+    $('.btn-address').on('click', function(){//クレカ入力へ移動するボタン
+      let error = $('form').find('span.error-info').length;
+      let postal = $('.postal_code').val();
+      let city = $('.city').val();
+      let block = $('.block_number').val();
 
-        let check = postal&&city&&block
-        if(error){
-          alert("入力エラーがあります");
-          return false;
-        }
-        else if(check == "") {
-          alert("入力エラーがあります");
-          return false;
-        }
-        else {
-          $('.registration__address').hide();
-          $('.registration__payment').show();
-          $('h2').text("支払い方法");
-          $('#payment').css('color','#ea352d');
-          $('#address').css('color','#888');
-          $('#address .progress-status_bar').css('background','#ea352d');
-          $('#payment .progress-status').css('background','#ea352d');
-          $('body, html').animate({ scrollTop: 0 }, 0);
-          $('.card-number').focus();
-        }
-      });
-    } 
-  });
+      let check = postal&&city&&block
+      if(error){
+        alert("入力エラーがあります");
+        return false;
+      }
+      else if(check == "") {
+        alert("入力エラーがあります");
+        return false;
+      }
+      else {
+        $('.registration__address').hide();
+        $('.registration__payment').show();
+        $('h2').text("支払い方法");
+        $('#payment').css('color','#ea352d');
+        $('#address').css('color','#888');
+        $('#address .progress-status_bar').css('background','#ea352d');
+        $('#payment .progress-status').css('background','#ea352d');
+        $('body, html').animate({ scrollTop: 0 }, 0);
+        $('.card-number').focus();
+      }
+    });
+  } 
 });
   
 
