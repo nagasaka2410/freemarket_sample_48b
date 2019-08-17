@@ -74,7 +74,7 @@ $(function (){
   )
 
   // アイテム上でマウスオーバーした際の対応
-  $('.items-container__title h3, .view-all').find('a').hover(
+  $('.items-container__title h3, .view-all, .category-items__index--list').find('a').hover(
     function(){
       $(this).css('border-bottom', 'solid 1px #0099E8');
       $(this).css('opacity', '0.7');
