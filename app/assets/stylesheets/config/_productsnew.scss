@@ -45,9 +45,9 @@
                   .upload-image {
                     object-fit: contain;
                   }
-                  .button {
+                  .button-container {
                     font-size: 14px;
-                    .edit {
+                    &__edit {
                       float: left;
                       width: 49%;
                       position: relative;

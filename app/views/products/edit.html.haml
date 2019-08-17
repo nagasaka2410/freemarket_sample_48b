@@ -15,25 +15,24 @@
                       %span.require 必須
                       %p 最大10枚までアップロードできます
                       .sell-form--upload-box__upload
-                        %ul
-                          - @product.images.each do |img|
-                            = f.fields_for :images, img do |image|
-                              - if @product.images.present?
-                                %li.sell-form--upload-box__upload__item
-                                  = image_tag(img.name.url, height: '116px', width: '114px', class: 'upload-image', id:"img1")
-                                  -# %img{id:"img1", height: '116px', width: '114px'}
-                                  .button
-                                    .edit
-                                      %p.edit-image-btn
-                                        編集
-                                      = image.file_field :name, id: "edit-image", class: "edit-image"
-                                    %a{ class: "delete-btn", "data-imgid": "#{img.id}" }削除
+                        .edit-container
+                          %ul
+                            - @product.images.each_with_index do |img, i|
+                              = f.fields_for :images, img do |image|
+                                - if @product.images.present?
+                                  %li.sell-form--upload-box__upload__item
+                                    = image_tag(img.name.url, height: '116px', width: '114px', class: 'upload-image', id:"img1")
+                                    .button-container
+                                      .button-container__edit
+                                        %p.edit-image-btn
+                                          編集
+                                        = image.file_field :name, id: "edit-image#{i}", class: "edit-image"
+                                      %a{ class: "delete-btn", "data-imgid": "#{img.id}", id:"img1", "data-id": "#{i}" }削除
                           
-                              .sell-dropbox-container--edit.clearfix
-                                .item__img__dropzone__input
-                                  .input-area
-                                    -# = image.file_field :name, id: "upload-image", class: "upload-image",style:' width:620px; height:160px;'
-                                    %a ドラッグアンドドロップまたはクリックしてファイルをアップロード
+                        .edit-dropbox-container.clearfix
+                          %pre.upload-word ドラッグアンドドロップまたはクリックしてファイルをアップロード
+
+
                     .sell-content
                       .form-group
                         .form-group-text
@@ -56,25 +55,11 @@
                           %span.require 必須
                           .listing-select-wrapper
                             .listing-select-wrapper__box
-                              = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {include_blank: "---"}, { class: "listing-select-wrapper__box--select", id: "parent_category"}
-                            -#   %select{id: :parent_id,data: {root: @category.root.id}}
-                            -#     %option{value: 0} ---
-                            -#     - Category.where('ancestry IS NULL').each do |cat|
-                            -#       %option{value: "#{cat.id}",class: "root"} #{cat.name}
-                            -#   %i.fas.fa-chevron-down
-                            -# .listing-select-wrapper__box
-                            -#   %select{id: :child_id,data: {child: @category.parent.id}}
-                            -#     %option{value: ""} ---
-                            -#     - @child_categories.each do |cat|
-                            -#       %option{value: "#{cat.id}"} #{cat.name}
-                            -#   %i.fas.fa-chevron-down
-                            -#   = f.collection_select(:category_id, @grand_child, :id, :name, {prompt: "---"}, {id: "grand_child"})
-                              -# = f.collection_select :category_id, Category.where(params[:category_id]), :id, :name, {placeholder: "#{@product.category.root.name}"}, { class: "listing-select-wrapper__box--select", id: "parent_category"}
-                              -# = @product.category.root.name
-                              -# %br > #{@product.category.parent.name}
-                              -# > #{@product.category.name}
+                              -# = f.collection_select(:category_id, @category.root.name, :id, :name, {prompt: "---"}, {id: "category"})
                             .listing-select-wrapper__box2
+                              = f.collection_select(:category_id, @child_categories, :id, :name, {prompt: "---"}, {id: "child_categories"})
                             .listing-select-wrapper__box3
+                              = f.collection_select(:category_id, @grand_child, :id, :name, {prompt: "---"}, {id: "grand_child"})
                           - if @product.size_id.present?
                             .listing-select-wrapper__box4
                               %size_wrapper.listing-product-detail__size

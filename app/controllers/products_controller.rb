@@ -70,6 +70,7 @@ class ProductsController < ApplicationController
     @category = @product.category
     @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
     @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
+    @parent = Category.order("id ASC").limit(13)
   end
 
   def update
