@@ -204,15 +204,18 @@ li.messeage-coments {
     font-size: 12px;
     vertical-align: top;
     }
+    a{
+      text-decoration: none;
+    }
   }
 }
 
 .message-body {
-  width: 600px;
+  width: 570px;
   float: right;
+  margin: 6px 0px;
   position: relative;
-  width: calc(100% - 56px);
-  padding: 16px;
+  padding: 11px;
   background: #eef0f4;
   border-radius: 15px;
   line-height: 1.5;
@@ -237,7 +240,6 @@ li.messeage-coments {
       float: left;
     }
   }
-
 }
 
 figcaption.bold {
@@ -249,9 +251,10 @@ figcaption.bold {
   left: 56px;
   max-width: 100%;
   min-width: 214px;
-  height: 1.2em;
   white-space: nowrap;
   text-overflow: ellipsis;
+  color: black;
+  font-weight: 600;
 }
 
 .item-link-prev-next {
@@ -310,7 +313,7 @@ figcaption.bold {
     font-size: 16px;
     line-height: 1.5;
   }
-  button {
+  .btn-comment {
     width: 100%;
     margin: 8px 0 0;
     text-align: center;
@@ -502,4 +505,87 @@ figcaption.bold {
 
 .item-image-active {
   object-fit: contain;
+}
+
+
+
+.messeage-coments2{
+  margin: 60px 0 0;
+  @include clearfix;
+  .message-user2 {
+    float: right;
+    position: relative;
+    top: -20px;
+    display: inline-block;
+    color: #333;
+    .unknown {
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      border-radius: 50%;
+      background: #eee;
+      text-align: center;
+    }
+    .unknown img {
+      width: 32px;
+      height: 32px;
+      margin: 10px 0 0;
+      vertical-align: bottom;
+    }
+    figcaption.bold {
+      left: auto;
+      right: 56px;
+      text-align: right;
+      color: red;
+      top: 0;
+      font-weight: 600;
+    }
+    figure {
+      margin: 0;
+    }
+    .message-seller{
+      margin: 8px 0 0;
+    padding: 4px;
+    background: #eef0f4;
+    color: #000;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-size: 12px;
+    vertical-align: top;
+    }
+    a{
+      text-decoration: none;
+    }
+  }
+  
+}.message-body2{
+  width: 560px;
+  float: right;
+  margin: 6px 11px;
+  position: relative;
+  padding: 11px;
+  background: #FAEBD7;
+  border-radius: 15px;
+  line-height: 1.5;
+  word-break: break-all;
+  &__icon {
+    margin: 8px 0 0;
+    cursor: pointer;
+    @include clearfix;
+    &__right {
+      display: inline-block;
+      color: #aaa;
+      text-decoration: none;
+      float: right;
+      a {
+        text-decoration: none;
+        color: #aaa;
+      }
+    }
+    &__left {
+      display: block;
+      color: #aaa;
+      float: left;
+    }
+  }
 }
