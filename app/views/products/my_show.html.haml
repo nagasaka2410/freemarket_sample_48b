@@ -88,7 +88,7 @@
         = button_tag '商品を一旦停止する', class: 'btn-stop'
         %button#modal-open-btn この商品を削除する
         = link_to '', product_path, method: :delete, class: 'btn-delete', id: 'item-delete-btn'
-        = render "modal"
+        = render "delete-modal"
       .item-comments
         .item-comments__container
           .item-comments__container__message
