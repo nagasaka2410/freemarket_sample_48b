@@ -21,7 +21,12 @@ class UsersController < ApplicationController
     @user.update!(user_params)
     redirect_to identification_user_path(current_user)
   end
+  
+  def user_products
+    @products = Product.where(user_id: current_user.id)
+  end
 
+  
   private
   def set_user
     @user = User.find(params[:id])
@@ -30,9 +35,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, user_address_attributes:[:id, :postal_code, :prefecture,  :city, :block_number, :building])
   end
-
-  def user_products
-    @products = Product.where(user_id: current_user.id)
-  end
+ 
 
 end

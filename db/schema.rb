@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20190727114250) do
   end
 
   create_table "product_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "comment",    limit: 65535
+    t.text     "comment",    limit: 65535, null: false
     t.integer  "user_id"
     t.integer  "product_id"
     t.datetime "created_at",               null: false
@@ -76,10 +76,10 @@ ActiveRecord::Schema.define(version: 20190727114250) do
     t.integer  "buyer_id"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
-    t.integer  "category_id"
-    t.integer  "brand_id"
     t.string   "shipping_date"
     t.string   "shipping_region"
+    t.integer  "category_id"
+    t.integer  "brand_id"
     t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree

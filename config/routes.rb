@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   end
 
   resources :products do
+    resource :product_comments, only: [:create]
+    post 'my_product_comments'=> 'product_comments#my_product_comments'
     collection do
       get :confirm
       get :search
@@ -36,5 +38,5 @@ Rails.application.routes.draw do
 
   resources :creditcards, only: [:index, :new, :show, :destroy, :create]
 
-  resources :categories, only: :index
+  resources :categories, only: [:index, :show]
 end

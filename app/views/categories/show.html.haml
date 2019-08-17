@@ -1,0 +1,26 @@
+- breadcrumb :categories, @category
+= render 'shared/top-header'
+= render 'shared/breadcrumbs'
+.search-main
+  .search-wrapper
+    .category-items
+      %ul.category-items__index
+        - @category.children.each do |child|
+          %li.category-items__index--list
+            = link_to category_path(child) do
+              =child.name
+
+      %h2.category-items__title
+        = @category.name + "の検索結果"
+      %ul.category-items__lists
+        = render partial: "product", collection:  @products
+
+    .category-description
+      %h2.category-description__title
+        = @category.name
+
+      %h2.category-description__text 素晴らしい素晴らしい素晴らしい素晴らしい素晴らしい素晴らしい素晴らしい素晴らしい素晴らしい素晴らしい素晴らしい素晴らしい素晴らしい
+
+= render 'shared/banner'
+= render 'shared/top-footer'
+= render 'shared/sell-btn'
