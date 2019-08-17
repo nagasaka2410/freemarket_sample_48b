@@ -3,13 +3,13 @@ class ProductCommentsController < ApplicationController
 
   def create
     @comment = @product.product_comments.new(comment_params)
-    @comment.save
+    @comment.save ? flash[:notice] = "コメントを投稿しました" : flash[:alert] = 'コメント投稿が失敗しました。入力内容を確認してください。'
     redirect_to product_path(@product)
   end
 
   def my_product_comments
     @comment = @product.product_comments.new(comment_params)
-    @comment.save
+    @comment.save ? flash[:notice] = "コメントを投稿しました" : flash[:alert] = 'コメント投稿が失敗しました。入力内容を確認してください。'
     redirect_to my_show_product_path(@product)
   end
 
