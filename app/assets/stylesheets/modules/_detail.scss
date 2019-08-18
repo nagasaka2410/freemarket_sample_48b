@@ -56,9 +56,10 @@
               &--text {
                 z-index: 2;
                 position: absolute;
-                top: -80px;
-                left: 0;
-                // transform: rotate(-45deg);
+                top: -110px;
+                left: -10px;
+                width: 150px;
+                transform: rotate(-45deg);
                 color: white;
                 font-size: 22px;
                 font-weight: bold;
