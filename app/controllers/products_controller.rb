@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!,only: [:new, :purchase]
   before_action :set_product, only: [:show, :purchase, :bought, :my_show, :edit, :update, :destroy]
+  before_action :show_product, only: [:show, :my_show]
 
   def index
     @lady_items = Product.includes(:images).where(category_id: Category.find(1).subtree_ids, status: 0).order(created_at: "DESC").limit(4)
@@ -27,19 +28,11 @@ class ProductsController < ApplicationController
   end
 
   def show
-    category_id = @product.category_id
-    @products = Category.find(category_id).products
-    @brand_products = Product.where(brand_id: @product.brand_id).where.not(id: @product.id).order("id DESC").limit(6)
     @category_products = Product.where(category_id: @product.category_id).where.not(id: @product.id).order("id DESC").limit(6)
-    @user_products = Product.where(user_id: @product.user.id).where.not(id: @product.id).order("id DESC").limit(6)
-    @previous_product = @product.previous
-    @next_product = @product.next
-    @product_comments = ProductComment.new
-    @comments = ProductComment.where(product_id: @product.id)
+    redirect_to :back if @product.user.id == current_user&.id
+  end
 
-    if @product.user.id == current_user&.id
-      redirect_to :back
-    end
+  def my_show
   end
 
     # 親カテゴリーが選択された後に動くアクション
@@ -67,7 +60,8 @@ class ProductsController < ApplicationController
   
   def create
     @product = Product.new(product_params)
-    if @product.save
+    if @product.images.first&.name
+      @product.save
     else
       redirect_to new_product_path
     end
@@ -107,17 +101,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def my_show
-    category_id = @product.category_id
-    @products = Category.find(category_id).products
-    @brand_products = Product.where(brand_id: @product.brand_id).where.not(id: @product.id).order("id DESC").limit(6)
-    @user_products = Product.where(user_id: @product.user.id).where.not(id: @product.id).order("id DESC").limit(6)
-    @previous_product = @product.previous
-    @next_product = @product.next
-    @product_comments = ProductComment.new
-    @comments = ProductComment.where(product_id: @product.id)
-  end
-
   def destroy
     if @product.user_id == current_user.id
         if @product.destroy
@@ -140,5 +123,16 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def show_product
+    category_id = @product.category_id
+    @products = Category.find(category_id).products
+    @brand_products = Product.where(brand_id: @product.brand_id).where.not(id: @product.id).order("id DESC").limit(6)
+    @user_products = Product.where(user_id: @product.user.id).where.not(id: @product.id).order("id DESC").limit(6)
+    @previous_product = @product.previous
+    @next_product = @product.next
+    @product_comments = ProductComment.new
+    @comments = ProductComment.where(product_id: @product.id)
   end
 end
