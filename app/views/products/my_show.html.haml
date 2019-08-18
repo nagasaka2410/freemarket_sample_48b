@@ -86,8 +86,9 @@
         = link_to '商品の編集', edit_product_path, class: 'btn-edit'
         %p.text-center or
         = button_tag '商品を一旦停止する', class: 'btn-stop'
-        = link_to 'この商品を削除する', product_path, method: :delete, class: 'btn-delete'
-
+        %button#modal-open-btn この商品を削除する
+        = link_to '', product_path, method: :delete, class: 'btn-delete', id: 'item-delete-btn'
+        = render "delete-modal"
       .item-comments
         .item-comments__container
           .item-comments__container__message

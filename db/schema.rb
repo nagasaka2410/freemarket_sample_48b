@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20190727114250) do
   end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.integer  "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,10 +76,10 @@ ActiveRecord::Schema.define(version: 20190727114250) do
     t.integer  "buyer_id"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
-    t.string   "shipping_date"
-    t.string   "shipping_region"
     t.integer  "category_id"
     t.integer  "brand_id"
+    t.string   "shipping_date"
+    t.string   "shipping_region"
     t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 20190727114250) do
 
   create_table "user_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",      null: false
-    t.integer  "postal_code",  null: false
+    t.string   "postal_code",  null: false
     t.string   "city",         null: false
     t.string   "block_number", null: false
     t.string   "building"

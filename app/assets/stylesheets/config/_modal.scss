@@ -1,0 +1,105 @@
+#overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 1;
+  }
+  
+  #modalWindow {
+    width: 500px;
+    height: 200px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  
+    .modal-message-box {
+      width: 100%;
+      height: calc(100% - 60px);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+  
+    #modal-close-btn {
+      width: 50%;
+      height: 60px;
+    }
+  
+    #delete-comformation-btn {
+      width: 50%;
+      height: 60px;
+    }
+  }
+  
+  .item-delete-btn {
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+#create-modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 2;
+  #create-modalWindow {
+    margin: 70px auto;
+    width: 600px;
+    height: 250px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .create-modal-message-box {
+      width: 100%;
+      height: calc(100% - 60px);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      p {
+        margin: 15px 0px 0px;
+      }
+      .sell-modal-body{
+        border-top: 1px solid #eee;
+        padding: 20px;
+      }
+      a{
+        margin: 0 auto 0;
+        background: #ea352d;
+        color: #fff;
+        display: block;
+        width: 500px;
+        line-height: 48px;
+        font-size: 14px;
+        border: 1px solid transparent;
+        transition: all ease-out .3s;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+      }
+    }
+  }
+}
