@@ -122,3 +122,19 @@ $(function() {
       .eq(nextSlide).addClass(currentClass);
   });
 });
+
+//ログイン時の右上のアイコンを触る
+$(function(){
+  $('.h-right__list').hover(
+    function(){
+      $(this).children('a').css('color', '#0099E8');
+      $(this).find('.top-page__icon').css('color', '#0099E8');
+      $(this).children('.header-mypage-box').css('display', 'block');
+    },
+    function(){
+      $(this).children('a').css('color', ' #333');
+      $(this).find('.top-page__icon').css('color', '#333');
+      $(this).children('.header-mypage-box').css('display', 'none');
+    }
+  )
+})

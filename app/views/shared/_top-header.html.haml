@@ -26,22 +26,22 @@
       .h-right
         - if user_signed_in?
           .h-right__list
-            =link_to "#",class: "good-index" do
-              %i.far.fa-heart.good-index__icon
+            =link_to "",class: "good-index" do
+              %i.far.fa-heart.top-page__icon
               %span.good-index__title いいね!一覧
           .h-right__list
-            =link_to "#",class: "notification" do
-              %i.far.fa-bell.notification__icon
+            =link_to "",class: "notification" do
+              %i.far.fa-bell.top-page__icon
               %span.notification__title お知らせ
           .h-right__list
-            =link_to "#",class: "todo" do
-              %i.fa.fa-check.todo__icon
-              -# = fa_icon 'check', class: "todo__icon"
+            =link_to "",class: "todo" do
+              %i.fa.fa-check.top-page__icon
               %span.todo__title やることリスト
           .h-right__list
             =link_to users_path,class: "top-mypage" do
               = image_tag("icon.png", class: "top-mypage__image")
               %span.top-mypage__text マイページ
+            = render 'shared/mini_mypage'
         - else
           = link_to "新規会員登録", new_user_path, class: 'signin__button'
           = link_to "ログイン", new_user_session_path, class: 'login__button'
