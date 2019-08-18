@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!,only: [:new]
+  before_action :authenticate_user!,only: [:new, :purchase]
   before_action :set_product, only: [:show, :purchase, :bought, :my_show, :edit, :update, :destroy]
 
   def index
@@ -14,7 +14,6 @@ class ProductsController < ApplicationController
     @nike = Product.includes(:images).where(brand_id: 4, status: 0).order(created_at: "DESC").limit(4)
   end
   
-
   def new
     @product = Product.new
     # @product.images.build
@@ -37,6 +36,10 @@ class ProductsController < ApplicationController
     @next_product = @product.next
     @product_comments = ProductComment.new
     @comments = ProductComment.where(product_id: @product.id)
+
+    if @product.user.id == current_user&.id
+      redirect_to :back
+    end
   end
 
     # 親カテゴリーが選択された後に動くアクション
@@ -45,12 +48,10 @@ class ProductsController < ApplicationController
     @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
   end
 
-
   def get_category_grandchildren
     #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
-
 
   def get_size
     selected_grandchild = Category.find("#{params[:grandchild_id]}") #孫カテゴリーを取得
@@ -64,7 +65,6 @@ class ProductsController < ApplicationController
     end
   end
   
-
   def create
     @product = Product.new(product_params)
     if @product.save
@@ -91,14 +91,11 @@ class ProductsController < ApplicationController
   def purchase
   end
 
-
   def search
     @products = Product.where('name LIKE(?)',"%#{params[:keyword]}%").page(params[:page]).per(114)
   end
 
-  
   def bought
-    @product = Product.find(params[:id])
     if @product.status == "sell" and @product.buyer_id.nil? == true
       @product.update(status: "sold", buyer_id: current_user.id)
     else
@@ -134,7 +131,6 @@ class ProductsController < ApplicationController
   end
 
   private
-
   def product_params
     params.require(:product).permit(:buyer_id, :brand_id, :category_id, :shipping_date, :name, :description, :status, :price, :condition, :size_id, :shipping_method, :shipping_burden, :shipping_region, images_attributes: [:name]).merge(user_id: current_user.id)
   end
@@ -146,5 +142,4 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   end
-
 end
