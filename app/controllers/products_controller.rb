@@ -74,7 +74,6 @@ class ProductsController < ApplicationController
   end
 
   def purchase
-    @creditcard = Creditcard.find(params[:id])
   end
 
   def search
