@@ -138,10 +138,3 @@ $(function(){
     }
   )
 })
-
-//マイページマウスオーバー
-$(function(){
-  ('.top-mypage').hover(
-
-  )
-})
