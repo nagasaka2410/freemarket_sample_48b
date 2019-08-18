@@ -33,6 +33,15 @@ Rails.application.routes.draw do
       get :purchase
       patch :bought
       get :my_show
+      get :get_size, defaults: { format: 'json' }
+    end
+  end
+
+  namespace :api do
+    resources "destroy", controller: :products, only: :image_destroy, defaults: { format: 'json' } do
+      collection do
+        delete "image_destroy"
+      end
     end
   end
 
