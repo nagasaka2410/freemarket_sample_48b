@@ -67,7 +67,6 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to products_path
     else
       render :new
     end
@@ -106,9 +105,9 @@ class ProductsController < ApplicationController
 
   def destroy
     if @product.user_id == current_user.id
-        @product.destroy
-        redirect_to root_path
-        flash.now[:alert] = '商品を削除しました'
+        if @product.destroy
+          redirect_to  user_products_users_path, notice: '商品を削除しました'
+        end
     else
       render :index
       flash[:alert] = '商品削除に失敗しました'
