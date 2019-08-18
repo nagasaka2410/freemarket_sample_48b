@@ -27,7 +27,7 @@
                                         %p.edit-image-btn
                                           編集
                                         = image.file_field :name, id: "edit-image#{i}", class: "edit-image"
-                                      %a{ class: "delete-btn", "data-imgid": "#{img.id}", id:"img1", "data-id": "#{i}" }削除
+                                      %p{ class: "delete-btn", "data-imgid": "#{img.id}", id:"img1", "data-id": "#{i}" }削除
                           
                         .edit-dropbox-container.clearfix
                           %pre.upload-word ドラッグアンドドロップまたはクリックしてファイルをアップロード
