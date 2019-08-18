@@ -36,3 +36,13 @@ crumb :categories do |category|
   link "#{category.name}", category_path(category)
   parent :category
 end
+
+crumb :user_products do
+  link "出品した商品 - 出品中", user_products_users_path
+  parent :mypage
+end
+
+crumb :payment do
+  link "出品した商品 - 出品中", creditcard_path
+  parent :mypage
+end
