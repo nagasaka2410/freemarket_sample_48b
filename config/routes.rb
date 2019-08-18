@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       get :purchase
       patch :bought
       get :my_show
+      get :unpublished
     end
   end
 
