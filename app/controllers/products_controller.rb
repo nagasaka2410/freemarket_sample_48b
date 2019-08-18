@@ -53,7 +53,6 @@ class ProductsController < ApplicationController
 
 
   def get_size
-    # binding.pry
     selected_grandchild = Category.find("#{params[:grandchild_id]}") #孫カテゴリーを取得
     if related_size_parent = selected_grandchild.products_sizes[0] #孫カテゴリーと紐付くサイズ（親）があれば取得
       @sizes = related_size_parent.children #紐づいたサイズ（親）の子供の配列を取得
