@@ -29,6 +29,11 @@
               width: 620px;
               padding: 40px;
               border-top: 1px solid #eee;
+              &__new {
+                margin: 16px auto 0;
+                display: block;
+                width: 620px;
+              }
               &__upload {
                 margin: 16px auto 0;
                 display: block;

@@ -16,8 +16,8 @@ class ProductsController < ApplicationController
   
   def new
     @product = Product.new
-    # @product.images.build
-    2.times{@product.images.build}
+    @product.images.build
+    # 2.times{@product.images.build}
     #セレクトボックスの初期値設定
     @category_parent_array = ["---"]
     #データベースから、親カテゴリーのみ抽出し、配列化

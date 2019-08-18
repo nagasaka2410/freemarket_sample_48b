@@ -14,12 +14,15 @@
                       %h3.sell-upload-head 出品画像
                       %span.require 必須
                       %p 最大10枚までアップロードできます
-                      = f.fields_for :images do |image|
-                        .sell-dropbox-container.clearfix
-                          .item__img__dropzone__input
-                            .input-area
-                              = image.file_field :name, id: "upload-image", class: "upload-image",style:' width:620px; height:160px;'
-                            %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
+                      .sell-form--upload-box__new
+                        .upload-container
+                          = f.fields_for :images do |image|
+                            .sell-dropbox-container.clearfix
+                              %ul
+                              .item__img__dropzone__input
+                                .input-area
+                                  = image.file_field :name, id: "upload-image", class: "upload-image",style:' width:620px; height:160px;'
+                                %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
                     .sell-content
                       .form-group
                         .form-group-text
