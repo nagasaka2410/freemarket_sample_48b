@@ -55,17 +55,20 @@
                           %span.require 必須
                           .listing-select-wrapper
                             .listing-select-wrapper__box
-                              -# = f.collection_select(:category_id, @category.root.name, :id, :name, {prompt: "---"}, {id: "category"})
+                              = f.collection_select(:category_id, Category.where(ancestry: nil), :id, :name, {prompt: "---"}, { class: "listing-select-wrapper__box--select", id: "parent_category"}) 
                             .listing-select-wrapper__box2
-                              = f.collection_select(:category_id, @child_categories, :id, :name, {prompt: "---"}, {id: "child_categories"})
+                              .listing-select-wrapper__added{id: "children_wrapper"}
+                                .listing-select-wrapper__box
+                                  = f.collection_select(:category_id, @child_categories, :id, :name, {prompt: "---"}, { class: "listing-select-wrapper__box--select", id: "child_category"})
                             .listing-select-wrapper__box3
-                              = f.collection_select(:category_id, @grand_child, :id, :name, {prompt: "---"}, {id: "grand_child"})
-                          - if @product.size_id.present?
+                              .listing-select-wrapper__added{id: "grandchildren_wrapper"}
+                                .listing-select-wrapper__box
+                                  = f.collection_select(:category_id, @grand_child, :id, :name, {prompt: "---"}, {class: "listing-select-wrapper__box--select", id: "grandchild_category"})
                             .listing-select-wrapper__box4
-                              %size_wrapper.listing-product-detail__size
-                                %label(for="listing-default__label")
-                                  サイズ
-                                %span
+                            - if @product.size_id.present?
+                              .listing-product-detail__size{id: "size_wrapper"}
+                                %label.listing-default__label(for="サイズ") サイズ
+                                %span.require 必須
                                 .listing-select-wrapper__added--size
                                   .listing-select-wrapper__box
                                     = f.collection_select :size_id, ProductsSize.where(params[:id]), :id, :size, {include_blank: "---"}, { class: "listing-select-wrapper__box--select", id: "size"}

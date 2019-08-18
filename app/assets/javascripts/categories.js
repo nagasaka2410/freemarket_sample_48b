@@ -61,7 +61,6 @@ $(function(){
   // 親カテゴリー選択後のイベント
   $('#parent_category').on('change', function(){
     var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
-    console.log(parentCategory)
     if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
         url: '/products/get_category_children',
@@ -150,6 +149,7 @@ $(function(){
   // 孫カテゴリー選択後のイベント
   $('.listing-select-wrapper__box3').on('change', '#grandchild_category', function(){
     var grandchildId = $('#grandchild_category option:selected').data('category'); //選択された孫カテゴリーのidを取得
+    
     if (grandchildId != "---"){ //孫カテゴリーが初期値でないことを確認
       $.ajax({
         url: 'get_size',

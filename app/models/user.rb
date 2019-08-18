@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_one :creditcard
   has_many :products
   validates :nickname, presence: true
+  has_many :product_comments,dependent: :destroy
 
  # userが「買った商品 :buyed_products」「現在売っている商品 :saling_items」「すでに売った商品 :sold_items」
   has_many :buyed_products, foreign_key: "buyer_id", class_name: "Product"
