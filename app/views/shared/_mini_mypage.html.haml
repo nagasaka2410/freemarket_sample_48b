@@ -1,0 +1,63 @@
+.header-mypage-box
+  .mypage-box-top
+    .mypage-box-top__image
+      = image_tag "mypage_image.jpg", height: "80", width: "330"
+      .mypage-box-top__image--icon
+        = image_tag "icon.png", alt: "ユーザーアイコン", alt: "ユーザーアイコン", height: "60", width: "60"
+        
+    .mypage-box-top__text
+      %h2.mypage-box-top__text--name
+        = current_user.nickname
+      .mypage-box-top__text--index
+        %p.mypage-box-top__text--index-left
+          評価
+          %span.bold 0
+        %p.mypage-box-top__text--index-right
+          出品数
+          %span.bold 0
+    
+    .mypage-box-top__sales
+      .mypage-box-top__sales--balance
+        .mypage-box-top__sales--balance-left 残高
+        = fa_icon "angle-right", class: "mypage-box-top__sales--balance-arrow"
+        .mypage-box-top__sales--balance-right ￥10,000
+
+      .mypage-box-top__sales--point
+        .mypage-box-top__sales--point-left ポイント
+        = fa_icon "angle-right", class: "mypage-box-top__sales--point-arrow"
+        .mypage-box-top__sales--point-right P 1000
+
+
+
+  .mypage-box-down
+    .mypage-box-down__list
+      %li.mypage-box-down__list__link
+        =link_to "#", class: "mypage-box-down__list__link__area" do
+          %p.mypage-box-down__list__link__area__name
+            いいね！ 一覧
+            = fa_icon "angle-right"
+      %li.mypage-box-down__list__link
+        =link_to user_products_users_path, class: "mypage-box-down__list__link__area" do
+          %p.mypage-box-down__list__link__area__name
+            出品した商品-出品中
+            = fa_icon "angle-right"
+      %li.mypage-box-down__list__link
+        =link_to "#", class: "mypage-box-down__list__link__area" do
+          %p.mypage-box-down__list__link__area__name
+            出品した商品-取引中
+            = fa_icon "angle-right"
+      %li.mypage-box-down__list__link
+        =link_to "#", class: "mypage-box-down__list__link__area" do
+          %p.mypage-box-down__list__link__area__name
+            出品した商品-売却済み
+            = fa_icon "angle-right"
+      %li.mypage-box-down__list__link
+        =link_to "#", class: "mypage-box-down__list__link__area" do
+          %p.mypage-box-down__list__link__area__name
+            購入した商品-取引中
+            = fa_icon "angle-right"
+      %li.mypage-box-down__list__link
+        =link_to "#", class: "mypage-box-down__list__link__area" do
+          %p.mypage-box-down__list__link__area__name
+            購入した商品-過去の取引
+            = fa_icon "angle-right"
