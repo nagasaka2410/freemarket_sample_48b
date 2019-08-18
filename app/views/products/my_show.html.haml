@@ -92,7 +92,10 @@
       .item-change-box
         = link_to '商品の編集', edit_product_path, class: 'btn-edit'
         %p.text-center or
-        = link_to '商品を一旦停止する', unpublished_product_path, class: 'btn-stop'
+        - if @product.status == "sell"
+          = link_to '商品を一旦停止する', unpublished_product_path, class: 'btn-stop'
+        - elsif @product.status == "unpublished"
+          = link_to '商品を再開する', sell_product_path, class: 'btn-restart'
         -# = button_tag '商品を一旦停止する', class: 'btn-stop'
         %button#modal-open-btn この商品を削除する
         = link_to '', product_path, method: :delete, class: 'btn-delete', id: 'item-delete-btn'

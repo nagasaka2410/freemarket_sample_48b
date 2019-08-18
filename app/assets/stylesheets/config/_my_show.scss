@@ -21,7 +21,7 @@
     text-align: center;
   }
   .btn-stop{
-    margin: 16px 0 16px 0;
+    display: block;
     margin: 16px 0 16px 0;
     background: #aaa;
     border: 1px solid #aaa;
@@ -32,10 +32,22 @@
     cursor: pointer;
     text-align: center;
   }
-  #modal-open-btn{
-    margin: 16px 0 16px 0;
+  .btn-restart{
     display: block;
     margin: 16px 0 16px 0;
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    color: #fff;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+  }
+  #modal-open-btn{
+    display: block;
+    margin: 16px 0 16px 0;
+    display: block;
     background: #aaa;
     border: 1px solid #aaa;
     color: #fff;

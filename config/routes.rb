@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       patch :bought
       get :my_show
       get :unpublished
+      get :sell
       get :get_size, defaults: { format: 'json' }
     end
   end
