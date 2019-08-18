@@ -14,12 +14,25 @@
                       %h3.sell-upload-head 出品画像
                       %span.require 必須
                       %p 最大10枚までアップロードできます
-                      = f.fields_for :images do |image|
-                        .sell-dropbox-container.clearfix
-                          .item__img__dropzone__input
-                            .input-area
-                              = image.file_field :name, id: "upload-image", class: "upload-image",style:' width:620px; height:160px;'
-                            %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
+                      .sell-form--upload-box__upload
+                        .edit-container
+                          %ul
+                            - @product.images.each_with_index do |img, i|
+                              = f.fields_for :images, img do |image|
+                                - if @product.images.present?
+                                  %li.sell-form--upload-box__upload__item
+                                    = image_tag(img.name.url, height: '116px', width: '114px', class: 'upload-image', id:"img1")
+                                    .button-container
+                                      .button-container__edit
+                                        %p.edit-image-btn
+                                          編集
+                                        = image.file_field :name, id: "edit-image#{i}", class: "edit-image"
+                                      %p{ class: "delete-btn", "data-imgid": "#{img.id}", id:"img1", "data-id": "#{i}" }削除
+                          
+                        .edit-dropbox-container.clearfix
+                          %pre.upload-word ドラッグアンドドロップまたはクリックしてファイルをアップロード
+
+
                     .sell-content
                       .form-group
                         .form-group-text
@@ -42,10 +55,23 @@
                           %span.require 必須
                           .listing-select-wrapper
                             .listing-select-wrapper__box
-                              = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {include_blank: "---"}, { class: "listing-select-wrapper__box--select", id: "parent_category"}
+                              = f.collection_select(:category_id, Category.where(ancestry: nil), :id, :name, {prompt: "---"}, { class: "listing-select-wrapper__box--select", id: "parent_category"}) 
                             .listing-select-wrapper__box2
+                              .listing-select-wrapper__added{id: "children_wrapper"}
+                                .listing-select-wrapper__box
+                                  = f.collection_select(:category_id, @child_categories, :id, :name, {prompt: "---"}, { class: "listing-select-wrapper__box--select", id: "child_category"})
                             .listing-select-wrapper__box3
+                              .listing-select-wrapper__added{id: "grandchildren_wrapper"}
+                                .listing-select-wrapper__box
+                                  = f.collection_select(:category_id, @grand_child, :id, :name, {prompt: "---"}, {class: "listing-select-wrapper__box--select", id: "grandchild_category"})
                             .listing-select-wrapper__box4
+                            - if @product.size_id.present?
+                              .listing-product-detail__size{id: "size_wrapper"}
+                                %label.listing-default__label(for="サイズ") サイズ
+                                %span.require 必須
+                                .listing-select-wrapper__added--size
+                                  .listing-select-wrapper__box
+                                    = f.collection_select :size_id, ProductsSize.where(params[:id]), :id, :size, {include_blank: "---"}, { class: "listing-select-wrapper__box--select", id: "size"}
                         .form-group
                           .form-group-text
                           ブランド
@@ -108,9 +134,8 @@
                         %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であ
                         %P り処罰される可能性があります。
                         %p また、出品をもちまして加盟店規約に同意したことになります。
-                      = f.submit '出品する', class:'btm_create'
-                      = render "create-modal"
-                      = button_tag '戻る', class: 'btm_back'
+                      = f.submit '変更する', class:'btn_edit'
+                      = button_tag 'キャンセル', class: 'btm_back'
         .products-footer
           %nav
             %ul.clearfix

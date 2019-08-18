@@ -9,6 +9,7 @@
   background: #fff;
   padding: 8px 16px;
   .btn-edit{
+    display: block;
     margin: 16px 0 16px 0;
     background: #ea352d;
     border: 1px solid #ea352d;
@@ -31,7 +32,7 @@
     cursor: pointer;
     text-align: center;
   }
-  .btn-delete{
+  #modal-open-btn{
     margin: 16px 0 16px 0;
     display: block;
     margin: 16px 0 16px 0;

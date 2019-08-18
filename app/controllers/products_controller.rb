@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!,only: [:new, :purchase]
-  before_action :set_product, only: [:show, :purchase, :bought, :my_show, :update, :destroy]
+  before_action :set_product, only: [:show, :purchase, :bought, :my_show, :edit, :update, :destroy]
   before_action :show_product, only: [:show, :my_show]
 
   def index
@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
   
   def new
     @product = Product.new
+    # @product.images.build
     2.times{@product.images.build}
     #セレクトボックスの初期値設定
     @category_parent_array = ["---"]
@@ -61,6 +62,22 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.images.first&.name
       @product.save
+    else
+      redirect_to new_product_path
+    end
+  end
+
+  def edit
+    @category = @product.category
+    @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
+    @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
+  end
+
+  def update
+    if @product.update(update_product_params)
+      redirect_to my_show_product_path(@product)
+    else
+      redirect_to edit_product_path
     end
   end
 
@@ -86,9 +103,9 @@ class ProductsController < ApplicationController
 
   def destroy
     if @product.user_id == current_user.id
-        @product.destroy
-        redirect_to root_path
-        flash.now[:alert] = '商品を削除しました'
+        if @product.destroy
+          redirect_to  user_products_users_path, notice: '商品を削除しました'
+        end
     else
       render :index
       flash[:alert] = '商品削除に失敗しました'
@@ -98,6 +115,10 @@ class ProductsController < ApplicationController
   private
   def product_params
     params.require(:product).permit(:buyer_id, :brand_id, :category_id, :shipping_date, :name, :description, :status, :price, :condition, :size_id, :shipping_method, :shipping_burden, :shipping_region, images_attributes: [:name]).merge(user_id: current_user.id)
+  end
+
+  def update_product_params
+    params.require(:product).permit(:buyer_id, :brand_id, :category_id, :shipping_date, :name, :description, :status, :price, :condition, :size_id, :shipping_method, :shipping_burden, :shipping_region, images_attributes: [:name, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_product
