@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!,only: [:new]
-  before_action :set_product, only: [:show, :purchase, :bought, :my_show, :update, :unpublished, :destroy]
+  before_action :authenticate_user!,only: [:new, :purchase]
+  before_action :set_product, only: [:show, :purchase, :bought, :my_show, :edit, :unpublished, :update, :destroy]
 
   def index
     @lady_items = Product.includes(:images).where(category_id: Category.find(1).subtree_ids, status: 0).order(created_at: "DESC").limit(4)
@@ -14,9 +14,9 @@ class ProductsController < ApplicationController
     @nike = Product.includes(:images).where(brand_id: 4, status: 0).order(created_at: "DESC").limit(4)
   end
   
-
   def new
     @product = Product.new
+    # @product.images.build
     2.times{@product.images.build}
     #セレクトボックスの初期値設定
     @category_parent_array = ["---"]
@@ -36,6 +36,10 @@ class ProductsController < ApplicationController
     @next_product = @product.next
     @product_comments = ProductComment.new
     @comments = ProductComment.where(product_id: @product.id)
+
+    if @product.user.id == current_user&.id
+      redirect_to :back
+    end
   end
 
     # 親カテゴリーが選択された後に動くアクション
@@ -44,12 +48,10 @@ class ProductsController < ApplicationController
     @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
   end
 
-
   def get_category_grandchildren
     #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
-
 
   def get_size
     selected_grandchild = Category.find("#{params[:grandchild_id]}") #孫カテゴリーを取得
@@ -63,28 +65,36 @@ class ProductsController < ApplicationController
     end
   end
   
-
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to products_path
     else
-      render :new
+      redirect_to new_product_path
     end
   end
 
+  def edit
+    @category = @product.category
+    @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
+    @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
+  end
+
+  def update
+    if @product.update(update_product_params)
+      redirect_to my_show_product_path(@product)
+    else
+      redirect_to edit_product_path
+    end
+  end
 
   def purchase
   end
-
 
   def search
     @products = Product.where('name LIKE(?)',"%#{params[:keyword]}%").page(params[:page]).per(114)
   end
 
-  
   def bought
-    @product = Product.find(params[:id])
     if @product.status == "sell" and @product.buyer_id.nil? == true
       @product.update(status: "sold", buyer_id: current_user.id)
     else
@@ -119,9 +129,9 @@ class ProductsController < ApplicationController
 
   def destroy
     if @product.user_id == current_user.id
-        @product.destroy
-        redirect_to root_path
-        flash.now[:alert] = '商品を削除しました'
+        if @product.destroy
+          redirect_to  user_products_users_path, notice: '商品を削除しました'
+        end
     else
       render :index
       flash[:alert] = '商品削除に失敗しました'
@@ -129,13 +139,15 @@ class ProductsController < ApplicationController
   end
 
   private
-
   def product_params
     params.require(:product).permit(:buyer_id, :brand_id, :category_id, :shipping_date, :name, :description, :status, :price, :condition, :size_id, :shipping_method, :shipping_burden, :shipping_region, images_attributes: [:name]).merge(user_id: current_user.id)
+  end
+
+  def update_product_params
+    params.require(:product).permit(:buyer_id, :brand_id, :category_id, :shipping_date, :name, :description, :status, :price, :condition, :size_id, :shipping_method, :shipping_burden, :shipping_region, images_attributes: [:name, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_product
     @product = Product.find(params[:id])
   end
-
 end

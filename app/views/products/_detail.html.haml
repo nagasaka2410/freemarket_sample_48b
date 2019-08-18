@@ -108,18 +108,20 @@
       =link_to '#' do
         %i.fas.fa-lock.clock-font
         %span あんしん・あんぜんへの取り組み
-.item-comments
-  .item-comments__container
-    .item-comments__container__message
-      %ul.messeage-items
-        = render partial: "shared/comment", collection: @comments
-    .item-comments__container__message
-      .form-test
-        %p
-          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        = form_for([@product, @product_comments], url: product_product_comments_path(@product.id)) do |f|
-          = f.text_area :comment, class:'textarea-test'
-          = f.submit "コメントする", class:'btn-comment'
+
+- if user_signed_in?
+  .item-comments
+    .item-comments__container
+      .item-comments__container__message
+        %ul.messeage-items
+          = render partial: "shared/comment", collection: @comments
+      .item-comments__container__message
+        .form-test
+          %p
+            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          = form_for([@product, @product_comments], url: product_product_comments_path(@product.id)) do |f|
+            = f.text_area :comment, class:'textarea-test'
+            = f.submit "コメントする", class:'btn-comment'
 
 %ul.item-link-prev-next
   - if @product.previous
