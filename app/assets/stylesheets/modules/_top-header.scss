@@ -32,7 +32,7 @@
 
           &--text {
             float: left;
-            padding: 0 42px 0 10px;
+            padding: 0 0 0 10px;
             width: 100%;
             height :40px;
             box-sizing: border-box;
@@ -50,14 +50,18 @@
 
           &--icon {
             position: absolute;
+            font-size:15px !important;
+            text-align: center;
+            line-height: 40px;
             top: 0;
             right: 0;
             width: 40px;
             height: 40px;
-            background-color: #666666;
+            border-left: none;
+            background-color: #f5f5f5;
             border-top-right-radius: 4px;
             border-bottom-right-radius: 4px;
-            color: rgb(255, 255, 255);
+            color: gray;
             cursor: pointer;
             align-items: center;
             .search {
@@ -88,9 +92,10 @@
         .category-search {
           float: left;
           width: 161px;
+          height: 45px;
           cursor: pointer;
           font-weight: bold;
-          padding:0 11px 25px 0;
+          padding:0 11px 0 0;
           position: relative;
 
           &__icon {
@@ -109,8 +114,9 @@
         .brand-search {
           float: left;
           width: 161px;
+          height: 45px;
           cursor: pointer;
-          padding: 0 0 25px 11px;
+          padding: 0 0 0 11px;
           position: relative;
           &__icon {
             float: left;
@@ -146,10 +152,11 @@
           .good-index {
             float: left;
             padding:0 14px;
+            height: 45px;
             cursor: pointer;
             min-width: 100%;
   
-            &__icon{
+            .top-page__icon {
               float: left;
               display: block;
               font-size: 1.2em;
@@ -170,10 +177,11 @@
           .notification {
             float: left;
             padding:0 14px;
+            height: 45px;
             cursor: pointer;
             min-width: 100%;
   
-            &__icon{
+            .top-page__icon {
               float: left;
               display: block;
               font-size: 1.2em;
@@ -194,9 +202,10 @@
           .todo {
             float: left;
             padding: 0 14px;
+            height: 45px;
             cursor: pointer;
   
-            &__icon{
+            .top-page__icon {
               float: left;
               display: block;
               font-size: 1.2em;
@@ -213,8 +222,9 @@
   
           .top-mypage {
             float: left;
+            height: 45px;
             cursor: pointer;
-  
+            position: relative;
             &__image {
               float: left;
               display: block;
