@@ -1,5 +1,5 @@
 class ProductCommentsController < ApplicationController
-  before_action :set_product
+  before_action :set_product, only:[:create, :my_product_comments]
 
   def create
     @comment = @product.product_comments.new(comment_params)
@@ -13,9 +13,7 @@ class ProductCommentsController < ApplicationController
     redirect_to my_show_product_path(@product)
   end
 
-
   private
-
   def set_product
     @product = Product.find(params[:product_id])
   end

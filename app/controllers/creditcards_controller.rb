@@ -1,5 +1,6 @@
 class CreditcardsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_creditcard, only: [:show, :destroy]
 
   def index
     card = current_user.creditcard
@@ -11,7 +12,6 @@ class CreditcardsController < ApplicationController
   end
 
   def show
-    @creditcard = Creditcard.find(params[:id])
     redirect_to action: "new" if @creditcard.blank?
   end
 
@@ -25,7 +25,6 @@ class CreditcardsController < ApplicationController
   end
 
   def destroy
-    @creditcard = Creditcard.find(params[:id])
     if @creditcard.blank?
       redirect_to action: "new"
     else
@@ -39,4 +38,7 @@ class CreditcardsController < ApplicationController
     params.require(:creditcard).permit(:card_number, :valid_month, :valid_year, :security_code).merge(user_id: current_user.id)
   end
 
+  def set_creditcard
+    @creditcard = Creditcard.find(params[:id])
+  end
 end
