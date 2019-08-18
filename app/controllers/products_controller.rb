@@ -29,7 +29,6 @@ class ProductsController < ApplicationController
 
   def show
     @category_products = Product.where(category_id: @product.category_id).where.not(id: @product.id).order("id DESC").limit(6)
-    redirect_to :back if @product.user.id == current_user&.id
   end
 
   def my_show
@@ -82,6 +81,7 @@ class ProductsController < ApplicationController
   end
 
   def purchase
+    redirect_to :back if @product.user.id == current_user&.id
   end
 
   def search
