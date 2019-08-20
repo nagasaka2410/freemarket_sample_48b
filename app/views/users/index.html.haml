@@ -70,16 +70,8 @@
               = link_to "#" do
                 一覧を見る
           %ul.todo-list.tab
-            %li.hide
-              = link_to "#", class: "notification-list__link" do
-                %figure
-                  = image_tag "mercari_name.png"
-                .notification-list__body
-                  .notification-list__body__text【7日間限定】10人に1人最大P6,000もらえるキャンペーン開始
-                  %time
-                    %i.far.fa-clock
-                    %span 22 時間前
-                = fa_icon "angle-right"
+            %li.hide.mypage-item-not-found
+              現在、やることリストはありません
       %section.mypage-tab-trading-traded
         %h2.mypage-tab-head 購入した商品
         %ul.mypage-tabs.under

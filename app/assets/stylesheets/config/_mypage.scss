@@ -177,13 +177,24 @@
             }
           }
           .mypage-item-status{
-            background: #0099e8;
-            display: inline-block;
-            margin: 8px 0 0 0;
-            padding: 5px 6px;
-            border-radius: 2px;
-            font-size: 12px;
-            color: #fff;
+            &__sell {
+              background: #0099e8;
+              display: inline-block;
+              margin: 8px 0 0 0;
+              padding: 5px 6px;
+              border-radius: 2px;
+              font-size: 12px;
+              color: #fff;
+            }
+            &__unpublished {
+              background: #ea352d;
+              display: inline-block;
+              margin: 8px 0 0 0;
+              padding: 5px 6px;
+              border-radius: 2px;
+              font-size: 12px;
+              color: #fff;
+            }
           }
           time{
             display: inline-block;
@@ -353,4 +364,16 @@
       }
     }
   }
+}
+
+.mypage-item-not-found {
+  padding: 160px 0 60px;
+  background: url(logo-gray-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center 40px;
+  background-size: 78px 85px;
+  text-align: center;
+  font-size: 16px;
+  color: #ccc;
+  font-weight: 600;
 }
