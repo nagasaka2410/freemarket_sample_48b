@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!,only: [:new, :purchase]
-  before_action :set_product, only: [:show, :purchase, :bought, :my_show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :purchase, :bought, :my_show, :edit,:unpublished, :sell, :update, :destroy]
   before_action :show_product, only: [:show, :my_show]
 
   def index
@@ -70,6 +70,7 @@ class ProductsController < ApplicationController
     @category = @product.category
     @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
     @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
+    @parent = @product.category.root.name
   end
 
   def update
@@ -99,6 +100,35 @@ class ProductsController < ApplicationController
     else
       redirect_to root_path
     end
+  end
+
+  def unpublished
+    if @product.status_sell? and @product.buyer_id.nil? == true
+      @product.update(status: "unpublished")
+      redirect_to my_show_product_path
+    else
+      redirect_to root_path
+    end
+  end
+
+  def sell
+    if @product.status == "unpublished"
+      @product.update(status: "sell")
+      redirect_to my_show_product_path
+    else
+      redirect_to root_path
+    end
+  end
+
+  def my_show
+    category_id = @product.category_id
+    @products = Category.find(category_id).products
+    @brand_products = Product.where(brand_id: @product.brand_id).where.not(id: @product.id).order("id DESC").limit(6)
+    @user_products = Product.where(user_id: @product.user.id).where.not(id: @product.id).order("id DESC").limit(6)
+    @previous_product = @product.previous
+    @next_product = @product.next
+    @product_comments = ProductComment.new
+    @comments = ProductComment.where(product_id: @product.id)
   end
 
   def destroy

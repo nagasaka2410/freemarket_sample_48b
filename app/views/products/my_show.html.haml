@@ -12,6 +12,13 @@
                 - @product.images.each do |img|
                   .is-slider__item
                     = image_tag(img.name.url, height: '300px', width: '300px', class: 'item-image-active')
+                    - if @product.status == "sold"
+                      .category-box__sold
+                        .category-box__sold--text SOLD
+                    - elsif @product.status == "unpublished"
+                      .category-box__unpublished
+                        .category-box__unpublished--text
+                          %p 公開停止中
               .is-thumbnails
                 - @product.images.each do |img|
                   .is-thumbnails__item
@@ -85,7 +92,11 @@
       .item-change-box
         = link_to '商品の編集', edit_product_path, class: 'btn-edit'
         %p.text-center or
-        = button_tag '商品を一旦停止する', class: 'btn-stop'
+        - if @product.status == "sell"
+          = link_to '商品を一旦停止する', unpublished_product_path, class: 'btn-stop'
+        - elsif @product.status == "unpublished"
+          = link_to '商品を再開する', sell_product_path, class: 'btn-restart'
+        -# = button_tag '商品を一旦停止する', class: 'btn-stop'
         %button#modal-open-btn この商品を削除する
         = link_to '', product_path, method: :delete, class: 'btn-delete', id: 'item-delete-btn'
         = render "delete-modal"

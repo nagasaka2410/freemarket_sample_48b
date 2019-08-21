@@ -81,6 +81,9 @@
       justify-content: space-around;
       p {
         margin: 15px 0px 0px;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 80px;
       }
       .sell-modal-body{
         border-top: 1px solid #eee;
@@ -93,6 +96,20 @@
         display: block;
         width: 500px;
         line-height: 48px;
+        font-size: 14px;
+        border: 1px solid transparent;
+        transition: all ease-out .3s;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+      }
+      .create-modal-back {
+        margin: 8px auto 0;
+        background: #fff;
+        color: #0099e8;
+        display: block;
+        width: 500px;
+        line-height: 14px;
         font-size: 14px;
         border: 1px solid transparent;
         transition: all ease-out .3s;

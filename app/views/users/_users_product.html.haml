@@ -1,18 +1,21 @@
-%ul.tab-content
-  %ul.notification-list.tab
-    %li
-      = link_to my_show_product_path(users_product), class: "notification-list__link" do
-        %figure
-          = image_tag(users_product.images.first.name)
-        .notification-list__body
-          .notification-list__body__text
-            = users_product.name
-          .listing-item-count
-            %i.far.fa-heart
-            %span 0
-          .listing-item-count
-            %i.far.fa-comment-alt
-            %span 0
-          .mypage-item-status
+%li
+  = link_to my_show_product_path(users_product), class: "notification-list__link" do
+    %figure
+      = image_tag(users_product.images.first.name)
+    .notification-list__body
+      .notification-list__body__text
+        = users_product.name
+      .listing-item-count
+        %i.far.fa-heart
+        %span 0
+      .listing-item-count
+        %i.far.fa-comment-alt
+        %span 0
+      .mypage-item-status
+        - if users_product.status == "sell"
+          %p.mypage-item-status__sell
             出品中
-          = fa_icon "angle-right"
+        - elsif users_product.status == "unpublished"
+          %p.mypage-item-status__unpublished
+            公開停止中
+      = fa_icon "angle-right"

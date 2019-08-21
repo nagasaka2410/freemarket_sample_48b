@@ -14,7 +14,9 @@
             %h3 出品中
           %li.todo
             %h3 取引中
-        = render partial: "users_product", collection: @products
+        %ul.tab-content
+          %ul.notification-list.tab
+            = render partial: "users_product", collection: @products
     = render 'shared/mypage-sidemenu'
 
 = render "shared/banner"
