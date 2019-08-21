@@ -8,10 +8,10 @@
           - @product.images.each do |img|
             .is-slider__item
               = image_tag(img.name.url, height: '300px', width: '300px', class: 'item-image-active')
-              - if @product.status == "sold"
+              - if @product.status_sold?
                 .category-box__sold
                   .category-box__sold--text SOLD
-              - elsif @product.status == "unpublished"
+              - elsif @product.status_unpublished?
                 .category-box__unpublished
                   .category-box__unpublished--text 公開停止中
 

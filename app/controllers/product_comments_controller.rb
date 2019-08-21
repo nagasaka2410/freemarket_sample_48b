@@ -3,14 +3,20 @@ class ProductCommentsController < ApplicationController
 
   def create
     @comment = @product.product_comments.new(comment_params)
-    @comment.save
-    redirect_to product_path(@product)
+    if @comment.save
+      redirect_to product_path(@product)
+    else
+      render :create
+    end
   end
 
   def my_product_comments
     @comment = @product.product_comments.new(comment_params)
-    @comment.save
-    redirect_to my_show_product_path(@product)
+    if @comment.save
+      redirect_to my_show_product_path(@product)
+    else
+      render :my_product_comments
+    end
   end
 
   private

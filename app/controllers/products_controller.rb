@@ -103,7 +103,7 @@ class ProductsController < ApplicationController
   end
 
   def unpublished
-    if @product.status == "sell" and @product.buyer_id.nil? == true
+    if @product.status_sell? and @product.buyer_id.nil? == true
       @product.update(status: "unpublished")
       redirect_to my_show_product_path
     else
