@@ -17,6 +17,9 @@
         %ul.tab-content
           %ul.notification-list.tab
             = render partial: "users_product", collection: @products
+        %ul.todo-list.tab
+          %li.hide.mypage-item-not-found
+            取引中の商品がありません
     = render 'shared/mypage-sidemenu'
 
 = render "shared/banner"
